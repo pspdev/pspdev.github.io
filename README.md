@@ -7,6 +7,11 @@ The pspdev GitHub organization portal
 [Doxygen documentation](http://pspdev.github.io/pspsdk/)
 
 
+## PSPLink USB
+
+[Manual](http://pspdev.github.io/psplinkusb/)
+
+
 ## Contact
 
 ### Discord
