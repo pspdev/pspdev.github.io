@@ -4,12 +4,12 @@ The pspdev GitHub organization portal
 
 ## PSPSDK
 
-[Doxygen documentation](http://pspdev.github.io/pspsdk/)
+[Doxygen documentation](https://pspdev.github.io/pspsdk/)
 
 
 ## PSPLink USB
 
-[Manual](http://pspdev.github.io/psplinkusb/)
+[Manual](https://pspdev.github.io/psplinkusb/)
 
 
 ## Contact
