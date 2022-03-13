@@ -1,23 +1,10 @@
-# pspdev.github.io
-The pspdev GitHub organization portal
+PSPDEV is an open source toolchain for Playstation Portable development. It allows you to make apps and games for both custom and official firmwares. It's made by a community of ethousiasts and not affiliated with Sony.
 
+# Getting started
+## Installing
 
-## PSPSDK
-
-[Doxygen documentation](https://pspdev.github.io/pspsdk/)
-
-
-## PSPLink USB
-
-[Manual](https://pspdev.github.io/psplinkusb/)
-
-
-## Contact
-
-### Discord
-[PSP Homebrew discord](https://discord.gg/bePrj9W)
-
-### IRC (deprecated)
-
-[#pspdev channel on irc.freenode.net](https://kiwiirc.com/nextclient/#ircs://irc.freenode.net/#pspdev)
-
+## Basic programs
+### Hello world
+### Drawing a simple square
+### Building
+### Testing
