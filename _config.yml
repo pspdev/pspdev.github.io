@@ -1,4 +1,3 @@
-theme: jekyll-theme-tactile
+theme: jekyll-theme-hacker
 title: PSPDEV
 description: Development tools for the Playstation Portable
-show_downloads: false
