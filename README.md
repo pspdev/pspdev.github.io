@@ -44,9 +44,9 @@ This is a simple Hello World program for the PSP. Click on details below for the
 <b>main.c</b>:
 
 <pre>
-#include <pspkernel.h>
-#include <pspdebug.h>
-#include <pspdisplay.h>
+#include &lt;pspkernel.h&gt;
+#include &lt;pspdebug.h&gt;
+#include &lt;pspdisplay.h&gt;
 
 // PSP_MODULE_INFO is required
 PSP_MODULE_INFO("Hello World", 0, 1, 0);
@@ -141,8 +141,8 @@ This is a simple a simple square drawn on the PSP. It uses the native libgu libr
 <b>main.c</b>:
 
 <pre>
-#include <pspkernel.h>
-#include <pspgu.h>
+#include &lt;pspkernel.h&gt;
+#include &lt;pspgu.h&gt;
 
 PSP_MODULE_INFO("gutest", 0, 1, 0);
 PSP_MAIN_THREAD_ATTR(THREAD_ATTR_VFPU | THREAD_ATTR_USER);
@@ -282,7 +282,7 @@ SDL2 is a library which handles system specific things like input, audio and win
 <b>main.c</b>:
 
 <pre>
-#include <SDL.h>
+#include &lt;SDL.h&gt;
 
 int main(int argc, char *argv[])
 {
