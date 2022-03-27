@@ -71,7 +71,7 @@ int setup_callbacks(void)
 {
     int thid = sceKernelCreateThread("update_thread",
                      callback_thread, 0x11, 0xFA0, 0, 0);
-    if(thid >= 0)
+    if(thid &gt;= 0)
         sceKernelStartThread(thid, 0, 0);
     return thid;
 }
@@ -267,9 +267,9 @@ make
 
 This will result in an EBOOT.PBP file in the build directory. Put it in a directory in ms0:/PSP/GAME/ and the PSP can run it.
 
-More libgu examples can be found <a href="https://github.com/pspdev/pspsdk/tree/master/src/samples/gu">here</a>()
+More libgu examples can be found <a href="https://github.com/pspdev/pspsdk/tree/master/src/samples/gu">here</a>.
 
-</details><p>
+</details></p>
 
 ### Using SDL2
 
