@@ -39,9 +39,11 @@ Below are some basic examples of programs for the PSP. More can be found [here](
 
 This is a simple Hello World program for the PSP. Click on details below for the to see the code and how to build it.
 
-**main.c**:
+<p><details>
 
-```c
+<b>main.c</b>:
+
+<pre>
 #include <pspkernel.h>
 #include <pspdebug.h>
 #include <pspdisplay.h>
@@ -90,11 +92,11 @@ int main(void)
 
 	return 0;
 }
-```
+</pre>
 
-**CMakeLists.txt**:
+<b>CMakeLists.txt</b>:
 
-```cmake
+<pre>
 cmake_minimum_required(VERSION 3.0)
 
 project(hello)
@@ -115,17 +117,18 @@ create_pbp_file(
     PREVIEW_PATH NULL
     TITLE ${PROJECT_NAME}
 )
-```
+</pre>
 
 Building can be done with:
 
-```
+<pre>
 mkdir build && build
 psp-cmake ..
 make
-```
+</pre>
 
-This will result in an ``EBOOT.PBP`` file in the ``build`` directory. Put it in a directory in ``ms0:/PSP/GAME/`` and the PSP can run it.
+This will result in an EBOOT.PBP file in the build directory. Put it in a directory in ms0:/PSP/GAME/ and the PSP can run it.
+</details></p>
 
 ### Drawing shapes
 
@@ -133,9 +136,11 @@ This will result in an ``EBOOT.PBP`` file in the ``build`` directory. Put it in 
 
 This is a simple a simple square drawn on the PSP. It uses the native libgu library. Click on details below for the to see the code and how to build it.
 
-**main.c**:
+<p><details>
 
-```c
+<b>main.c</b>:
+
+<pre>
 #include <pspkernel.h>
 #include <pspgu.h>
 
@@ -225,11 +230,11 @@ int main() {
 
     return 0;
 }
-```
+</pre>
 
-**CMakeLists.txt**:
+<b>CMakeLists.txt</b>:
 
-```cmake
+<pre>
 cmake_minimum_required(VERSION 3.0)
 
 project(shape)
@@ -250,19 +255,21 @@ create_pbp_file(
     PREVIEW_PATH NULL
     TITLE ${PROJECT_NAME}
 )
-```
+</pre>
 
 Building can be done with:
 
-```
+<pre>
 mkdir build && build
 psp-cmake ..
 make
-```
+</pre>
 
-This will result in an ``EBOOT.PBP`` file in the ``build`` directory. Put it in a directory in ``ms0:/PSP/GAME/`` and the PSP can run it.
+This will result in an EBOOT.PBP file in the build directory. Put it in a directory in ms0:/PSP/GAME/ and the PSP can run it.
 
-More libgu examples can be found [here](https://github.com/pspdev/pspsdk/tree/master/src/samples/gu).
+More libgu examples can be found <a href="https://github.com/pspdev/pspsdk/tree/master/src/samples/gu">here</a>()
+
+</details><p>
 
 ### Using SDL2
 
@@ -270,9 +277,11 @@ More libgu examples can be found [here](https://github.com/pspdev/pspsdk/tree/ma
 
 SDL2 is a library which handles system specific things like input, audio and window management for you. It can also be used to render shapes and images, just like the native libgu. This will be slower, but will result in code that can be run more easily on multiple platforms. Click on details below for the to see the code and how to build it.
 
-**main.c**:
+<p><details>
 
-```c
+<b>main.c</b>:
+
+<pre>
 #include <SDL.h>
 
 int main(int argc, char *argv[])
@@ -324,11 +333,11 @@ int main(int argc, char *argv[])
 
     return 0;
 }
-```
+</pre>
 
-**CMakeLists.txt**:
+<b>CMakeLists.txt</b>:
 
-```cmake
+<pre>
 cmake_minimum_required(VERSION 3.0)
 
 project(square)
@@ -356,27 +365,29 @@ if(PSP)
         TITLE ${PROJECT_NAME}
     )
 endif()
-```
+</pre>
 
 Building can be done with:
 
-```
+<pre>
 mkdir build && build
 psp-cmake ..
 make
-```
+</pre>
 
-This will result in an ``EBOOT.PBP`` file in the ``build`` directory. Put it in a directory in ``ms0:/PSP/GAME/`` and the PSP can run it.
+This will result in an EBOOT.PB` file in the build directory. Put it in a directory in ms0:/PSP/GAME/ and the PSP can run it.
 
 This code will also build on Linux by running:
 
-```
+<pre>
 mkdir build && build
 cmake ..
 make
-```
+</pre>
 
-More documentation on SDL can be found [here](http://wiki.libsdl.org/FrontPage).
+More documentation on SDL can be found <a href="http://wiki.libsdl.org/FrontPage">here</a>.
+
+</details></p>
 
 ## Other libraries
 
