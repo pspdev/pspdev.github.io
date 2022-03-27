@@ -39,9 +39,6 @@ Below are some basic examples of programs for the PSP. More can be found [here](
 
 This is a simple Hello World program for the PSP. Click on details below for the to see the code and how to build it.
 
-
-<p><details>
-
 **main.c**:
 
 ```c
@@ -129,15 +126,12 @@ make
 ```
 
 This will result in an ``EBOOT.PBP`` file in the ``build`` directory. Put it in a directory in ``ms0:/PSP/GAME/`` and the PSP can run it.
-</details></p>
 
 ### Drawing shapes
 
 ![](images/shape.png?raw=true)
 
 This is a simple a simple square drawn on the PSP. It uses the native libgu library. Click on details below for the to see the code and how to build it.
-
-<p><details>
 
 **main.c**:
 
@@ -270,15 +264,11 @@ This will result in an ``EBOOT.PBP`` file in the ``build`` directory. Put it in 
 
 More libgu examples can be found [here](https://github.com/pspdev/pspsdk/tree/master/src/samples/gu).
 
-</details><p>
-
 ### Using SDL2
 
 ![](images/sdl2.png?raw=true)
 
 SDL2 is a library which handles system specific things like input, audio and window management for you. It can also be used to render shapes and images, just like the native libgu. This will be slower, but will result in code that can be run more easily on multiple platforms. Click on details below for the to see the code and how to build it.
-
-<p><details>
 
 **main.c**:
 
@@ -387,8 +377,6 @@ make
 ```
 
 More documentation on SDL can be found [here](http://wiki.libsdl.org/FrontPage).
-
-</details></p>
 
 ## Other libraries
 
