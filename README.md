@@ -12,7 +12,7 @@ On Ubuntu run the following command to install the dependencies:
 
 ```
 sudo apt-get update
-sudo apt-get install build-essential cmake fakeroot pkgconf
+sudo apt-get install build-essential cmake pkgconf libreadline8 libusb-0.1 libpython3.8 libgpgme11
 ```
 
 ## Installing
@@ -389,9 +389,17 @@ More documentation on SDL can be found <a href="http://wiki.libsdl.org/FrontPage
 
 </details></p>
 
-## Other libraries
+## Libraries
 
-There are many C and C++ libraries available within the PSPDEV toolchain. For the full list take a look at the [psp-packages repository](https://github.com/pspdev/psp-packages).
+There are many C and C++ libraries available within the PSPDEV toolchain which can add functionality to your program. Some examples:
+
+- Audio formats: mp3, ogg
+- Image formats: png, jpeg
+- Data formats: json, yaml, sqlite
+- Support for compression, physics, fonts and much more
+
+
+For the full list take a look at the [psp-packages repository](https://github.com/pspdev/psp-packages).
 
 ## Contact
 
