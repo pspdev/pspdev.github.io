@@ -265,7 +265,7 @@ psp-cmake ..
 make
 </pre>
 
-This will result in an EBOOT.PBP file in the build directory. Put it in a directory in ms0:/PSP/GAME/ and the PSP can run it.
+<p>This will result in an EBOOT.PBP file in the build directory. Put it in a directory in ms0:/PSP/GAME/ and the PSP can run it.</p>
 
 More libgu examples can be found <a href="https://github.com/pspdev/pspsdk/tree/master/src/samples/gu">here</a>.
 
@@ -375,7 +375,7 @@ psp-cmake ..
 make
 </pre>
 
-This will result in an EBOOT.PB` file in the build directory. Put it in a directory in ms0:/PSP/GAME/ and the PSP can run it.
+<p>This will result in an EBOOT.PB` file in the build directory. Put it in a directory in ms0:/PSP/GAME/ and the PSP can run it.</p>
 
 This code will also build on Linux by running:
 
