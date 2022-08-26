@@ -122,7 +122,7 @@ create_pbp_file(
 Building can be done with:
 
 <pre>
-mkdir build && build
+mkdir build && cd build
 psp-cmake ..
 make
 </pre>
@@ -260,7 +260,7 @@ create_pbp_file(
 Building can be done with:
 
 <pre>
-mkdir build && build
+mkdir build && cd build
 psp-cmake ..
 make
 </pre>
@@ -370,17 +370,17 @@ endif()
 Building can be done with:
 
 <pre>
-mkdir build && build
+mkdir build && cd build
 psp-cmake ..
 make
 </pre>
 
 <p>This will result in an EBOOT.PB` file in the build directory. Put it in a directory in ms0:/PSP/GAME/ and the PSP can run it.</p>
 
-This code will also build on Linux by running:
+If you have sdl2 dev package and a compiler installed this code will also build on Linux for Linux by running:
 
 <pre>
-mkdir build && build
+mkdir build && cd build
 cmake ..
 make
 </pre>
