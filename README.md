@@ -2,33 +2,35 @@ PSPDEV is an open source toolchain for Playstation Portable development. It allo
 
 # Getting started
 
-## Install dependencies
+## Installing
+
+### Dependencies
 
 The PSPDEV toolchain requires a couple of dependencies to be installed before use.
 
-### Ubuntu
+#### Ubuntu
 
 On Ubuntu run the following command to install the dependencies:
 
-```
+```bash
 sudo apt-get update
 sudo apt-get install build-essential cmake pkgconf libreadline8 libusb-0.1 libpython3.8 libgpgme11
 ```
 
-## Installing
+#### Toolchain
 
 To install the PSPDEV toolchain, first [download the latest version](https://github.com/pspdev/pspdev/releases/tag/latest) for your system. Extract it into your user's home directory.
 
 Now set the required environment variables. On Mac edit the ``~/.bash_profile`` on Linux the ``~/.bashrc`` file. Add the following at the bottom:
 
-```
+```bash
 export PSPDEV=~/pspdev
 export PATH=$PATH:$PSPDEV/bin
 ```
 
 That's it, now the PSPDEV toolchain can be used to build PSP software.
 
-## Basic programs
+## Basic samples
 
 Below are some basic examples of programs for the PSP. More can be found [here](https://github.com/pspdev/pspsdk/tree/master/src/samples).
 
@@ -36,17 +38,16 @@ Below are some basic examples of programs for the PSP. More can be found [here](
 
 ![](images/hello.png?raw=true)
 
-
 This is a simple Hello World program for the PSP. Click on details below for the to see the code and how to build it.
 
-<p><details>
+<details>
 
-<b>main.c</b>:
+**main.c**:
 
-<pre>
-#include &lt;pspkernel.h&gt;
-#include &lt;pspdebug.h&gt;
-#include &lt;pspdisplay.h&gt;
+```c
+#include <pspkernel.h>
+#include <pspdebug.h>
+#include <pspdisplay.h>
 
 // PSP_MODULE_INFO is required
 PSP_MODULE_INFO("Hello World", 0, 1, 0);
@@ -61,7 +62,7 @@ int exit_callback(int arg1, int arg2, void *common)
 int callback_thread(SceSize args, void *argp)
 {
     int cbid = sceKernelCreateCallback("Exit Callback",
-                       exit_callback, NULL);
+        exit_callback, NULL);
     sceKernelRegisterExitCallback(cbid);
     sceKernelSleepThreadCB();
     return 0;
@@ -70,8 +71,8 @@ int callback_thread(SceSize args, void *argp)
 int setup_callbacks(void)
 {
     int thid = sceKernelCreateThread("update_thread",
-                     callback_thread, 0x11, 0xFA0, 0, 0);
-    if(thid &gt;= 0)
+        callback_thread, 0x11, 0xFA0, 0, 0);
+    if(thid >= 0)
         sceKernelStartThread(thid, 0, 0);
     return thid;
 }
@@ -92,11 +93,11 @@ int main(void)
 
 	return 0;
 }
-</pre>
+```
 
-<b>CMakeLists.txt</b>:
+**CMakeLists.txt**:
 
-<pre>
+```cmake
 cmake_minimum_required(VERSION 3.0)
 
 project(hello)
@@ -117,18 +118,19 @@ create_pbp_file(
     PREVIEW_PATH NULL
     TITLE ${PROJECT_NAME}
 )
-</pre>
+```
 
 Building can be done with:
 
-<pre>
+```bash
 mkdir build && cd build
 psp-cmake ..
 make
-</pre>
+```
 
 This will result in an EBOOT.PBP file in the build directory. Put it in a directory in ms0:/PSP/GAME/ and the PSP can run it.
-</details></p>
+
+</details>
 
 ### Drawing shapes
 
@@ -136,13 +138,13 @@ This will result in an EBOOT.PBP file in the build directory. Put it in a direct
 
 This is a simple a simple square drawn on the PSP. It uses the native libgu library. Click on details below for the to see the code and how to build it.
 
-<p><details>
+<details>
 
-<b>main.c</b>:
+**main.c**:
 
-<pre>
-#include &lt;pspkernel.h&gt;
-#include &lt;pspgu.h&gt;
+```c
+#include <pspkernel.h>
+#include <pspgu.h>
 
 PSP_MODULE_INFO("gutest", 0, 1, 0);
 PSP_MAIN_THREAD_ATTR(THREAD_ATTR_VFPU | THREAD_ATTR_USER);
@@ -154,7 +156,7 @@ PSP_MAIN_THREAD_ATTR(THREAD_ATTR_VFPU | THREAD_ATTR_USER);
 
 char list[0x20000] __attribute__((aligned(64)));
 
-void initGu(){
+void initGu() {
     sceGuInit();
 
     //Set up buffers
@@ -179,18 +181,18 @@ void initGu(){
 	sceGuDisplay(GU_TRUE);
 }
 
-void endGu(){
+void endGu() {
     sceGuDisplay(GU_FALSE);
 	sceGuTerm();
 }
 
-void startFrame(){
+void startFrame() {
     sceGuStart(GU_DIRECT, list);
     sceGuClearColor(0xFFFFFFFF); // White background
     sceGuClear(GU_COLOR_BUFFER_BIT);
 }
 
-void endFrame(){
+void endFrame() {
     sceGuFinish();
     sceGuSync(0, 0);
     sceDisplayWaitVblankStart();
@@ -216,25 +218,24 @@ void drawRect(float x, float y, float w, float h) {
     sceGuDrawArray(GU_SPRITES, GU_TEXTURE_16BIT | GU_VERTEX_16BIT | GU_TRANSFORM_2D, 2, 0, vertices);
 }
 
-
-int main() {
+int main() 
+{
     initGu();
     int running = 1;
+
     while(running){
         startFrame();
-
         drawRect(32, 32, 64, 64);
-
         endFrame();
     }
 
     return 0;
 }
-</pre>
+```
 
-<b>CMakeLists.txt</b>:
+**CMakeLists.txt**:
 
-<pre>
+```cmake
 cmake_minimum_required(VERSION 3.0)
 
 project(shape)
@@ -255,21 +256,21 @@ create_pbp_file(
     PREVIEW_PATH NULL
     TITLE ${PROJECT_NAME}
 )
-</pre>
+```
 
 Building can be done with:
 
-<pre>
+```bash
 mkdir build && cd build
 psp-cmake ..
 make
-</pre>
+```
 
-<p>This will result in an EBOOT.PBP file in the build directory. Put it in a directory in ms0:/PSP/GAME/ and the PSP can run it.</p>
+This will result in an EBOOT.PBP file in the build directory. Put it in a directory in ms0:/PSP/GAME/ and the PSP can run it.
 
-More libgu examples can be found <a href="https://github.com/pspdev/pspsdk/tree/master/src/samples/gu">here</a>.
+More libgu examples can be found [here](https://github.com/pspdev/pspsdk/tree/master/src/samples/gu).
 
-</details></p>
+</details>
 
 ### Using SDL2
 
@@ -277,14 +278,14 @@ More libgu examples can be found <a href="https://github.com/pspdev/pspsdk/tree/
 
 SDL2 is a library which handles system specific things like input, audio and window management for you. It can also be used to render shapes and images, just like the native libgu. This will be slower, but will result in code that can be run more easily on multiple platforms. Click on details below for the to see the code and how to build it.
 
-<p><details>
+<details>
 
-<b>main.c</b>:
+**main.c**:
 
-<pre>
-#include &lt;SDL.h&gt;
+```c
+#include <SDL.h>
 
-int main(int argc, char *argv[])
+int main(int argc, char *argv[]) 
 {
     SDL_Init(SDL_INIT_VIDEO | SDL_INIT_GAMECONTROLLER);
 
@@ -333,11 +334,11 @@ int main(int argc, char *argv[])
 
     return 0;
 }
-</pre>
+```
 
-<b>CMakeLists.txt</b>:
+**CMakeLists.txt**:
 
-<pre>
+```cmake
 cmake_minimum_required(VERSION 3.0)
 
 project(square)
@@ -365,29 +366,29 @@ if(PSP)
         TITLE ${PROJECT_NAME}
     )
 endif()
-</pre>
+```
 
 Building can be done with:
 
-<pre>
+```bash
 mkdir build && cd build
 psp-cmake ..
 make
-</pre>
+```
 
-<p>This will result in an EBOOT.PB` file in the build directory. Put it in a directory in ms0:/PSP/GAME/ and the PSP can run it.</p>
+This will result in an EBOOT.PBP` file in the build directory. Put it in a directory in ms0:/PSP/GAME/ and the PSP can run it.
 
 If you have sdl2 dev package and a compiler installed this code will also build on Linux for Linux by running:
 
-<pre>
+```bash
 mkdir build && cd build
 cmake ..
 make
-</pre>
+```
 
-More documentation on SDL can be found <a href="http://wiki.libsdl.org/FrontPage">here</a>.
+More documentation on SDL can be found [here](http://wiki.libsdl.org/FrontPage).
 
-</details></p>
+</details>
 
 ## Libraries
 
@@ -396,7 +397,7 @@ There are many C and C++ libraries available within the PSPDEV toolchain which c
 - Audio formats: mp3, ogg
 - Image formats: png, jpeg
 - Data formats: json, yaml, sqlite
-- Support for compression, physics, fonts and much more
+- Support for compression, physics, fonts and much more!
 
 
 For the full list take a look at the [psp-packages repository](https://github.com/pspdev/psp-packages).
