@@ -87,8 +87,8 @@ int main(void)
 	while(1)
 	{
         pspDebugScreenSetXY(0, 0);
-		pspDebugScreenPrintf("Hello World!");
-		sceDisplayWaitVblankStart();
+        pspDebugScreenPrintf("Hello World!");
+        sceDisplayWaitVblankStart();
 	}
 
 	return 0;
@@ -160,10 +160,10 @@ void initGu() {
     sceGuInit();
 
     //Set up buffers
-	sceGuStart(GU_DIRECT, list);
+    sceGuStart(GU_DIRECT, list);
     sceGuDrawBuffer(GU_PSM_8888,(void*)0,BUFFER_WIDTH);
-	sceGuDispBuffer(SCREEN_WIDTH,SCREEN_HEIGHT,(void*)0x88000,BUFFER_WIDTH);
-	sceGuDepthBuffer((void*)0x110000,BUFFER_WIDTH);
+    sceGuDispBuffer(SCREEN_WIDTH,SCREEN_HEIGHT,(void*)0x88000,BUFFER_WIDTH);
+    sceGuDepthBuffer((void*)0x110000,BUFFER_WIDTH);
 
     //Set up viewport
     sceGuOffset(2048 - (SCREEN_WIDTH / 2), 2048 - (SCREEN_HEIGHT / 2));
@@ -178,12 +178,12 @@ void initGu() {
     sceGuEnable(GU_DEPTH_TEST); //Enable depth testing
 
     sceGuFinish();
-	sceGuDisplay(GU_TRUE);
+    sceGuDisplay(GU_TRUE);
 }
 
 void endGu() {
     sceGuDisplay(GU_FALSE);
-	sceGuTerm();
+    sceGuTerm();
 }
 
 void startFrame() {
@@ -200,8 +200,8 @@ void endFrame() {
 }
 
 typedef struct {
-	unsigned short u, v;
-	short x, y, z;
+    unsigned short u, v;
+    short x, y, z;
 } Vertex;
 
 void drawRect(float x, float y, float w, float h) {
