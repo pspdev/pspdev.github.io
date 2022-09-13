@@ -386,7 +386,7 @@ cmake ..
 make
 </pre>
 
-<p>More documentation on SDL can be found <a href="http://wiki.libsdl.org/FrontPage" target="_blank">here</a>.
+<p>More documentation on SDL can be found <a href="http://wiki.libsdl.org/FrontPage" target="_blank">here</a>.</p>
 
 </details>
 
@@ -405,4 +405,3 @@ For the full list take a look at the [psp-packages repository](https://github.co
 ## Contact
 
 If you need help or would like to contribute, don't hesitate to join us on [Discord](https://discord.gg/bePrj9W) or open an issue on [GitHub](https://github.com/pspdev/pspdev/issues). See you there!
-
