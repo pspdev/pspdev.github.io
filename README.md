@@ -45,7 +45,6 @@ This is a simple Hello World program for the PSP. Click on details below for the
 <b>main.c</b>:
 
 <pre>
-<code>
 #include &lt;pspkernel.h&gt;
 #include &lt;pspdebug.h&gt;
 #include &lt;pspdisplay.h&gt;
@@ -94,13 +93,11 @@ int main(void)
 
 	return 0;
 }
-</code>
 </pre>
 
 <b>CMakeLists.txt</b>:
 
 <pre>
-<code>
 cmake_minimum_required(VERSION 3.0)
 
 project(hello)
@@ -121,17 +118,14 @@ create_pbp_file(
     PREVIEW_PATH NULL
     TITLE ${PROJECT_NAME}
 )
-</code>
 </pre>
 
 <p>Building can be done with:</p>
 
 <pre>
-<code>
 mkdir build && cd build
 psp-cmake ..
 make
-</code>
 </pre>
 
 <p>This will result in an EBOOT.PBP file in the build directory. Put it in a directory in ms0:/PSP/GAME/ and the PSP can run it.</p>
@@ -149,7 +143,6 @@ This is a simple a simple square drawn on the PSP. It uses the native libgu libr
 <b>main.c</b>:
 
 <pre>
-<code>
 #include &lt;pspkernel.h&gt;
 #include &lt;pspgu.h&gt;
 
@@ -238,13 +231,11 @@ int main()
 
     return 0;
 }
-</code>
 </pre>
 
 <b>CMakeLists.txt</b>:
 
 <pre>
-<code>
 cmake_minimum_required(VERSION 3.0)
 
 project(shape)
@@ -265,17 +256,14 @@ create_pbp_file(
     PREVIEW_PATH NULL
     TITLE ${PROJECT_NAME}
 )
-</code>
 </pre>
 
 <p>Building can be done with:</p>
 
 <pre>
-<code>
 mkdir build && cd build
 psp-cmake ..
 make
-</code>
 </pre>
 
 <p>This will result in an EBOOT.PBP file in the build directory. Put it in a directory in ms0:/PSP/GAME/ and the PSP can run it.</p>
@@ -295,7 +283,6 @@ SDL2 is a library which handles system specific things like input, audio and win
 <b>main.c</b>:
 
 <pre>
-<code>
 #include &lt;SDL.h&gt;
 
 int main(int argc, char *argv[]) 
@@ -347,13 +334,11 @@ int main(int argc, char *argv[])
 
     return 0;
 }
-</code>
 </pre>
 
 <b>CMakeLists.txt</b>:
 
 <pre>
-<code>
 cmake_minimum_required(VERSION 3.0)
 
 project(square)
@@ -381,17 +366,14 @@ if(PSP)
         TITLE ${PROJECT_NAME}
     )
 endif()
-</code>
 </pre>
 
 <p>Building can be done with:</p>
 
 <pre>
-<code>
 mkdir build && cd build
 psp-cmake ..
 make
-</code>
 </pre>
 
 <p>This will result in an EBOOT.PBP` file in the build directory. Put it in a directory in ms0:/PSP/GAME/ and the PSP can run it.</p>
@@ -399,11 +381,9 @@ make
 <p>If you have sdl2 dev package and a compiler installed this code will also build on Linux for Linux by running:</p>
 
 <pre>
-<code>
 mkdir build && cd build
 cmake ..
 make
-</code>
 </pre>
 
 <p>More documentation on SDL can be found <a href="http://wiki.libsdl.org/FrontPage" target="_blank">here</a>.
