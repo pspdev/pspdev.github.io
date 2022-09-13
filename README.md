@@ -12,7 +12,7 @@ The PSPDEV toolchain requires a couple of dependencies to be installed before us
 
 On Ubuntu run the following command to install the dependencies:
 
-```bash
+```
 sudo apt-get update
 sudo apt-get install build-essential cmake pkgconf libreadline8 libusb-0.1 libpython3.8 libgpgme11
 ```
@@ -23,7 +23,7 @@ To install the PSPDEV toolchain, first [download the latest version](https://git
 
 Now set the required environment variables. On Mac edit the ``~/.bash_profile`` on Linux the ``~/.bashrc`` file. Add the following at the bottom:
 
-```bash
+```
 export PSPDEV=~/pspdev
 export PATH=$PATH:$PSPDEV/bin
 ```
