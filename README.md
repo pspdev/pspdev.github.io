@@ -77,21 +77,21 @@ int setup_callbacks(void)
     return thid;
 }
 
-int main(void) 
+int main(void)
 {
     // Use above functions to make exiting possible
-	setup_callbacks();
-    
+    setup_callbacks();
+
     // Print Hello World! on a debug screen on a loop
     pspDebugScreenInit();
-	while(1)
-	{
+    while(1)
+    {
         pspDebugScreenSetXY(0, 0);
         pspDebugScreenPrintf("Hello World!");
         sceDisplayWaitVblankStart();
-	}
+    }
 
-	return 0;
+    return 0;
 }
 </pre>
 
@@ -218,7 +218,7 @@ void drawRect(float x, float y, float w, float h) {
     sceGuDrawArray(GU_SPRITES, GU_TEXTURE_16BIT | GU_VERTEX_16BIT | GU_TRANSFORM_2D, 2, 0, vertices);
 }
 
-int main() 
+int main()
 {
     initGu();
     int running = 1;
@@ -285,7 +285,7 @@ SDL2 is a library which handles system specific things like input, audio and win
 <pre>
 #include &lt;SDL.h&gt;
 
-int main(int argc, char *argv[]) 
+int main(int argc, char *argv[])
 {
     SDL_Init(SDL_INIT_VIDEO | SDL_INIT_GAMECONTROLLER);
 
@@ -300,11 +300,11 @@ int main(int argc, char *argv[])
 
     SDL_Renderer * renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
 
-    SDL_Rect square = {216, 96, 34, 64}; 
+    SDL_Rect square = {216, 96, 34, 64};
 
     int running = 1;
     SDL_Event event;
-    while (running) { 
+    while (running) {
         if (SDL_PollEvent(&event)) {
             switch (event.type) {
                 case SDL_QUIT:
