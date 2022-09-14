@@ -121,7 +121,7 @@ create_pbp_file(
 )
 </pre>
 
-<p>Building can be done with:</p>
+Building can be done with:
 
 <pre>
 mkdir build && cd build
@@ -129,7 +129,7 @@ psp-cmake ..
 make
 </pre>
 
-<p>This will result in an EBOOT.PBP file in the build directory. Put it in a directory in ms0:/PSP/GAME/ and the PSP can run it.</p>
+This will result in an EBOOT.PBP file in the build directory. Put it in a directory in ms0:/PSP/GAME/ and the PSP can run it.
 
 </details>
 </p>
@@ -261,7 +261,7 @@ create_pbp_file(
 )
 </pre>
 
-<p>Building can be done with:</p>
+Building can be done with:
 
 <pre>
 mkdir build && cd build
@@ -269,9 +269,9 @@ psp-cmake ..
 make
 </pre>
 
-<p>This will result in an EBOOT.PBP file in the build directory. Put it in a directory in ms0:/PSP/GAME/ and the PSP can run it.</p>
+This will result in an EBOOT.PBP file in the build directory. Put it in a directory in ms0:/PSP/GAME/ and the PSP can run it.
 
-<p>More libgu examples can be found <a href="https://github.com/pspdev/pspsdk/tree/master/src/samples/gu" target="_blank">here</a>.</p>
+More libgu examples can be found <a href="https://github.com/pspdev/pspsdk/tree/master/src/samples/gu" target="_blank">here</a>.
 
 </details>
 </p>
@@ -373,7 +373,7 @@ if(PSP)
 endif()
 </pre>
 
-<p>Building can be done with:</p>
+Building can be done with:
 
 <pre>
 mkdir build && cd build
@@ -381,9 +381,9 @@ psp-cmake ..
 make
 </pre>
 
-<p>This will result in an EBOOT.PBP` file in the build directory. Put it in a directory in ms0:/PSP/GAME/ and the PSP can run it.</p>
+This will result in an EBOOT.PBP` file in the build directory. Put it in a directory in ms0:/PSP/GAME/ and the PSP can run it.
 
-<p>If you have sdl2 dev package and a compiler installed this code will also build on Linux for Linux by running:</p>
+If you have sdl2 dev package and a compiler installed this code will also build on Linux for Linux by running:
 
 <pre>
 mkdir build && cd build
@@ -391,7 +391,7 @@ cmake ..
 make
 </pre>
 
-<p>More documentation on SDL can be found <a href="http://wiki.libsdl.org/FrontPage" target="_blank">here</a>.</p>
+More documentation on SDL can be found <a href="http://wiki.libsdl.org/FrontPage" target="_blank">here</a>.
 
 </details>
 </p>
