@@ -4,7 +4,7 @@ PSPDEV is an open source toolchain for Playstation Portable development. It allo
 
 ## Installing
 
-### Install dependencies
+### dependencies
 
 The PSPDEV toolchain requires a couple of dependencies to be installed before use.
 
@@ -17,7 +17,7 @@ sudo apt-get update
 sudo apt-get install build-essential cmake pkgconf libreadline8 libusb-0.1 libpython3.8 libgpgme11
 ```
 
-#### Toolchain 
+### Toolchain 
 
 To install the PSPDEV toolchain, first [download the latest version](https://github.com/pspdev/pspdev/releases/tag/latest) for your system. Extract it into your user's home directory.
 
