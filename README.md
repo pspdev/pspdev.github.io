@@ -2,11 +2,13 @@ PSPDEV is an open source toolchain for Playstation Portable development. It allo
 
 # Getting started
 
-## Install dependencies
+## Installing
+
+### dependencies
 
 The PSPDEV toolchain requires a couple of dependencies to be installed before use.
 
-### Ubuntu
+#### Ubuntu
 
 On Ubuntu run the following command to install the dependencies:
 
@@ -15,7 +17,7 @@ sudo apt-get update
 sudo apt-get install build-essential cmake pkgconf libreadline8 libusb-0.1 libpython3.8 libgpgme11
 ```
 
-## Installing
+### Toolchain 
 
 To install the PSPDEV toolchain, first [download the latest version](https://github.com/pspdev/pspdev/releases/tag/latest) for your system. Extract it into your user's home directory.
 
@@ -61,7 +63,7 @@ int exit_callback(int arg1, int arg2, void *common)
 int callback_thread(SceSize args, void *argp)
 {
     int cbid = sceKernelCreateCallback("Exit Callback",
-                       exit_callback, NULL);
+        exit_callback, NULL);
     sceKernelRegisterExitCallback(cbid);
     sceKernelSleepThreadCB();
     return 0;
@@ -70,7 +72,8 @@ int callback_thread(SceSize args, void *argp)
 int setup_callbacks(void)
 {
     int thid = sceKernelCreateThread("update_thread",
-                     callback_thread, 0x11, 0xFA0, 0, 0);
+        callback_thread, 0x11, 0xFA0, 0, 0);
+
     if(thid &gt;= 0)
         sceKernelStartThread(thid, 0, 0);
     return thid;
@@ -79,18 +82,18 @@ int setup_callbacks(void)
 int main(void) 
 {
     // Use above functions to make exiting possible
-	setup_callbacks();
+    setup_callbacks();
     
     // Print Hello World! on a debug screen on a loop
     pspDebugScreenInit();
-	while(1)
-	{
+    while(1)
+    {
         pspDebugScreenSetXY(0, 0);
-		pspDebugScreenPrintf("Hello World!");
-		sceDisplayWaitVblankStart();
-	}
+        pspDebugScreenPrintf("Hello World!");
+        sceDisplayWaitVblankStart();
+    }
 
-	return 0;
+    return 0;
 }
 </pre>
 
@@ -158,10 +161,10 @@ void initGu(){
     sceGuInit();
 
     //Set up buffers
-	sceGuStart(GU_DIRECT, list);
+    sceGuStart(GU_DIRECT, list);
     sceGuDrawBuffer(GU_PSM_8888,(void*)0,BUFFER_WIDTH);
-	sceGuDispBuffer(SCREEN_WIDTH,SCREEN_HEIGHT,(void*)0x88000,BUFFER_WIDTH);
-	sceGuDepthBuffer((void*)0x110000,BUFFER_WIDTH);
+    sceGuDispBuffer(SCREEN_WIDTH,SCREEN_HEIGHT,(void*)0x88000,BUFFER_WIDTH);
+    sceGuDepthBuffer((void*)0x110000,BUFFER_WIDTH);
 
     //Set up viewport
     sceGuOffset(2048 - (SCREEN_WIDTH / 2), 2048 - (SCREEN_HEIGHT / 2));
@@ -176,12 +179,12 @@ void initGu(){
     sceGuEnable(GU_DEPTH_TEST); //Enable depth testing
 
     sceGuFinish();
-	sceGuDisplay(GU_TRUE);
+    sceGuDisplay(GU_TRUE);
 }
 
 void endGu(){
     sceGuDisplay(GU_FALSE);
-	sceGuTerm();
+    sceGuTerm();
 }
 
 void startFrame(){
@@ -198,8 +201,8 @@ void endFrame(){
 }
 
 typedef struct {
-	unsigned short u, v;
-	short x, y, z;
+    unsigned short u, v;
+    short x, y, z;
 } Vertex;
 
 void drawRect(float x, float y, float w, float h) {
