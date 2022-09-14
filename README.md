@@ -378,7 +378,7 @@ psp-cmake ..
 make
 </pre>
 
-<p>This will result in an EBOOT.PB` file in the build directory. Put it in a directory in ms0:/PSP/GAME/ and the PSP can run it.</p>
+<p>This will result in an EBOOT.PBP` file in the build directory. Put it in a directory in ms0:/PSP/GAME/ and the PSP can run it.</p>
 
 If you have sdl2 dev package and a compiler installed this code will also build on Linux for Linux by running:
 
