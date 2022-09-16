@@ -427,7 +427,7 @@ make
 
 ![](images/audio.png?raw=true)
 
-This is a simple program to use the audio of the PSP with minimal effort. It will produce sound depending on the selected waveform and can set the frequency for every waveform. Click on the details below to see the code and how to build it.
+This is a simple program to use the audio of the PSP with minimal effort. It uses native audio library. Click on the details below to see the code and how to build it.
 
 <p><details>
 
@@ -662,6 +662,8 @@ make
 </pre>
 
 <p>This will result in an EBOOT.PBP file in the build directory. Put it in a directory in ms0:/PSP/GAME/ and the PSP can run it.</p>
+
+More audiolib examples can be found <a href="https://github.com/pspdev/pspsdk/tree/master/src/samples/audio">here</a>.
 
 </details></p>
 
