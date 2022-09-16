@@ -39,7 +39,7 @@ Below are some basic examples of programs for the PSP. More can be found [here](
 ![](images/hello.png?raw=true)
 
 
-This is a simple Hello World program for the PSP. Click on details below for the to see the code and how to build it.
+This is a simple Hello World program for the PSP. Click on the details below to see the code and how to build it.
 
 <p><details>
 
@@ -137,7 +137,7 @@ This will result in an EBOOT.PBP file in the build directory. Put it in a direct
 
 ![](images/shape.png?raw=true)
 
-This is a simple a simple square drawn on the PSP. It uses the native libgu library. Click on details below for the to see the code and how to build it.
+This is a simple square drawn on the PSP. It uses the native libgu library. Click on the details below to see the code and how to build it.
 
 <p><details>
 
@@ -399,6 +399,248 @@ target_link_libraries(${PROJECT_NAME} PRIVATE
     pspdisplay
     pspge
     pspctrl
+)
+
+# Create an EBOOT.PBP file
+create_pbp_file(
+    TARGET ${PROJECT_NAME}
+    ICON_PATH NULL
+    BACKGROUND_PATH NULL
+    PREVIEW_PATH NULL
+    TITLE ${PROJECT_NAME}
+)
+</pre>
+
+Building can be done with:
+
+<pre>
+mkdir build && cd build
+psp-cmake ..
+make
+</pre>
+
+<p>This will result in an EBOOT.PBP file in the build directory. Put it in a directory in ms0:/PSP/GAME/ and the PSP can run it.</p>
+
+</details></p>
+
+### Audio
+
+![](images/audio.png?raw=true)
+
+This is a simple program to use the audio of the PSP with minimal effort. It will produce sound depending on the selected waveform and can set the frequency for every waveform. Click on the details below to see the code and how to build it.
+
+<p><details>
+
+<b>main.c</b>:
+
+<pre>
+#include &lt;pspkernel.h&gt;
+#include &lt;pspdebug.h&gt;
+#include &lt;pspaudiolib.h&gt;
+#include &lt;pspaudio.h&gt;
+#include &lt;pspdisplay.h&gt;
+#include &lt;pspctrl.h&gt;
+
+#include &lt;stdlib.h&gt;
+#include &lt;string.h&gt;
+#include &lt;math.h&gt;
+#include &lt;limits.h&gt;
+
+PSP_MODULE_INFO("audio", 0, 1, 1);
+PSP_MAIN_THREAD_ATTR(THREAD_ATTR_USER | THREAD_ATTR_VFPU);
+
+#define printf	pspDebugScreenPrintf
+
+/* Exit callback */
+int exitCallback(int arg1, int arg2, void *common) {
+	sceKernelExitGame();
+	return 0;
+}
+
+/* Callback thread */
+int callbackThread(SceSize args, void *argp) {
+	int cbid;
+
+	cbid = sceKernelCreateCallback("Exit Callback", (void*) exitCallback, NULL);
+	sceKernelRegisterExitCallback(cbid);
+	sceKernelSleepThreadCB();
+
+	return 0;
+}
+
+/* Sets up the callback thread and returns its thread id */
+int setupCallbacks(void) {
+	int thid = 0;
+
+	thid = sceKernelCreateThread("update_thread", callbackThread, 0x11, 0xFA0, 0, 0);
+	if (thid &gt;= 0) {
+		sceKernelStartThread(thid, 0, 0);
+	}
+	return thid;
+}
+
+/* Main code */
+
+const float PI = 3.1415926535897932f;
+const int sampleRate = 44100;
+float frequency = 440.0f;
+float currentTime = 0;
+int function = 0;
+
+typedef struct {
+        short l, r;
+} sample_t;
+
+float currentFunction(const float time) {
+    double x;
+	float t = modf((time / (2 * PI)), &x);
+
+    switch(function) {
+		case 0: // SINE
+	    	return sinf(time);
+		case 1: // SQUARE
+	        if (t &lt; 0.5f) {
+	            return -0.2f;
+	        } else {
+	            return 0.2f;
+	        }
+		case 2: // TRIANGLE
+	        if (t &lt; 0.5f) {
+	            return (t * 2.0f) - 0.5f;
+	        } else {
+	            return 0.5f - (t - 0.5f) * 2.0f;
+	        }
+		default:
+ 	        return 0.0f;
+    }
+}
+
+/* This function gets called by pspaudiolib every time the
+   audio buffer needs to be filled. The sample format is
+   16-bit, stereo. */
+void audioCallback(void* buf, unsigned int length, void *userdata) {
+    const float sampleLength = 1.0f / sampleRate;
+	const float scaleFactor = SHRT_MAX - 1.0f;
+    static float freq0 = 440.0f;
+    sample_t* ubuf = (sample_t*) buf;
+	int i;
+	
+	if (frequency != freq0) {
+	        currentTime *= (freq0 / frequency);
+	}
+	for (i = 0; i &lt; length; i++) {
+	    short s = (short) (scaleFactor * currentFunction(2.0f * PI * frequency * currentTime));
+		ubuf[i].l = s;
+		ubuf[i].r = s;
+		currentTime += sampleLength;
+	}
+	if (currentTime * frequency &gt; 1.0f) {
+	    double d;
+		currentTime = modf(currentTime * frequency, &d) / frequency;
+	}
+
+	freq0 = frequency;
+}
+
+/* Read the analog stick and adjust the frequency */
+void controlFrequency(void) {
+    static int oldButtons = 0;
+	const int zones[6] = {30, 70, 100, 112, 125, 130};
+	const float response[6] = {0.0f, 0.1f, 0.5f, 1.0f, 4.0f, 8.0f};
+	const float minFreq = 32.0f;
+	const float maxFreq = 7040.0f;
+	SceCtrlData pad;
+	float direction;
+	int changedButtons;
+	int i, v;
+
+	sceCtrlReadBufferPositive(&pad, 1);
+
+	v = pad.Ly - 128;
+	if (v &lt; 0) {
+   	    direction = 1.0f;
+		v = -v;
+	} else {
+	    direction = -1.0f;
+	}
+
+	for (i = 0; i &lt; 6; i++) {
+	    if (v &lt; zones[i]) {
+		    frequency += (response[i] * direction);
+			break;
+	    }
+	}
+
+	if (frequency &lt; minFreq) {
+	    frequency = minFreq;
+	} else if (frequency &gt; maxFreq) {
+	    frequency = maxFreq;
+	}
+
+	changedButtons = pad.Buttons & (~oldButtons);
+	if (changedButtons & PSP_CTRL_CROSS) {
+	    function++;
+	    if (function &gt; 2) {
+	        function = 0;
+	    }
+	}
+
+	oldButtons = pad.Buttons;
+}
+
+int main(void) {
+	pspDebugScreenInit();
+	setupCallbacks();
+
+	pspAudioInit();
+	pspAudioSetChannelCallback(0, audioCallback, NULL);
+
+	sceCtrlSetSamplingCycle(0);
+	sceCtrlSetSamplingMode(PSP_CTRL_MODE_ANALOG);
+
+	printf("Press up and down to select frequency\nPress X to change function\n");
+	
+	while(1) {
+		sceDisplayWaitVblankStart();
+		pspDebugScreenSetXY(0,2);
+		printf("freq = %.2f \n", frequency);
+
+		switch(function) {
+			case 0:
+				printf("SINE WAVE. \n");
+				break;
+			case 1:
+		  		printf("SQUARE WAVE. \n");
+				break;
+			case 2:
+		  		printf("TRIANGLE WAVE. \n");
+				break;
+		}
+
+		controlFrequency();
+	}
+
+	return 0;
+}
+</pre>
+
+<b>CMakeLists.txt</b>:
+
+<pre>
+cmake_minimum_required(VERSION 3.0)
+
+project(audio)
+
+add_executable(${PROJECT_NAME} main.c)
+
+target_link_libraries(${PROJECT_NAME} PRIVATE
+    pspdebug
+    pspdisplay
+    pspge
+    pspctrl
+    pspaudio
+    pspaudiolib
+    psputility
 )
 
 # Create an EBOOT.PBP file
