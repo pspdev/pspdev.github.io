@@ -326,62 +326,62 @@ int setup_callbacks(void)
 
 int main(void)
 {
-	SceCtrlData pad;
+    SceCtrlData pad;
 
-	pspDebugScreenInit();
-	setup_callbacks();
+    pspDebugScreenInit();
+    setup_callbacks();
 
-	sceCtrlSetSamplingCycle(0);
-	sceCtrlSetSamplingMode(PSP_CTRL_MODE_ANALOG);
+    sceCtrlSetSamplingCycle(0);
+    sceCtrlSetSamplingMode(PSP_CTRL_MODE_ANALOG);
 
-	while (!done)
-	{
-		pspDebugScreenSetXY(0, 2);
-		sceCtrlReadBufferPositive(&pad, 1);
+    while (!done)
+    {
+        pspDebugScreenSetXY(0, 2);
+        sceCtrlReadBufferPositive(&pad, 1);
 
-		printf("Analog X = %d, ", pad.Lx);
-		printf("Analog Y = %d \n", pad.Ly);
+        printf("Analog X = %d, ", pad.Lx);
+        printf("Analog Y = %d \n", pad.Ly);
 
-		if (pad.Buttons != 0)
-		{
-			if (pad.Buttons & PSP_CTRL_SQUARE)
-			{
-				printf("Square pressed! \n");
-			}
-			if (pad.Buttons & PSP_CTRL_TRIANGLE)
-			{
-				printf("Triangle pressed! \n");
-			}
-			if (pad.Buttons & PSP_CTRL_CIRCLE)
-			{
-				printf("Circle pressed! \n");
-			}
-			if (pad.Buttons & PSP_CTRL_CROSS)
-			{
-				printf("Cross pressed! \n");
-			}
+        if (pad.Buttons != 0)
+        {
+            if (pad.Buttons & PSP_CTRL_SQUARE)
+            {
+                printf("Square pressed! \n");
+            }
+            if (pad.Buttons & PSP_CTRL_TRIANGLE)
+            {
+                printf("Triangle pressed! \n");
+            }
+            if (pad.Buttons & PSP_CTRL_CIRCLE)
+            {
+                printf("Circle pressed! \n");
+            }
+            if (pad.Buttons & PSP_CTRL_CROSS)
+            {
+                printf("Cross pressed! \n");
+            }
 
-			if (pad.Buttons & PSP_CTRL_UP)
-			{
-				printf("Square pressed! \n");
-			}
-			if (pad.Buttons & PSP_CTRL_DOWN)
-			{
-				printf("Triangle pressed! \n");
-			}
-			if (pad.Buttons & PSP_CTRL_LEFT)
-			{
-				printf("Square pressed! \n");
-			}
-			if (pad.Buttons & PSP_CTRL_RIGHT)
-			{
-				printf("Triangle pressed! \n");
-			}
-		}
-	}
+            if (pad.Buttons & PSP_CTRL_UP)
+            {
+                printf("Square pressed! \n");
+            }
+            if (pad.Buttons & PSP_CTRL_DOWN)
+            {
+                printf("Triangle pressed! \n");
+            }
+            if (pad.Buttons & PSP_CTRL_LEFT)
+            {
+                printf("Square pressed! \n");
+            }
+            if (pad.Buttons & PSP_CTRL_RIGHT)
+            {
+                printf("Triangle pressed! \n");
+            }
+        }
+    }
 
-	sceKernelExitGame();
-	return 0;
+    sceKernelExitGame();
+    return 0;
 }
 </pre>
 
@@ -453,30 +453,30 @@ PSP_MAIN_THREAD_ATTR(THREAD_ATTR_USER | THREAD_ATTR_VFPU);
 
 /* Exit callback */
 int exitCallback(int arg1, int arg2, void *common) {
-	sceKernelExitGame();
-	return 0;
+    sceKernelExitGame();
+    return 0;
 }
 
 /* Callback thread */
 int callbackThread(SceSize args, void *argp) {
-	int cbid;
+    int cbid;
 
-	cbid = sceKernelCreateCallback("Exit Callback", (void*) exitCallback, NULL);
-	sceKernelRegisterExitCallback(cbid);
-	sceKernelSleepThreadCB();
+    cbid = sceKernelCreateCallback("Exit Callback", (void*) exitCallback, NULL);
+    sceKernelRegisterExitCallback(cbid);
+    sceKernelSleepThreadCB();
 
-	return 0;
+    return 0;
 }
 
 /* Sets up the callback thread and returns its thread id */
 int setupCallbacks(void) {
-	int thid = 0;
+    int thid = 0;
 
-	thid = sceKernelCreateThread("update_thread", callbackThread, 0x11, 0xFA0, 0, 0);
-	if (thid &gt;= 0) {
-		sceKernelStartThread(thid, 0, 0);
-	}
-	return thid;
+    thid = sceKernelCreateThread("update_thread", callbackThread, 0x11, 0xFA0, 0, 0);
+    if (thid &gt;= 0) {
+        sceKernelStartThread(thid, 0, 0);
+    }
+    return thid;
 }
 
 /* Main code */
@@ -493,25 +493,25 @@ typedef struct {
 
 float currentFunction(const float time) {
     double x;
-	float t = modf((time / (2 * PI)), &x);
+    float t = modf((time / (2 * PI)), &x);
 
     switch(function) {
-		case 0: // SINE
-	    	return sinf(time);
-		case 1: // SQUARE
-	        if (t &lt; 0.5f) {
-	            return -0.2f;
-	        } else {
-	            return 0.2f;
-	        }
-		case 2: // TRIANGLE
-	        if (t &lt; 0.5f) {
-	            return (t * 2.0f) - 0.5f;
-	        } else {
-	            return 0.5f - (t - 0.5f) * 2.0f;
-	        }
-		default:
- 	        return 0.0f;
+        case 0: // SINE
+            return sinf(time);
+        case 1: // SQUARE
+            if (t &lt; 0.5f) {
+                return -0.2f;
+            } else {
+                return 0.2f;
+            }
+        case 2: // TRIANGLE
+            if (t &lt; 0.5f) {
+                return (t * 2.0f) - 0.5f;
+            } else {
+                return 0.5f - (t - 0.5f) * 2.0f;
+            }
+        default:
+             return 0.0f;
     }
 }
 
@@ -520,107 +520,107 @@ float currentFunction(const float time) {
    16-bit, stereo. */
 void audioCallback(void* buf, unsigned int length, void *userdata) {
     const float sampleLength = 1.0f / sampleRate;
-	const float scaleFactor = SHRT_MAX - 1.0f;
+    const float scaleFactor = SHRT_MAX - 1.0f;
     static float freq0 = 440.0f;
     sample_t* ubuf = (sample_t*) buf;
-	int i;
-	
-	if (frequency != freq0) {
-	        currentTime *= (freq0 / frequency);
-	}
-	for (i = 0; i &lt; length; i++) {
-	    short s = (short) (scaleFactor * currentFunction(2.0f * PI * frequency * currentTime));
-		ubuf[i].l = s;
-		ubuf[i].r = s;
-		currentTime += sampleLength;
-	}
-	if (currentTime * frequency &gt; 1.0f) {
-	    double d;
-		currentTime = modf(currentTime * frequency, &d) / frequency;
-	}
+    int i;
+    
+    if (frequency != freq0) {
+            currentTime *= (freq0 / frequency);
+    }
+    for (i = 0; i &lt; length; i++) {
+        short s = (short) (scaleFactor * currentFunction(2.0f * PI * frequency * currentTime));
+        ubuf[i].l = s;
+        ubuf[i].r = s;
+        currentTime += sampleLength;
+    }
+    if (currentTime * frequency &gt; 1.0f) {
+        double d;
+        currentTime = modf(currentTime * frequency, &d) / frequency;
+    }
 
-	freq0 = frequency;
+    freq0 = frequency;
 }
 
 /* Read the analog stick and adjust the frequency */
 void controlFrequency(void) {
     static int oldButtons = 0;
-	const int zones[6] = {30, 70, 100, 112, 125, 130};
-	const float response[6] = {0.0f, 0.1f, 0.5f, 1.0f, 4.0f, 8.0f};
-	const float minFreq = 32.0f;
-	const float maxFreq = 7040.0f;
-	SceCtrlData pad;
-	float direction;
-	int changedButtons;
-	int i, v;
+    const int zones[6] = {30, 70, 100, 112, 125, 130};
+    const float response[6] = {0.0f, 0.1f, 0.5f, 1.0f, 4.0f, 8.0f};
+    const float minFreq = 32.0f;
+    const float maxFreq = 7040.0f;
+    SceCtrlData pad;
+    float direction;
+    int changedButtons;
+    int i, v;
 
-	sceCtrlReadBufferPositive(&pad, 1);
+    sceCtrlReadBufferPositive(&pad, 1);
 
-	v = pad.Ly - 128;
-	if (v &lt; 0) {
-   	    direction = 1.0f;
-		v = -v;
-	} else {
-	    direction = -1.0f;
-	}
+    v = pad.Ly - 128;
+    if (v &lt; 0) {
+           direction = 1.0f;
+        v = -v;
+    } else {
+        direction = -1.0f;
+    }
 
-	for (i = 0; i &lt; 6; i++) {
-	    if (v &lt; zones[i]) {
-		    frequency += (response[i] * direction);
-			break;
-	    }
-	}
+    for (i = 0; i &lt; 6; i++) {
+        if (v &lt; zones[i]) {
+            frequency += (response[i] * direction);
+            break;
+        }
+    }
 
-	if (frequency &lt; minFreq) {
-	    frequency = minFreq;
-	} else if (frequency &gt; maxFreq) {
-	    frequency = maxFreq;
-	}
+    if (frequency &lt; minFreq) {
+        frequency = minFreq;
+    } else if (frequency &gt; maxFreq) {
+        frequency = maxFreq;
+    }
 
-	changedButtons = pad.Buttons & (~oldButtons);
-	if (changedButtons & PSP_CTRL_CROSS) {
-	    function++;
-	    if (function &gt; 2) {
-	        function = 0;
-	    }
-	}
+    changedButtons = pad.Buttons & (~oldButtons);
+    if (changedButtons & PSP_CTRL_CROSS) {
+        function++;
+        if (function &gt; 2) {
+            function = 0;
+        }
+    }
 
-	oldButtons = pad.Buttons;
+    oldButtons = pad.Buttons;
 }
 
 int main(void) {
-	pspDebugScreenInit();
-	setupCallbacks();
+    pspDebugScreenInit();
+    setupCallbacks();
 
-	pspAudioInit();
-	pspAudioSetChannelCallback(0, audioCallback, NULL);
+    pspAudioInit();
+    pspAudioSetChannelCallback(0, audioCallback, NULL);
 
-	sceCtrlSetSamplingCycle(0);
-	sceCtrlSetSamplingMode(PSP_CTRL_MODE_ANALOG);
+    sceCtrlSetSamplingCycle(0);
+    sceCtrlSetSamplingMode(PSP_CTRL_MODE_ANALOG);
 
-	printf("Press up and down to select frequency\nPress X to change function\n");
-	
-	while(1) {
-		sceDisplayWaitVblankStart();
-		pspDebugScreenSetXY(0,2);
-		printf("freq = %.2f \n", frequency);
+    printf("Press up and down to select frequency\nPress X to change function\n");
+    
+    while(1) {
+        sceDisplayWaitVblankStart();
+        pspDebugScreenSetXY(0,2);
+        printf("freq = %.2f \n", frequency);
 
-		switch(function) {
-			case 0:
-				printf("SINE WAVE. \n");
-				break;
-			case 1:
-		  		printf("SQUARE WAVE. \n");
-				break;
-			case 2:
-		  		printf("TRIANGLE WAVE. \n");
-				break;
-		}
+        switch(function) {
+            case 0:
+                printf("SINE WAVE. \n");
+                break;
+            case 1:
+                  printf("SQUARE WAVE. \n");
+                break;
+            case 2:
+                  printf("TRIANGLE WAVE. \n");
+                break;
+        }
 
-		controlFrequency();
-	}
+        controlFrequency();
+    }
 
-	return 0;
+    return 0;
 }
 </pre>
 
@@ -782,6 +782,206 @@ make
 </pre>
 
 More documentation on SDL can be found <a href="http://wiki.libsdl.org/FrontPage">here</a>.
+
+</details></p>
+
+### Using SDL2 mixer
+
+![](images/sdl2_mixer.png?raw=true)
+
+This is a simple program to use the SDL2_mixer library. Click on details below to see the code and how to build it.
+
+<p><details>
+
+<b>main.c</b>:
+
+<pre>
+#include &lt;SDL2/SDL.h&gt;
+#include &lt;SDL2/SDL_mixer.h&gt;
+
+// Define MIN macro
+#define MIN(X, Y) (((X) < (Y)) ? (X) : (Y))
+
+// Define screen dimensions
+#define SCREEN_WIDTH    480
+#define SCREEN_HEIGHT   272
+
+// audio file path
+#define MUSIC_PATH "ms0:/MUSIC/test.ogg" // ogg/mp3 file format
+
+int main(int argc, char **argv) {
+    (void)argc;
+    (void)argv;
+
+    // Initialize sdl
+    SDL_Init(SDL_INIT_VIDEO |
+        SDL_INIT_AUDIO |
+        SDL_INIT_GAMECONTROLLER
+    );
+
+    // Initialize sdl2_mixer
+    Mix_OpenAudio(44100, 
+        MIX_DEFAULT_FORMAT, 
+        MIX_DEFAULT_CHANNELS, 
+        2048
+    );
+
+    // create window
+    SDL_Window *win = SDL_CreateWindow(
+        "psp_win",
+        SDL_WINDOWPOS_UNDEFINED,
+        SDL_WINDOWPOS_UNDEFINED,
+        SCREEN_WIDTH,
+        SCREEN_HEIGHT,
+        0
+    );
+
+    // Create Renderer
+    SDL_Renderer *renderer = SDL_CreateRenderer(
+        win, -1, 0
+    );
+
+    // Load ogg file
+    Mix_Music *ogg_file = NULL;
+    ogg_file = Mix_LoadMUS(MUSIC_PATH);
+    if (!ogg_file) {
+        return 0;
+    }
+
+    SDL_Rect rect;
+
+    // Square dimensions: Half of the min(SCREEN_WIDTH, SCREEN_HEIGHT)
+    rect.w = MIN(SCREEN_WIDTH, SCREEN_HEIGHT) / 2;
+    rect.h = MIN(SCREEN_WIDTH, SCREEN_HEIGHT) / 2;
+
+    // Square position: In the middle of the screen
+    rect.x = SCREEN_WIDTH / 2 - rect.w / 2;
+    rect.y = SCREEN_HEIGHT / 2 - rect.h / 2;
+
+
+    // Declare rects of pause symbol
+    SDL_Rect pause_rect1, pause_rect2;
+
+    pause_rect1.h = rect.h / 2;
+    pause_rect1.w = 40;
+    pause_rect1.x = rect.x + (rect.w - pause_rect1.w * 3) / 2;
+    pause_rect1.y = rect.y + rect.h / 4;
+    pause_rect2 = pause_rect1;
+    pause_rect2.x += pause_rect1.w * 2;
+    
+    // play the music 8 times
+    if (Mix_PlayMusic(ogg_file, 8) == -1) {
+        return 0;
+    }
+
+    int running = 1;
+    SDL_Event e;
+    while (running) {
+        if(SDL_PollEvent(&e)) {
+            switch(e.type) {
+                case SDL_QUIT:
+                    running = 0;
+                break;
+                case SDL_CONTROLLERDEVICEADDED:
+                    SDL_GameControllerOpen(e.cdevice.which);
+                break;
+                case SDL_CONTROLLERBUTTONDOWN:
+                    // pause using cross button
+                    if (e.cbutton.button == SDL_CONTROLLER_BUTTON_A) {
+                        Mix_PauseMusic();
+                    // resume using circle button
+                    } else if (e.cbutton.button == SDL_CONTROLLER_BUTTON_B) {
+                        Mix_ResumeMusic();
+                    }	
+                    // press start button to exit
+                    if (e.cbutton.button == SDL_CONTROLLER_BUTTON_START) {
+                        running = 0;
+                    }
+            break;		
+            }
+        }
+
+        // Initialize renderer color black for the background
+        SDL_SetRenderDrawColor(renderer, 0, 0, 0, 0);
+
+        // Clear screen
+        SDL_RenderClear(renderer);
+
+        // Set renderer color green to draw the square
+        SDL_SetRenderDrawColor(renderer, 0, 0xFF, 0, 0xFF);
+
+        // Draw filled square
+        SDL_RenderFillRect(renderer, &rect);
+
+        // Check pause status
+        if(Mix_PausedMusic()) {
+            // Set renderer color black to draw the pause symbol
+            SDL_SetRenderDrawColor(renderer, 0, 0, 0, 0);
+
+            // Draw pause symbol
+            SDL_RenderFillRect(renderer, &pause_rect1);
+             SDL_RenderFillRect(renderer, &pause_rect2);
+        }
+
+        // Update screen
+        SDL_RenderPresent(renderer);
+    }
+
+    Mix_FreeMusic(ogg_file);
+    SDL_DestroyRenderer(renderer);
+    SDL_DestroyWindow(win);
+    Mix_CloseAudio();
+    SDL_Quit();
+
+    return 0;
+}
+</pre>
+
+<b>CMakeLists.txt</b>:
+
+<pre>
+cmake_minimum_required(VERSION 3.0)
+
+project(sdl2_mixer)
+
+add_executable(${PROJECT_NAME} main.c)
+
+find_package(PkgConfig REQUIRED)
+pkg_search_module(SDL2 REQUIRED sdl2)
+
+target_include_directories(${PROJECT_NAME} PRIVATE ${SDL2_INCLUDE_DIRS})
+
+target_link_libraries(${PROJECT_NAME} PRIVATE
+    ${SDL2_LIBRARIES}
+)
+
+if(PSP)
+    target_link_libraries(${PROJECT_NAME} PRIVATE
+        SDL2main
+        SDL2_mixer
+        vorbisfile
+        vorbis
+        ogg
+    )
+    create_pbp_file(
+        TARGET ${PROJECT_NAME}
+        ICON_PATH NULL
+        BACKGROUND_PATH NULL
+        PREVIEW_PATH NULL
+        TITLE ${PROJECT_NAME}
+    )
+endif()
+</pre>
+
+Building can be done with:
+
+<pre>
+mkdir build && cd build
+psp-cmake ..
+make
+</pre>
+
+<p>This will result in an EBOOT.PBP file in the build directory. Put it in a directory in ms0:/PSP/GAME/ and you need an audio file to test the program, put it in a directory in ms0:/MUSIC/ and then rename the audio file same as name on your <i>MUSIC_PATH</i> macro in your C code and the PSP can run it.</p>
 
 </details></p>
 
