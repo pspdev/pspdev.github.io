@@ -981,7 +981,7 @@ psp-cmake ..
 make
 </pre>
 
-<p>This will result in an EBOOT.PBP file in the build directory. Put it in a directory in ms0:/PSP/GAME/ and you need an audio file to test the program, put it in a directory in ms0:/MUSIC/ and then rename the audio file same as name on your <i>MUSIC_PATH</i> macro in your C code and the PSP can run it.</p>
+<p>This will result in an EBOOT.PBP file in the build directory. Put it in a directory in ms0:/PSP/GAME/ and you need an audio file to test the program, download it from <a href="https://github.com/pspdev/pspdev.github.io/resources">here</a>. Put it in a directory in ms0:/MUSIC/ and then rename the audio file same as name on your <i>MUSIC_PATH</i> macro in your C code and the PSP can run it.</p>
 
 </details></p>
 
