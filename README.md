@@ -8,20 +8,47 @@ PSPDEV is an open source toolchain for Playstation Portable development. It allo
 
 The PSPDEV toolchain requires a couple of dependencies to be installed before use.
 
-#### Ubuntu
+#### Windows
 
-On Ubuntu run the following command to install the dependencies:
+On Windows it is advised to use Ubuntu on Microsoft's WSL system. To set it up run the following commands in a Powershell window started as administrator:
+
+```
+wsl --install
+```
+
+Now run bash and run the following commands to instal the dependencies:
 
 ```
 sudo apt-get update
-sudo apt-get install build-essential cmake pkgconf libreadline8 libusb-0.1 libgpgme11
+sudo apt-get install build-essential cmake pkgconf libreadline8 libusb-0.1 libgpgme11 libarchive-tools fakeroot
 ```
+
+Going forwards, all commands will be run within bash. The filesystem of your Ubuntu installation can be accessed by opening the network location ``\\wsl$`.
+
+#### Ubuntu
+
+On Ubuntu run the following commands to install the dependencies:
+
+```
+sudo apt-get update
+sudo apt-get install build-essential cmake pkgconf libreadline8 libusb-0.1 libgpgme11 libarchive-tools fakeroot
+```
+
+#### MacOS
+
+
+On MacOS make sure to install [Brew](https://brew.sh/) first, then run the following commands to install the dependencies:
+
+```
+brew install cmake pkgconf gnu-sed bash openssl libtool libarchive gettext texinfo bison flex gsl gmp mpfr
+```
+
 
 ### Toolchain 
 
-To install the PSPDEV toolchain, first [download the latest version](https://github.com/pspdev/pspdev/releases/tag/latest) for your system. Extract it into your user's home directory.
+To install the PSPDEV toolchain, first [download the latest version](https://github.com/pspdev/pspdev/releases/tag/latest) for your system. Extract it into your user's home directory, which would be `\\wsl$\home\username` on Windows, otherwise `~`.
 
-Now set the required environment variables. On Mac edit the ``~/.bash_profile`` on Linux the ``~/.bashrc`` file. Add the following at the bottom:
+Now set the required environment variables. On Mac edit the ``~/.bash_profile`` on Linux/WSL the ``~/.bashrc`` file. Add the following at the bottom:
 
 ```
 export PSPDEV=~/pspdev
