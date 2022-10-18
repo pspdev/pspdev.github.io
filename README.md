@@ -750,9 +750,6 @@ target_link_libraries(${PROJECT_NAME} PRIVATE
 )
 
 if(PSP)
-    target_link_libraries(${PROJECT_NAME} PRIVATE
-        SDL2main
-    )
     create_pbp_file(
         TARGET ${PROJECT_NAME}
         ICON_PATH NULL
