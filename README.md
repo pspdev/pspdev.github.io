@@ -740,8 +740,7 @@ project(square)
 
 add_executable(${PROJECT_NAME} main.c)
 
-find_package(PkgConfig REQUIRED)
-pkg_search_module(SDL2 REQUIRED sdl2)
+find_package(SDL2 REQUIRED)
 
 target_include_directories(${PROJECT_NAME} PRIVATE ${SDL2_INCLUDE_DIRS})
 
@@ -943,8 +942,7 @@ project(sdl2_mixer)
 
 add_executable(${PROJECT_NAME} main.c)
 
-find_package(PkgConfig REQUIRED)
-pkg_search_module(SDL2 REQUIRED sdl2)
+find_package(SDL2 REQUIRED)
 
 target_include_directories(${PROJECT_NAME} PRIVATE ${SDL2_INCLUDE_DIRS})
 
@@ -954,7 +952,6 @@ target_link_libraries(${PROJECT_NAME} PRIVATE
 
 if(PSP)
     target_link_libraries(${PROJECT_NAME} PRIVATE
-        SDL2main
         SDL2_mixer
         vorbisfile
         vorbis
