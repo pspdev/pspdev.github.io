@@ -46,7 +46,7 @@ brew install cmake pkgconf gnu-sed bash openssl libtool libarchive gettext texin
 
 ### Toolchain 
 
-To install the PSPDEV toolchain, first [download the latest version](https://github.com/pspdev/pspdev/releases/tag/latest) for your system. Extract it into your user's home directory, which would be `\\wsl$\home\username` on Windows, otherwise `~`.
+To install the PSPDEV toolchain, first [download the latest version](https://github.com/pspdev/pspdev/releases/tag/latest) for your system. Extract it into your user's home directory, which would be `\\wsl$\home\username` on Windows, otherwise `~`. If you're on Windows, pick the Ubuntu build.
 
 Now set the required environment variables. On Mac edit the ``~/.bash_profile`` on Linux/WSL the ``~/.bashrc`` file. Add the following at the bottom:
 
@@ -55,7 +55,9 @@ export PSPDEV=~/pspdev
 export PATH=$PATH:$PSPDEV/bin
 ```
 
-That's it, now the PSPDEV toolchain can be used to build PSP software.
+This can simply be done with `nano ~/.bashrc`. To save press Ctrl+X, then press y, then enter/return twice. After that run `source ~/.bashrc` to apply the changes.
+
+That's it, now the PSPDEV toolchain can be used to build PSP software. Below are some examples of programs and how to run them. For testing on real hardware, check out [psplink](https://pspdev.github.io/psplinkusb/).
 
 ## Basic programs
 
