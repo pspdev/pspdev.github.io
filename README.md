@@ -985,6 +985,7 @@ if(PSP)
         vorbisfile
         vorbis
         ogg
+        xmp
     )
     create_pbp_file(
         TARGET ${PROJECT_NAME}
