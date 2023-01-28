@@ -1013,7 +1013,7 @@ make
 
 ![](images/sdl2_ttf.jpg?raw=true)
 
-This is a simple program to use the SDL2_mixer library. Click on details below to see the code and how to build it.
+This is a simple program to use the SDL2_ttf library. Click on details below to see the code and how to build it.
 
 <p><details>
 
