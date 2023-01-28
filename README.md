@@ -1011,7 +1011,7 @@ make
 
 ### Using SDL2 ttf
 
-![](images/sdl2_ttf.png?raw=true)
+![](images/sdl2_ttf.jpg?raw=true)
 
 This is a simple program to use the SDL2_mixer library. Click on details below to see the code and how to build it.
 
