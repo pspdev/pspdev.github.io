@@ -1009,6 +1009,173 @@ make
 
 </details></p>
 
+### Using SDL2 ttf
+
+![](images/sdl2_ttf.jpg?raw=true)
+
+This is a simple program to use the SDL2_ttf library. Click on details below to see the code and how to build it.
+
+<p><details>
+
+<b>main.c</b>:
+
+<pre>
+#include &lt;stdio.h&gt;
+
+#include &lt;SDL2/SDL.h&gt;
+#include &lt;SDL2/SDL_ttf.h&gt;
+
+// Define screen dimensions
+#define SCREEN_WIDTH 480
+#define SCREEN_HEIGHT 272
+
+int main(int argc, char **argv)
+{
+    (void)argc;
+    (void)argv;
+
+    // Initialize SDL2
+    if (SDL_Init(SDL_INIT_VIDEO) < 0)
+    {
+        printf("SDL2 could not be initialized!\n"
+               "SDL2 Error: %s\n",
+               SDL_GetError());
+        return 0;
+    }
+
+    // Initialize SDL2_ttf
+    if (TTF_Init() < 0)
+    {
+        printf("SDL2_ttf could not be initialized!\n"
+               "SDL2_ttf Error: %s\n",
+               SDL_GetError());
+        return 0;
+    }
+
+    SDL_Window *win = SDL_CreateWindow(
+        "window",
+        SDL_WINDOWPOS_UNDEFINED,
+        SDL_WINDOWPOS_UNDEFINED,
+        SCREEN_WIDTH,
+        SCREEN_HEIGHT,
+        0);
+
+    if (!win)
+    {
+        printf("Window could not be created!\n"
+               "SDL_Error: %s\n",
+               SDL_GetError());
+    }
+
+    SDL_Renderer *renderer = SDL_CreateRenderer(win, -1, 0);
+    TTF_Font *font = TTF_OpenFont("Pacifico.ttf", 40);
+
+    // Set the text and background color
+    SDL_Color text_color = {0xff, 0xff, 0xff, 0xff};
+    SDL_Color bg_color = {0x00, 0x00, 0x00, 0xff};
+
+    SDL_Rect text_rect;
+    SDL_Surface *surface = TTF_RenderText(font, "Hello World!", text_color, bg_color);
+    SDL_Texture *texture = SDL_CreateTextureFromSurface(renderer, surface);
+
+    // Get text dimensions
+    text_rect.w = surface->w;
+    text_rect.h = surface->h;
+
+    SDL_FreeSurface(surface);
+
+    text_rect.x = (SCREEN_WIDTH - text_rect.w) / 2;
+    text_rect.y = text_rect.h + 30;
+
+    int running = 1;
+    SDL_Event e;
+    while (running)
+    {
+        if (SDL_PollEvent(&e))
+        {
+            switch (e.type)
+            {
+            case SDL_QUIT:
+                running = 0;
+                break;
+            case SDL_CONTROLLERDEVICEADDED:
+                SDL_GameControllerOpen(e.cdevice.which);
+                break;
+            case SDL_CONTROLLERBUTTONDOWN:
+                if (e.cbutton.button == SDL_CONTROLLER_BUTTON_START)
+                {
+                    running = 0;
+                }
+                break;
+            }
+        }
+
+        SDL_SetRenderDrawColor(renderer, 0xff, 0xff, 0xff, 0xff);
+        SDL_RenderClear(renderer);
+        SDL_SetRenderDrawColor(renderer, 0xff, 0x00, 0x00, 0xff);
+        SDL_RenderCopy(renderer, texture, NULL, &text_rect);
+        SDL_RenderPresent(renderer);
+    }
+
+    SDL_DestroyRenderer(renderer);
+    SDL_DestroyWindow(win);
+    TTF_Quit();
+    SDL_Quit();
+
+    return 0;
+}
+</pre>
+
+<b>CMakeLists.txt</b>:
+
+<pre>
+cmake_minimum_required(VERSION 3.0)
+
+project(text-ttf)
+
+add_executable(${PROJECT_NAME} main.c)
+
+find_package(SDL2 REQUIRED)
+
+target_include_directories(${PROJECT_NAME} 
+    PRIVATE ${SDL2_INCLUDE_DIRS}
+)
+
+target_link_libraries(${PROJECT_NAME} PRIVATE
+    ${SDL2_LIBRARIES}
+)
+
+if(PSP)
+    target_link_libraries(${PROJECT_NAME} PRIVATE
+        SDL2_ttf
+        freetype
+        m 
+        z 
+        bz2
+        png16
+    )
+    create_pbp_file(
+        TARGET ${PROJECT_NAME}
+        ICON_PATH NULL
+        BACKGROUND_PATH NULL
+        PREVIEW_PATH NULL
+        TITLE ${PROJECT_NAME}
+    )
+endif()
+</pre>
+
+Building can be done with:
+
+<pre>
+mkdir build && cd build
+psp-cmake ..
+make
+</pre>
+
+<p>This will result in an EBOOT.PBP file in the build directory. Put it in a directory in ms0:/PSP/GAME/ and you need a font file to test the program, download it from <a href="/resources/Pacifico.ttf">here</a>. Put it in a directory same as EBOOT.PBP and the PSP can run it.</p>
+
+</details></p>
+
 ## Tips and Tricks
 
 Here some useful tips for developing for the PSP.
