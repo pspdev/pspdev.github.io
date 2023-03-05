@@ -982,6 +982,7 @@ target_link_libraries(${PROJECT_NAME} PRIVATE
 if(PSP)
     target_link_libraries(${PROJECT_NAME} PRIVATE
         SDL2_mixer
+        SDL2
         vorbisfile
         vorbis
         ogg
@@ -1149,10 +1150,10 @@ if(PSP)
     target_link_libraries(${PROJECT_NAME} PRIVATE
         SDL2_ttf
         freetype
-        m 
-        z 
+        m
         bz2
         png16
+        z
     )
     create_pbp_file(
         TARGET ${PROJECT_NAME}
