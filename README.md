@@ -16,14 +16,14 @@ On Windows it is advised to use Ubuntu on Microsoft's WSL system. To set it up r
 wsl --install
 ```
 
-Now run bash and run the following commands to instal the dependencies:
+Now run bash and run the following commands to install the dependencies:
 
 ```
 sudo apt-get update
 sudo apt-get install build-essential cmake pkgconf libreadline8 libusb-0.1 libgpgme11 libarchive-tools fakeroot
 ```
 
-Going forwards, all commands will be run within bash. The filesystem of your Ubuntu installation can be accessed by opening the network location ``\\wsl$`.
+Going forwards, all commands will be run within bash. The filesystem of your Ubuntu installation can be accessed by opening the network location `\\wsl$`.
 
 #### Ubuntu
 
@@ -392,19 +392,19 @@ int main(void)
 
             if (pad.Buttons & PSP_CTRL_UP)
             {
-                printf("Square pressed! \n");
+                printf("Up direction pad pressed! \n");
             }
             if (pad.Buttons & PSP_CTRL_DOWN)
             {
-                printf("Triangle pressed! \n");
+                printf("Down direction pad pressed! \n");
             }
             if (pad.Buttons & PSP_CTRL_LEFT)
             {
-                printf("Square pressed! \n");
+                printf("Left direction pad pressed! \n");
             }
             if (pad.Buttons & PSP_CTRL_RIGHT)
             {
-                printf("Triangle pressed! \n");
+                printf("Right direction pad pressed! \n");
             }
         }
     }
