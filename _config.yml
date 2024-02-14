@@ -1,14 +1,9 @@
 title: PSPDEV
 description: "Development tools for the Playstation Portable"
-github_username:  pspdev
+#github_username:  pspdev
 theme: just-the-docs
 
 # just-the-docs configuration
-baseurl: ""
-url: https://just-the-docs.github.io
-aux_links:
-  Template Repository: https://github.com/just-the-docs/just-the-docs-template
-
 favicon_ico: /images/pspdev.ico
 
 color_scheme: dark
