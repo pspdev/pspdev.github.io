@@ -4,6 +4,7 @@ github_username:  pspdev
 theme: just-the-docs
 
 # just-the-docs configuration
+remote_theme: just-the-docs/just-the-docs
 favicon_ico: /images/pspdev.ico
 
 color_scheme: dark
