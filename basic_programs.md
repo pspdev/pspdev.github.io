@@ -1,5 +1,6 @@
 ---
 title: Basic programs
+layout: home
 nav_order: 4
 ---
 
