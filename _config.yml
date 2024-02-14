@@ -11,7 +11,3 @@ aux_links:
 favicon_ico: /images/pspdev.ico
 
 color_scheme: dark
-
-exclude:
-  - Gemfile.lock
-  - README.md
