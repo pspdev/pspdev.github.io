@@ -170,4 +170,4 @@ This will result in an EBOOT.PBP file in the build directory. Put it in a direct
 
 </details>
 
-More code samples can be found [here](pspdev.github.io/basic_programs.md).
+More code samples can be found [here](basic_programs.md).
