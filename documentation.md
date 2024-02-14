@@ -1,3 +1,8 @@
+---
+title: Documentation
+nav_order: 5
+---
+
 
 PSPDEV is made out of several components. Here is a (non-exhaustive) list of
 links to the documentation available for them:

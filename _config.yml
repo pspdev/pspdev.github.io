@@ -1,3 +1,13 @@
-theme: jekyll-theme-hacker
 title: PSPDEV
-description: Development tools for the Playstation Portable
+description: "Development tools for the Playstation Portable"
+github_username:  pspdev
+theme: just-the-docs
+
+# just-the-docs configuration
+favicon_ico: /images/pspdev.ico
+
+color_scheme: dark
+
+exclude:
+  - Gemfile.lock
+  - README.md
