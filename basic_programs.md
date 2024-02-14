@@ -873,7 +873,7 @@ This will result in an EBOOT.PBP file in the build directory. Put it in a direct
 ## Using SDL2 ttf
 {: .fs-6 .fw-700 }
 
-![](/images/sdl2_ttf.jpg)
+![](images/sdl2_ttf.jpg)
 
 This is a simple program to use the SDL2_ttf library. Click on details below to see the code and how to build it.
 
