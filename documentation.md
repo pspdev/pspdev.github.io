@@ -1,9 +1,11 @@
 ---
-title: Documentation
+title: Additional Documentation
 layout: home
-nav_order: 5
+nav_order: 6
 ---
 
+# Additional Documentation
+{: .fs-8 .fw-700 .text-center }
 
 PSPDEV is made out of several components. Here is a (non-exhaustive) list of
 links to the documentation available for them:

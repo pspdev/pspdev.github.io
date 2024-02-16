@@ -1,7 +1,7 @@
 ---
 title: Quickstart
 layout: home
-nav_order: 3
+nav_order: 2
 ---
 
 # Quickstart
@@ -10,7 +10,7 @@ nav_order: 3
 ## Installing the toolchain
 {: .fs-8 .fw-700 }
 
-### dependencies
+### Dependencies
 {: .fs-6 .fw-700 }
 
 The PSPDEV toolchain requires a couple of dependencies to be installed before use.
@@ -28,6 +28,9 @@ Now run bash and run the following commands to install the dependencies:
 
 ```shell
 sudo apt-get update
+```
+
+```shell
 sudo apt-get install build-essential cmake pkgconf libreadline8 libusb-0.1 libgpgme11 libarchive-tools fakeroot
 ```
 
@@ -40,6 +43,9 @@ On Ubuntu run the following commands to install the dependencies:
 
 ```shell
 sudo apt-get update
+```
+
+```shell
 sudo apt-get install build-essential cmake pkgconf libreadline8 libusb-0.1 libgpgme11 libarchive-tools fakeroot
 ```
 
@@ -62,6 +68,9 @@ Now set the required environment variables. On Mac edit the ``~/.zprofile`` on L
 
 ```shell
 export PSPDEV=~/pspdev
+```
+
+```shell
 export PATH=$PATH:$PSPDEV/bin
 ```
 
@@ -79,8 +88,9 @@ That's it, now the PSPDEV toolchain can be used to build PSP software. Below is 
 
 ![](images/hello.png?raw=true)
 
+> This is a simple Hello World program for the PSP. 
 
-This is a simple Hello World program for the PSP. Click on the details below to see the code and how to build it.
+Click on the details below to see the code and how to build it.
 
 <details markdown="1">
 
@@ -170,4 +180,4 @@ This will result in an EBOOT.PBP file in the build directory. Put it in a direct
 
 </details>
 
-More code samples can be found [here](basic_programs.html).
+For more example take a look at the [Basic Programs](basic_programs.html) page.
