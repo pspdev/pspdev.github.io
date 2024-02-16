@@ -180,4 +180,4 @@ This will result in an EBOOT.PBP file in the build directory. Put it in a direct
 
 </details>
 
-For more example take a look at the [Basic Programs](basic_programs.html) page.
+For more examples of programs take a look at the [Basic Programs](basic_programs.html) page.
