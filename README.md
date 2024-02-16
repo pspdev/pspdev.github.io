@@ -27,3 +27,7 @@ bundle exec jekyll serve
 
 > [!Note]
 > You can learn how this website deployed from [here](https://jekyllrb.com/docs/continuous-integration/github-actions/).
+
+## Contributing
+
+If you want to contribute your changes from the website you build locally, just add the comment again on `webrick` and `github-pages` gems in Gemfile so the github action will not get an error. Thanks!
