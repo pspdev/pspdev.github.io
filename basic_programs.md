@@ -1,18 +1,117 @@
 ---
-title: Basic programs
+title: Basic Programs
 layout: home
-nav_order: 4
+nav_order: 3
 ---
 
-# Basic programs
+# Basic Programs
 {: .fs-8 .fw-700 .text-center }
+
+## Hello world
+{: .fs-6 .fw-700 }
+
+![](images/hello.png?raw=true)
+
+> This is a simple Hello World program for the PSP.
+
+Click on the details below to see the code and how to build it.
+
+<details markdown="1">
+
+<summary>View source</summary>
+
+**main.c**
+
+```c
+
+#include <pspkernel.h>
+#include <pspdebug.h>
+#include <pspdisplay.h>
+
+// PSP_MODULE_INFO is required
+PSP_MODULE_INFO("Hello World", 0, 1, 0);
+PSP_MAIN_THREAD_ATTR(PSP_THREAD_ATTR_USER);
+
+int exit_callback(int arg1, int arg2, void *common) {
+    sceKernelExitGame();
+    return 0;
+}
+
+int callback_thread(SceSize args, void *argp) {
+    int cbid = sceKernelCreateCallback("Exit Callback", exit_callback, NULL);
+    sceKernelRegisterExitCallback(cbid);
+    sceKernelSleepThreadCB();
+    return 0;
+}
+
+int setup_callbacks(void) {
+    int thid = sceKernelCreateThread("update_thread", callback_thread, 0x11, 0xFA0, 0, 0);
+    if(thid >= 0)
+        sceKernelStartThread(thid, 0, 0);
+    return thid;
+}
+
+int main(void)  {
+    // Use above functions to make exiting possible
+    setup_callbacks();
+    
+    // Print Hello World! on a debug screen on a loop
+    pspDebugScreenInit();
+    while(1) {
+        pspDebugScreenSetXY(0, 0);
+        pspDebugScreenPrintf("Hello World!");
+        sceDisplayWaitVblankStart();
+    }
+
+    return 0;
+}
+```
+
+**CMakeLists.txt**
+
+```cmake
+cmake_minimum_required(VERSION 3.0)
+
+project(hello)
+
+add_executable(${PROJECT_NAME} main.c)
+
+target_link_libraries(${PROJECT_NAME} PRIVATE
+    pspdebug
+    pspdisplay
+    pspge
+)
+
+# Create an EBOOT.PBP file
+create_pbp_file(
+    TARGET ${PROJECT_NAME}
+    ICON_PATH NULL
+    BACKGROUND_PATH NULL
+    PREVIEW_PATH NULL
+    TITLE ${PROJECT_NAME}
+)
+```
+
+Building can be done with:
+
+```shell
+mkdir build && cd build
+psp-cmake ..
+make
+```
+
+This will result in an EBOOT.PBP file in the build directory. Put it in a directory in ms0:/PSP/GAME/ and the PSP can run it.
+
+</details>
 
 ## Drawing shapes
 {: .fs-6 .fw-700 }
 
 ![](images/shape.png)
 
-This is a simple square drawn on the PSP. It uses the native libgu library. Click on the details below to see the code and how to build it.
+> This is a simple square drawn on the PSP. It uses the native libgu library. 
+
+Click on the details below to see the code and how to build it.
 
 <details markdown="1">
 
@@ -156,7 +255,9 @@ More libgu examples can be found <a href="https://github.com/pspdev/pspsdk/tree/
 
 ![](images/controls.png)
 
-This is a simple program to use the PSP controller. Click on details below to see the code and how to build it.
+> This is a simple program to use the PSP's input functions.
+
+Click on details below to see the code and how to build it.
 
 <details markdown="1">
 
@@ -308,7 +409,9 @@ make
 
 ![](images/audio.png?raw=true)
 
-This is a simple program to use the audio of the PSP with minimal effort. It uses native audio library. Click on the details below to see the code and how to build it.
+> This is a simple program to use the audio of the PSP with minimal effort. It uses native audio library. 
+
+Click on the details below to see the code and how to build it.
 
 <details markdown="1">
 
@@ -555,7 +658,9 @@ More audiolib examples can be found <a href="https://github.com/pspdev/pspsdk/tr
 
 ![](images/sdl2.png)
 
-SDL2 is a library which handles system specific things like input, audio and window management for you. It can also be used to render shapes and images, just like the native libgu. This will be slower, but will result in code that can be run more easily on multiple platforms. Click on details below for the to see the code and how to build it.
+> SDL2 is a library which handles system specific things like input, audio and window management for you. It can also be used to render shapes and images, just like the native libgu. This will be slower, but will result in code that can be run more easily on multiple platforms. 
+
+Click on details below for the to see the code and how to build it.
 
 <details markdown="1">
 
@@ -672,7 +777,9 @@ More documentation on SDL can be found <a href="http://wiki.libsdl.org/FrontPage
 
 ![](images/sdl2_mixer.png)
 
-This is a simple program to use the SDL2_mixer library. Click on details below to see the code and how to build it.
+> This is a simple program to use the SDL2_mixer library. It handle audio playback in multimedia applications and games. It supports various audio formats(MP3/OGG).
+
+Click on details below to see the code and how to build it.
 
 <details markdown="1">
 
@@ -875,7 +982,9 @@ This will result in an EBOOT.PBP file in the build directory. Put it in a direct
 
 ![](images/sdl2_ttf.jpg)
 
-This is a simple program to use the SDL2_ttf library. Click on details below to see the code and how to build it.
+> This is a simple program to use the SDL2_ttf library. It provides functionality for rendering TrueType fonts for your PSP.
+
+Click on details below to see the code and how to build it.
 
 <details markdown="1">
 
@@ -1039,49 +1148,3 @@ make
 This will result in an EBOOT.PBP file in the build directory. Put it in a directory in ms0:/PSP/GAME/ and you need a font file to test the program, download it from <a href="/resources/Pacifico.ttf">here</a>. Put it in a directory same as EBOOT.PBP and the PSP can run it.
 
 </details>
-
-# Tips and Tricks
-{: .fs-8 .fw-700 }
-
-Here some useful tips for developing for the PSP.
-
-## Making Programs Work on Unmodded PSPs
-{: .fs-6 .fw-700 }
-
-The PSPDEV toolchain contains tools for making your program work on unmodded PSPs. This can be done by running psp-cmake with some additional commands when building like so:
-
-```shell
-mkdir build && cd build
-psp-cmake -DBUILD_PRX=1 -DENC_PRX=1 ..
-make
-```
-
-This does require `create_pbp_file` to be used in your CMakeLists.txt file. After the first build, running `make` is enough to get an `EBOOT.PBP` file which works on official firmware with any new changes made to the code.
-
-## Add PSP Specific Code to a Multi-Platform Programs
-{: .fs-6 .fw-700 }
-
-When porting a game to the PSP, some PSP specific code might be needed. To make this code only apply to PSP, it is possible to use a simple ifdef statements which checks for `__PSP__` like so:
- 
-```c
-#ifdef __PSP__
-    // Do PSP specific thing
-#else
-    // Do the thing all other systems should do
-#endif
-```
-
-This makes sure that the other systems supported by the program keeps working the same, while still making it possible to add support for the PSP.
-
-## More Libraries
-{: .fs-6 .fw-700 }
-
-There are many C and C++ libraries available within the PSPDEV toolchain which can add functionality to your program. Some examples:
-
-- Audio formats: mp3, ogg
-- Image formats: png, jpeg
-- Data formats: json, yaml, sqlite
-- Support for compression, physics, fonts and much more
-
-
-For the full list take a look at the [psp-packages repository](https://github.com/pspdev/psp-packages) or run `psp-pacman -Syl`. Updating libraries can be done with `psp-pacman -Syu`.
