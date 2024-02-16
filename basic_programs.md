@@ -1148,3 +1148,5 @@ make
 This will result in an EBOOT.PBP file in the build directory. Put it in a directory in ms0:/PSP/GAME/ and you need a font file to test the program, download it from <a href="/resources/Pacifico.ttf">here</a>. Put it in a directory same as EBOOT.PBP and the PSP can run it.
 
 </details>
+
+Check out the [Tips and Tricks](tips_tricks.html) to get most out of your whole PSP development.
