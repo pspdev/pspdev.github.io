@@ -1,15 +1,15 @@
-# PSPDEV website
+# website
 
-Main repo of the PSPDEV website
+Main repo of the PSPDEV GitHub Organization portal
 
 ## Build locally
 
-Go here https://jekyllrb.com/docs/installation/ to install all
-requirements to build the website locally
+First, Go here https://jekyllrb.com/docs/installation/ to install all
+requirements to build the website locally.
 
 > [!Note]
-> Disable comment first the `webrick` and `github-pages` gems in Gemfile so you can build the
-webpage on your computer.
+> Remove the comments of `webrick` and `github-pages` gems in Gemfile so you can build the
+website locally.
 
 Run the command to install all gems:
 
@@ -23,4 +23,7 @@ bundle exec jekyll serve
 ```
 
 > [!Tip]
-> You can access the website to `http://localhost:4000`
+> You can access the website to `http://localhost:4000`.
+
+> [!Note]
+> You can learn how this website deployed from [here](https://jekyllrb.com/docs/continuous-integration/github-actions/).
