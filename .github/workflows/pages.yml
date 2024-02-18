@@ -37,6 +37,7 @@ jobs:
         run: |
           cd _includes/samples
           for SAMPLE_DIR in $(ls); do
+            echo "Building ${SAMPLE_DIR}..."
             cd "${SAMPLE_DIR}"
             psp-cmake .
             make
@@ -46,6 +47,7 @@ jobs:
   # Build job
   build:
     runs-on: ubuntu-latest
+    needs: test
     steps:
       - name: Checkout
         uses: actions/checkout@v4
