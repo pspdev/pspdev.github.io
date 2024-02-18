@@ -10,7 +10,7 @@ nav_order: 3
 ## Hello world
 {: .fs-6 .fw-700 }
 
-![](images/hello.png?raw=true)
+![](images/hello.png)
 
 > This is a simple Hello World program for the PSP.
 
@@ -23,7 +23,6 @@ Click on the details below to see the code and how to build it.
 **main.c**
 
 ```c
-
 #include <pspkernel.h>
 #include <pspdebug.h>
 #include <pspdisplay.h>
@@ -407,7 +406,7 @@ make
 ## Audio
 {: .fs-6 .fw-700 }
 
-![](images/audio.png?raw=true)
+![](images/audio.png)
 
 > This is a simple program to use the audio of the PSP with minimal effort. It uses native audio library. 
 

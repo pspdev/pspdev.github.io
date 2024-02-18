@@ -86,7 +86,7 @@ That's it, now the PSPDEV toolchain can be used to build PSP software. Below is 
 ### Hello world
 {: .fs-6 .fw-700 }
 
-![](images/hello.png?raw=true)
+![](images/hello.png)
 
 > This is a simple Hello World program for the PSP. 
 
@@ -99,7 +99,6 @@ Click on the details below to see the code and how to build it.
 **main.c**
 
 ```c
-
 #include <pspkernel.h>
 #include <pspdebug.h>
 #include <pspdisplay.h>
