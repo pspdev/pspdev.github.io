@@ -4,25 +4,21 @@ project(sdl2_ttf)
 
 add_executable(${PROJECT_NAME} main.c)
 
-find_package(SDL2 REQUIRED)
+include(FindPkgConfig)
+pkg_search_module(SDL2 REQUIRED sdl2)
+pkg_search_module(SDL2_TTF REQUIRED SDL2_ttf)
 
-target_include_directories(${PROJECT_NAME} 
-    PRIVATE ${SDL2_INCLUDE_DIRS}
+target_include_directories(${PROJECT_NAME} PRIVATE
+    ${SDL2_INCLUDE_DIRS}
+    ${SDL2_TTF_INCLUDE_DIRS}
 )
 
 target_link_libraries(${PROJECT_NAME} PRIVATE
     ${SDL2_LIBRARIES}
+    ${SDL2_TTF_LIBRARIES}
 )
 
 if(PSP)
-    target_link_libraries(${PROJECT_NAME} PRIVATE
-        SDL2_ttf
-        freetype
-        m
-        bz2
-        png16
-        z
-    )
     create_pbp_file(
         TARGET ${PROJECT_NAME}
         ICON_PATH NULL

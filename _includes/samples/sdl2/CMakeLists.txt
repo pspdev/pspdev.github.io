@@ -4,7 +4,8 @@ project(sdl2)
 
 add_executable(${PROJECT_NAME} main.c)
 
-find_package(SDL2 REQUIRED)
+include(FindPkgConfig)
+pkg_search_module(SDL2 REQUIRED sdl2)
 
 target_include_directories(${PROJECT_NAME} PRIVATE ${SDL2_INCLUDE_DIRS})
 
