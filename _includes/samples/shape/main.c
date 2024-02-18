@@ -1,5 +1,6 @@
 #include <pspkernel.h>
 #include <pspgu.h>
+#include <pspdisplay.h>
 
 PSP_MODULE_INFO("gutest", 0, 1, 0);
 PSP_MAIN_THREAD_ATTR(THREAD_ATTR_VFPU | THREAD_ATTR_USER);
@@ -61,7 +62,7 @@ typedef struct {
 
 void drawRect(float x, float y, float w, float h) {
 
-    Vertex* vertices = (struct Vertex*)sceGuGetMemory(2 * sizeof(Vertex));
+    Vertex* vertices = (Vertex*)sceGuGetMemory(2 * sizeof(Vertex));
 
     vertices[0].x = x;
     vertices[0].y = y;
