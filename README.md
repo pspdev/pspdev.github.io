@@ -4,30 +4,30 @@ Main repo of the PSPDEV GitHub Organization portal
 
 ## Build locally
 
-First, Go here https://jekyllrb.com/docs/installation/ to install all
-requirements to build the website locally.
+First, follow the instructions for your system to install the dependencies for building on [this page](https://jekyllrb.com/docs/installation/).
 
-> [!Note]
-> Remove the comments of `webrick` and `github-pages` gems in Gemfile so you can build the
-website locally.
-
-Run the command to install all gems:
-
+Clone this repo from the terminal:
 ```shell
-bundle
+git clone https://github.com/pspdev/pspdev.github.io.git
 ```
 
-To access on your browser, run this:
+Go to the just created directory in the terminal and enter the following commands to install all required gems:
+
+```shell
+bundle config set --local path 'vendor/bundle'
+bundle install
+```
+
+To start the web server run:
 ```shell
 bundle exec jekyll serve
 ```
 
-> [!Tip]
-> You can access the website to `http://localhost:4000`.
+You can access the website at `http://localhost:4000`.
 
 > [!Note]
-> You can learn how this website deployed from [here](https://jekyllrb.com/docs/continuous-integration/github-actions/).
+> You can learn how this website deployed in the GitHub pipeline [here](https://jekyllrb.com/docs/continuous-integration/github-actions/).
 
 ## Contributing
 
-If you want to contribute your changes from the website you build locally, just add the comment again on `webrick` and `github-pages` gems in Gemfile so the github action will not get an error. Thanks!
+If you want to contribute your changes feel free to open a pull request [here](https://github.com/pspdev/pspdev.github.io).
