@@ -76,6 +76,7 @@ _includes/samples/*/Makefile
 _includes/samples/*/cmake_install.cmake
 _includes/samples/*/EBOOT.PBP
 _includes/samples/*/PARAM.SFO
+_includes/samples/*/*.prx
 _includes/samples/audio/audio
 _includes/samples/controls/controls
 _includes/samples/hello/hello
