@@ -8,7 +8,7 @@ First, follow the instructions for your system to install the dependencies for b
 
 Clone this repo from the terminal:
 ```shell
-git clone git@github.com:pspdev/pspdev.github.io.git
+git clone https://github.com/pspdev/pspdev.github.io.git
 ```
 
 Go to the just created directory in the terminal and enter the following commands to install all required gems:
