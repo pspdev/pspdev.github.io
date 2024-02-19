@@ -9,4 +9,4 @@ nav_order: 5
 
 Downloading the latest version of the PSPDEV toolchain for your system [here](https://github.com/pspdev/pspdev/releases/tag/latest).
 
-Alternatively, a Docker container is available [here](https://github.com/pspdev/pspdev/pkgs/container/pspdev).
+Alternatively, a Docker container is available [here](https://hub.docker.com/r/pspdev/pspdev).
