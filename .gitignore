@@ -68,3 +68,19 @@ Gemfile.lock
 # .rubocop-https?--*
 
 # End of https://www.toptal.com/developers/gitignore/api/jekyll,ruby
+
+# Sample build files
+_includes/samples/*/CMakeFiles/
+_includes/samples/*/CMakeCache.txt
+_includes/samples/*/Makefile
+_includes/samples/*/cmake_install.cmake
+_includes/samples/*/EBOOT.PBP
+_includes/samples/*/PARAM.SFO
+_includes/samples/*/*.prx
+_includes/samples/audio/audio
+_includes/samples/controls/controls
+_includes/samples/hello/hello
+_includes/samples/sdl2/sdl2
+_includes/samples/sdl2_mixer/sdl2_mixer
+_includes/samples/sdl2_ttf/sdl2_ttf
+_includes/samples/shape/shape

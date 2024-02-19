@@ -10,7 +10,7 @@ nav_order: 3
 ## Hello world
 {: .fs-6 .fw-700 }
 
-![](images/hello.png?raw=true)
+![](images/hello.png)
 
 > This is a simple Hello World program for the PSP.
 
@@ -23,73 +23,14 @@ Click on the details below to see the code and how to build it.
 **main.c**
 
 ```c
-
-#include <pspkernel.h>
-#include <pspdebug.h>
-#include <pspdisplay.h>
-
-// PSP_MODULE_INFO is required
-PSP_MODULE_INFO("Hello World", 0, 1, 0);
-PSP_MAIN_THREAD_ATTR(PSP_THREAD_ATTR_USER);
-
-int exit_callback(int arg1, int arg2, void *common) {
-    sceKernelExitGame();
-    return 0;
-}
-
-int callback_thread(SceSize args, void *argp) {
-    int cbid = sceKernelCreateCallback("Exit Callback", exit_callback, NULL);
-    sceKernelRegisterExitCallback(cbid);
-    sceKernelSleepThreadCB();
-    return 0;
-}
-
-int setup_callbacks(void) {
-    int thid = sceKernelCreateThread("update_thread", callback_thread, 0x11, 0xFA0, 0, 0);
-    if(thid >= 0)
-        sceKernelStartThread(thid, 0, 0);
-    return thid;
-}
-
-int main(void)  {
-    // Use above functions to make exiting possible
-    setup_callbacks();
-    
-    // Print Hello World! on a debug screen on a loop
-    pspDebugScreenInit();
-    while(1) {
-        pspDebugScreenSetXY(0, 0);
-        pspDebugScreenPrintf("Hello World!");
-        sceDisplayWaitVblankStart();
-    }
-
-    return 0;
-}
+{% include samples/hello/main.c %}
 ```
+
 
 **CMakeLists.txt**
 
 ```cmake
-cmake_minimum_required(VERSION 3.0)
-
-project(hello)
-
-add_executable(${PROJECT_NAME} main.c)
-
-target_link_libraries(${PROJECT_NAME} PRIVATE
-    pspdebug
-    pspdisplay
-    pspge
-)
-
-# Create an EBOOT.PBP file
-create_pbp_file(
-    TARGET ${PROJECT_NAME}
-    ICON_PATH NULL
-    BACKGROUND_PATH NULL
-    PREVIEW_PATH NULL
-    TITLE ${PROJECT_NAME}
-)
+{% include samples/hello/CMakeLists.txt %}
 ```
 
 Building can be done with:
@@ -120,120 +61,13 @@ Click on the details below to see the code and how to build it.
 **main.c**
 
 ```c
-#include <pspkernel.h>
-#include <pspgu.h>
-
-PSP_MODULE_INFO("gutest", 0, 1, 0);
-PSP_MAIN_THREAD_ATTR(THREAD_ATTR_VFPU | THREAD_ATTR_USER);
-
-#define BUFFER_WIDTH 512
-#define BUFFER_HEIGHT 272
-#define SCREEN_WIDTH 480
-#define SCREEN_HEIGHT BUFFER_HEIGHT
-
-char list[0x20000] __attribute__((aligned(64)));
-
-void initGu(){
-    sceGuInit();
-
-    //Set up buffers
-    sceGuStart(GU_DIRECT, list);
-    sceGuDrawBuffer(GU_PSM_8888,(void*)0,BUFFER_WIDTH);
-    sceGuDispBuffer(SCREEN_WIDTH,SCREEN_HEIGHT,(void*)0x88000,BUFFER_WIDTH);
-    sceGuDepthBuffer((void*)0x110000,BUFFER_WIDTH);
-
-    //Set up viewport
-    sceGuOffset(2048 - (SCREEN_WIDTH / 2), 2048 - (SCREEN_HEIGHT / 2));
-    sceGuViewport(2048, 2048, SCREEN_WIDTH, SCREEN_HEIGHT);
-    sceGuEnable(GU_SCISSOR_TEST);
-    sceGuScissor(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
-
-    //Set some stuff
-    sceGuDepthRange(65535, 0); //Use the full buffer for depth testing - buffer is reversed order
-
-    sceGuDepthFunc(GU_GEQUAL); //Depth buffer is reversed, so GEQUAL instead of LEQUAL
-    sceGuEnable(GU_DEPTH_TEST); //Enable depth testing
-
-    sceGuFinish();
-    sceGuDisplay(GU_TRUE);
-}
-
-void endGu(){
-    sceGuDisplay(GU_FALSE);
-    sceGuTerm();
-}
-
-void startFrame(){
-    sceGuStart(GU_DIRECT, list);
-    sceGuClearColor(0xFFFFFFFF); // White background
-    sceGuClear(GU_COLOR_BUFFER_BIT);
-}
-
-void endFrame(){
-    sceGuFinish();
-    sceGuSync(0, 0);
-    sceDisplayWaitVblankStart();
-    sceGuSwapBuffers();
-}
-
-typedef struct {
-    unsigned short u, v;
-    short x, y, z;
-} Vertex;
-
-void drawRect(float x, float y, float w, float h) {
-
-    Vertex* vertices = (struct Vertex*)sceGuGetMemory(2 * sizeof(Vertex));
-
-    vertices[0].x = x;
-    vertices[0].y = y;
-
-    vertices[1].x = y + w;
-    vertices[1].y = x + h;
-
-    sceGuColor(0xFF0000FF); // Red, colors are ABGR
-    sceGuDrawArray(GU_SPRITES, GU_TEXTURE_16BIT | GU_VERTEX_16BIT | GU_TRANSFORM_2D, 2, 0, vertices);
-}
-
-
-int main() {
-    initGu();
-    int running = 1;
-    while(running){
-        startFrame();
-
-        drawRect(32, 32, 64, 64);
-
-        endFrame();
-    }
-
-    return 0;
-}
+{% include samples/shape/main.c %}
 ```
 
 **CMakeLists.txt**
 
 ```cmake
-cmake_minimum_required(VERSION 3.0)
-
-project(shape)
-
-add_executable(${PROJECT_NAME} main.c)
-
-target_link_libraries(${PROJECT_NAME} PRIVATE
-    pspgu
-    pspge
-    pspdisplay
-)
-
-# Create an EBOOT.PBP file
-create_pbp_file(
-    TARGET ${PROJECT_NAME}
-    ICON_PATH NULL
-    BACKGROUND_PATH NULL
-    PREVIEW_PATH NULL
-    TITLE ${PROJECT_NAME}
-)
+{% include samples/shape/CMakeLists.txt %}
 ```
 
 Building can be done with:
@@ -266,130 +100,13 @@ Click on details below to see the code and how to build it.
 **main.c**
 
 ```c
-#include <pspkernel.h>
-#include <pspdebug.h>
-#include <pspctrl.h>
-#include <stdlib.h>
-#include <string.h>
-
-PSP_MODULE_INFO("Controller", 0, 1, 1);
-
-PSP_MAIN_THREAD_ATTR(THREAD_ATTR_USER | THREAD_ATTR_VFPU);
-
-#define printf pspDebugScreenPrintf
-
-int done = 0;
-
-int exit_callback(int arg1, int arg2, void *common)
-{
-    done = 1;
-    return 0;
-}
-
-int callback_thread(SceSize args, void *argp)
-{
-    int cbid = sceKernelCreateCallback("Exit Callback",
-        exit_callback, NULL);
-    sceKernelRegisterExitCallback(cbid);
-    sceKernelSleepThreadCB();
-    return 0;
-}
-
-int setup_callbacks(void)
-{
-    int thid = sceKernelCreateThread("update_thread",
-        callback_thread, 0x11, 0xFA0, 0, 0);
-
-    if(thid >= 0)
-        sceKernelStartThread(thid, 0, 0);
-    return thid;
-}
-
-int main(void)
-{
-    SceCtrlData pad;
-
-    pspDebugScreenInit();
-    setup_callbacks();
-
-    sceCtrlSetSamplingCycle(0);
-    sceCtrlSetSamplingMode(PSP_CTRL_MODE_ANALOG);
-
-    while (!done)
-    {
-        pspDebugScreenSetXY(0, 2);
-        sceCtrlReadBufferPositive(&pad, 1);
-
-        printf("Analog X = %d, ", pad.Lx);
-        printf("Analog Y = %d \n", pad.Ly);
-
-        if (pad.Buttons != 0)
-        {
-            if (pad.Buttons & PSP_CTRL_SQUARE)
-            {
-                printf("Square pressed! \n");
-            }
-            if (pad.Buttons & PSP_CTRL_TRIANGLE)
-            {
-                printf("Triangle pressed! \n");
-            }
-            if (pad.Buttons & PSP_CTRL_CIRCLE)
-            {
-                printf("Circle pressed! \n");
-            }
-            if (pad.Buttons & PSP_CTRL_CROSS)
-            {
-                printf("Cross pressed! \n");
-            }
-
-            if (pad.Buttons & PSP_CTRL_UP)
-            {
-                printf("Up direction pad pressed! \n");
-            }
-            if (pad.Buttons & PSP_CTRL_DOWN)
-            {
-                printf("Down direction pad pressed! \n");
-            }
-            if (pad.Buttons & PSP_CTRL_LEFT)
-            {
-                printf("Left direction pad pressed! \n");
-            }
-            if (pad.Buttons & PSP_CTRL_RIGHT)
-            {
-                printf("Right direction pad pressed! \n");
-            }
-        }
-    }
-
-    sceKernelExitGame();
-    return 0;
-}
+{% include samples/controls/main.c %}
 ```
 
 **CMakeLists.txt**
 
 ```cmake
-cmake_minimum_required(VERSION 3.0)
-
-project(controls)
-
-add_executable(${PROJECT_NAME} main.c)
-
-target_link_libraries(${PROJECT_NAME} PRIVATE
-    pspdebug
-    pspdisplay
-    pspge
-    pspctrl
-)
-
-# Create an EBOOT.PBP file
-create_pbp_file(
-    TARGET ${PROJECT_NAME}
-    ICON_PATH NULL
-    BACKGROUND_PATH NULL
-    PREVIEW_PATH NULL
-    TITLE ${PROJECT_NAME}
-)
+{% include samples/controls/CMakeLists.txt %}
 ```
 
 Building can be done with:
@@ -407,7 +124,7 @@ make
 ## Audio
 {: .fs-6 .fw-700 }
 
-![](images/audio.png?raw=true)
+![](images/audio.png)
 
 > This is a simple program to use the audio of the PSP with minimal effort. It uses native audio library. 
 
@@ -420,224 +137,14 @@ Click on the details below to see the code and how to build it.
 **main.c**
 
 ```c
-#include <pspkernel.h>
-#include <pspdebug.h>
-#include <pspaudiolib.h>
-#include <pspaudio.h>
-#include <pspdisplay.h>
-#include <pspctrl.h>
-
-#include <stdlib.h>
-#include <string.h>
-#include <math.h>
-#include <limits.h>
-
-PSP_MODULE_INFO("audio", 0, 1, 1);
-PSP_MAIN_THREAD_ATTR(THREAD_ATTR_USER | THREAD_ATTR_VFPU);
-
-#define printf	pspDebugScreenPrintf
-
-/* Exit callback */
-int exitCallback(int arg1, int arg2, void *common) {
-    sceKernelExitGame();
-    return 0;
-}
-
-/* Callback thread */
-int callbackThread(SceSize args, void *argp) {
-    int cbid;
-
-    cbid = sceKernelCreateCallback("Exit Callback", (void*) exitCallback, NULL);
-    sceKernelRegisterExitCallback(cbid);
-    sceKernelSleepThreadCB();
-
-    return 0;
-}
-
-/* Sets up the callback thread and returns its thread id */
-int setupCallbacks(void) {
-    int thid = 0;
-
-    thid = sceKernelCreateThread("update_thread", callbackThread, 0x11, 0xFA0, 0, 0);
-    if (thid >= 0) {
-        sceKernelStartThread(thid, 0, 0);
-    }
-    return thid;
-}
-
-/* Main code */
-
-const float PI = 3.1415926535897932f;
-const int sampleRate = 44100;
-float frequency = 440.0f;
-float currentTime = 0;
-int function = 0;
-
-typedef struct {
-        short l, r;
-} sample_t;
-
-float currentFunction(const float time) {
-    double x;
-    float t = modf((time / (2 * PI)), &x);
-
-    switch(function) {
-        case 0: // SINE
-            return sinf(time);
-        case 1: // SQUARE
-            if (t < 0.5f) {
-                return -0.2f;
-            } else {
-                return 0.2f;
-            }
-        case 2: // TRIANGLE
-            if (t < 0.5f) {
-                return (t * 2.0f) - 0.5f;
-            } else {
-                return 0.5f - (t - 0.5f) * 2.0f;
-            }
-        default:
-             return 0.0f;
-    }
-}
-
-/* This function gets called by pspaudiolib every time the
-   audio buffer needs to be filled. The sample format is
-   16-bit, stereo. */
-void audioCallback(void* buf, unsigned int length, void *userdata) {
-    const float sampleLength = 1.0f / sampleRate;
-    const float scaleFactor = SHRT_MAX - 1.0f;
-    static float freq0 = 440.0f;
-    sample_t* ubuf = (sample_t*) buf;
-    int i;
-    
-    if (frequency != freq0) {
-            currentTime *= (freq0 / frequency);
-    }
-    for (i = 0; i < length; i++) {
-        short s = (short) (scaleFactor * currentFunction(2.0f * PI * frequency * currentTime));
-        ubuf[i].l = s;
-        ubuf[i].r = s;
-        currentTime += sampleLength;
-    }
-    if (currentTime * frequency > 1.0f) {
-        double d;
-        currentTime = modf(currentTime * frequency, &d) / frequency;
-    }
-
-    freq0 = frequency;
-}
-
-/* Read the analog stick and adjust the frequency */
-void controlFrequency(void) {
-    static int oldButtons = 0;
-    const int zones[6] = {30, 70, 100, 112, 125, 130};
-    const float response[6] = {0.0f, 0.1f, 0.5f, 1.0f, 4.0f, 8.0f};
-    const float minFreq = 32.0f;
-    const float maxFreq = 7040.0f;
-    SceCtrlData pad;
-    float direction;
-    int changedButtons;
-    int i, v;
-
-    sceCtrlReadBufferPositive(&pad, 1);
-
-    v = pad.Ly - 128;
-    if (v < 0) {
-           direction = 1.0f;
-        v = -v;
-    } else {
-        direction = -1.0f;
-    }
-
-    for (i = 0; i < 6; i++) {
-        if (v < zones[i]) {
-            frequency += (response[i] * direction);
-            break;
-        }
-    }
-
-    if (frequency < minFreq) {
-        frequency = minFreq;
-    } else if (frequency > maxFreq) {
-        frequency = maxFreq;
-    }
-
-    changedButtons = pad.Buttons & (~oldButtons);
-    if (changedButtons & PSP_CTRL_CROSS) {
-        function++;
-        if (function > 2) {
-            function = 0;
-        }
-    }
-
-    oldButtons = pad.Buttons;
-}
-
-int main(void) {
-    pspDebugScreenInit();
-    setupCallbacks();
-
-    pspAudioInit();
-    pspAudioSetChannelCallback(0, audioCallback, NULL);
-
-    sceCtrlSetSamplingCycle(0);
-    sceCtrlSetSamplingMode(PSP_CTRL_MODE_ANALOG);
-
-    printf("Press up and down to select frequency\nPress X to change function\n");
-    
-    while(1) {
-        sceDisplayWaitVblankStart();
-        pspDebugScreenSetXY(0,2);
-        printf("freq = %.2f \n", frequency);
-
-        switch(function) {
-            case 0:
-                printf("SINE WAVE. \n");
-                break;
-            case 1:
-                  printf("SQUARE WAVE. \n");
-                break;
-            case 2:
-                  printf("TRIANGLE WAVE. \n");
-                break;
-        }
-
-        controlFrequency();
-    }
-
-    return 0;
-}
+{% include samples/audio/main.c %}
 ```
 
 **CMakeLists.txt**
 
 ```cmake
-cmake_minimum_required(VERSION 3.0)
-
-project(audio)
-
-add_executable(${PROJECT_NAME} main.c)
-
-target_link_libraries(${PROJECT_NAME} PRIVATE
-    pspdebug
-    pspdisplay
-    pspge
-    pspctrl
-    pspaudio
-    pspaudiolib
-    psputility
-)
-
-# Create an EBOOT.PBP file
-create_pbp_file(
-    TARGET ${PROJECT_NAME}
-    ICON_PATH NULL
-    BACKGROUND_PATH NULL
-    PREVIEW_PATH NULL
-    TITLE ${PROJECT_NAME}
-)
-```
+{% include samples/audio/CMakeLists.txt %}
+``````
 
 Building can be done with:
 
@@ -669,86 +176,14 @@ Click on details below for the to see the code and how to build it.
 **main.c**
 
 ```c
-#include <SDL.h>;
-
-int main(int argc, char *argv[])
-{
-    SDL_Init(SDL_INIT_VIDEO | SDL_INIT_GAMECONTROLLER);
-
-    SDL_Window * window = SDL_CreateWindow(
-        "window",
-        SDL_WINDOWPOS_UNDEFINED,
-        SDL_WINDOWPOS_UNDEFINED,
-        480,
-        272,
-        0
-    );
-
-    SDL_Renderer * renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
-
-    SDL_Rect square = {216, 96, 34, 64}; 
-
-    int running = 1;
-    SDL_Event event;
-    while (running) { 
-        if (SDL_PollEvent(&event)) {
-            switch (event.type) {
-                case SDL_QUIT:
-                    running = 0;
-                    break;
-                case SDL_CONTROLLERDEVICEADDED:
-                    SDL_GameControllerOpen(event.cdevice.which);
-                    break;
-                case SDL_CONTROLLERBUTTONDOWN:
-                    if(event.cbutton.button == SDL_CONTROLLER_BUTTON_START)
-                        running = 0;
-                    break;
-            }
-        }
-
-        // Clear the screen
-        SDL_RenderClear(renderer);
-
-        // Draw a red square
-        SDL_SetRenderDrawColor(renderer, 255, 0, 0, 255);
-        SDL_RenderFillRect(renderer, &square);
-
-        // Draw everything on a white background
-        SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
-        SDL_RenderPresent(renderer);
-    }
-
-    return 0;
-}
+{% include samples/sdl2/main.c %}
 ```
 
 **CMakeLists.txt**
 
 ```cmake
-cmake_minimum_required(VERSION 3.0)
-
-project(square)
-
-add_executable(${PROJECT_NAME} main.c)
-
-find_package(SDL2 REQUIRED)
-
-target_include_directories(${PROJECT_NAME} PRIVATE ${SDL2_INCLUDE_DIRS})
-
-target_link_libraries(${PROJECT_NAME} PRIVATE
-    ${SDL2_LIBRARIES}
-)
-
-if(PSP)
-    create_pbp_file(
-        TARGET ${PROJECT_NAME}
-        ICON_PATH NULL
-        BACKGROUND_PATH NULL
-        PREVIEW_PATH NULL
-        TITLE ${PROJECT_NAME}
-    )
-endif()
-```
+{% include samples/sdl2/CMakeLists.txt %}
+``````
 
 Building can be done with:
 
@@ -788,182 +223,14 @@ Click on details below to see the code and how to build it.
 **main.c**
 
 ```c
-#include <SDL2/SDL.h>
-#include <SDL2/SDL_mixer.h>
-
-// Define MIN macro
-#define MIN(X, Y) (((X) < (Y)) ? (X) : (Y))
-
-// Define screen dimensions
-#define SCREEN_WIDTH    480
-#define SCREEN_HEIGHT   272
-
-// audio file path
-#define MUSIC_PATH "ms0:/MUSIC/test.ogg" // ogg/mp3 file format
-
-int main(int argc, char **argv) {
-    (void)argc;
-    (void)argv;
-
-    // Initialize sdl
-    SDL_Init(SDL_INIT_VIDEO |
-        SDL_INIT_AUDIO |
-        SDL_INIT_GAMECONTROLLER
-    );
-
-    // Initialize sdl2_mixer
-    Mix_OpenAudio(44100, 
-        MIX_DEFAULT_FORMAT, 
-        MIX_DEFAULT_CHANNELS, 
-        2048
-    );
-
-    // create window
-    SDL_Window *win = SDL_CreateWindow(
-        "psp_win",
-        SDL_WINDOWPOS_UNDEFINED,
-        SDL_WINDOWPOS_UNDEFINED,
-        SCREEN_WIDTH,
-        SCREEN_HEIGHT,
-        0
-    );
-
-    // Create Renderer
-    SDL_Renderer *renderer = SDL_CreateRenderer(
-        win, -1, 0
-    );
-
-    // Load ogg file
-    Mix_Music *ogg_file = NULL;
-    ogg_file = Mix_LoadMUS(MUSIC_PATH);
-    if (!ogg_file) {
-        return 0;
-    }
-
-    SDL_Rect rect;
-
-    // Square dimensions: Half of the min(SCREEN_WIDTH, SCREEN_HEIGHT)
-    rect.w = MIN(SCREEN_WIDTH, SCREEN_HEIGHT) / 2;
-    rect.h = MIN(SCREEN_WIDTH, SCREEN_HEIGHT) / 2;
-
-    // Square position: In the middle of the screen
-    rect.x = SCREEN_WIDTH / 2 - rect.w / 2;
-    rect.y = SCREEN_HEIGHT / 2 - rect.h / 2;
-
-
-    // Declare rects of pause symbol
-    SDL_Rect pause_rect1, pause_rect2;
-
-    pause_rect1.h = rect.h / 2;
-    pause_rect1.w = 40;
-    pause_rect1.x = rect.x + (rect.w - pause_rect1.w * 3) / 2;
-    pause_rect1.y = rect.y + rect.h / 4;
-    pause_rect2 = pause_rect1;
-    pause_rect2.x += pause_rect1.w * 2;
-    
-    // play the music 8 times
-    if (Mix_PlayMusic(ogg_file, 8) == -1) {
-        return 0;
-    }
-
-    int running = 1;
-    SDL_Event e;
-    while (running) {
-        if(SDL_PollEvent(&e)) {
-            switch(e.type) {
-                case SDL_QUIT:
-                    running = 0;
-                break;
-                case SDL_CONTROLLERDEVICEADDED:
-                    SDL_GameControllerOpen(e.cdevice.which);
-                break;
-                case SDL_CONTROLLERBUTTONDOWN:
-                    // pause using cross button
-                    if (e.cbutton.button == SDL_CONTROLLER_BUTTON_A) {
-                        Mix_PauseMusic();
-                    // resume using circle button
-                    } else if (e.cbutton.button == SDL_CONTROLLER_BUTTON_B) {
-                        Mix_ResumeMusic();
-                    }	
-                    // press start button to exit
-                    if (e.cbutton.button == SDL_CONTROLLER_BUTTON_START) {
-                        running = 0;
-                    }
-            break;		
-            }
-        }
-
-        // Initialize renderer color black for the background
-        SDL_SetRenderDrawColor(renderer, 0, 0, 0, 0);
-
-        // Clear screen
-        SDL_RenderClear(renderer);
-
-        // Set renderer color green to draw the square
-        SDL_SetRenderDrawColor(renderer, 0, 0xFF, 0, 0xFF);
-
-        // Draw filled square
-        SDL_RenderFillRect(renderer, &rect);
-
-        // Check pause status
-        if(Mix_PausedMusic()) {
-            // Set renderer color black to draw the pause symbol
-            SDL_SetRenderDrawColor(renderer, 0, 0, 0, 0);
-
-            // Draw pause symbol
-            SDL_RenderFillRect(renderer, &pause_rect1);
-             SDL_RenderFillRect(renderer, &pause_rect2);
-        }
-
-        // Update screen
-        SDL_RenderPresent(renderer);
-    }
-
-    Mix_FreeMusic(ogg_file);
-    SDL_DestroyRenderer(renderer);
-    SDL_DestroyWindow(win);
-    Mix_CloseAudio();
-    SDL_Quit();
-
-    return 0;
-}
+{% include samples/sdl2_mixer/main.c %}
 ```
 
 **CMakeLists.txt**
 
 ```cmake
-cmake_minimum_required(VERSION 3.0)
-
-project(sdl2_mixer)
-
-add_executable(${PROJECT_NAME} main.c)
-
-find_package(SDL2 REQUIRED)
-
-target_include_directories(${PROJECT_NAME} PRIVATE ${SDL2_INCLUDE_DIRS})
-
-target_link_libraries(${PROJECT_NAME} PRIVATE
-    ${SDL2_LIBRARIES}
-)
-
-if(PSP)
-    target_link_libraries(${PROJECT_NAME} PRIVATE
-        SDL2_mixer
-        SDL2
-        vorbisfile
-        vorbis
-        ogg
-        xmp
-    )
-    create_pbp_file(
-        TARGET ${PROJECT_NAME}
-        ICON_PATH NULL
-        BACKGROUND_PATH NULL
-        PREVIEW_PATH NULL
-        TITLE ${PROJECT_NAME}
-    )
-endif()
-```
+{% include samples/sdl2_mixer/CMakeLists.txt %}
+``````
 
 Building can be done with:
 
@@ -993,149 +260,14 @@ Click on details below to see the code and how to build it.
 **main.c**
 
 ```c
-#include <stdio.h>
-
-#include <SDL2/SDL.h>
-#include <SDL2/SDL_ttf.h>
-
-// Define screen dimensions
-#define SCREEN_WIDTH 480
-#define SCREEN_HEIGHT 272
-
-int main(int argc, char **argv)
-{
-    (void)argc;
-    (void)argv;
-
-    // Initialize SDL2
-    if (SDL_Init(SDL_INIT_VIDEO) < 0)
-    {
-        printf("SDL2 could not be initialized!\n"
-               "SDL2 Error: %s\n",
-               SDL_GetError());
-        return 0;
-    }
-
-    // Initialize SDL2_ttf
-    if (TTF_Init() < 0)
-    {
-        printf("SDL2_ttf could not be initialized!\n"
-               "SDL2_ttf Error: %s\n",
-               SDL_GetError());
-        return 0;
-    }
-
-    SDL_Window *win = SDL_CreateWindow(
-        "window",
-        SDL_WINDOWPOS_UNDEFINED,
-        SDL_WINDOWPOS_UNDEFINED,
-        SCREEN_WIDTH,
-        SCREEN_HEIGHT,
-        0);
-
-    if (!win)
-    {
-        printf("Window could not be created!\n"
-               "SDL_Error: %s\n",
-               SDL_GetError());
-    }
-
-    SDL_Renderer *renderer = SDL_CreateRenderer(win, -1, 0);
-    TTF_Font *font = TTF_OpenFont("Pacifico.ttf", 40);
-
-    // Set the text and background color
-    SDL_Color text_color = {0xff, 0xff, 0xff, 0xff};
-    SDL_Color bg_color = {0x00, 0x00, 0x00, 0xff};
-
-    SDL_Rect text_rect;
-    SDL_Surface *surface = TTF_RenderText(font, "Hello World!", text_color, bg_color);
-    SDL_Texture *texture = SDL_CreateTextureFromSurface(renderer, surface);
-
-    // Get text dimensions
-    text_rect.w = surface->w;
-    text_rect.h = surface->h;
-
-    SDL_FreeSurface(surface);
-
-    text_rect.x = (SCREEN_WIDTH - text_rect.w) / 2;
-    text_rect.y = text_rect.h + 30;
-
-    int running = 1;
-    SDL_Event e;
-    while (running)
-    {
-        if (SDL_PollEvent(&e))
-        {
-            switch (e.type)
-            {
-            case SDL_QUIT:
-                running = 0;
-                break;
-            case SDL_CONTROLLERDEVICEADDED:
-                SDL_GameControllerOpen(e.cdevice.which);
-                break;
-            case SDL_CONTROLLERBUTTONDOWN:
-                if (e.cbutton.button == SDL_CONTROLLER_BUTTON_START)
-                {
-                    running = 0;
-                }
-                break;
-            }
-        }
-
-        SDL_SetRenderDrawColor(renderer, 0xff, 0xff, 0xff, 0xff);
-        SDL_RenderClear(renderer);
-        SDL_SetRenderDrawColor(renderer, 0xff, 0x00, 0x00, 0xff);
-        SDL_RenderCopy(renderer, texture, NULL, &text_rect);
-        SDL_RenderPresent(renderer);
-    }
-
-    SDL_DestroyRenderer(renderer);
-    SDL_DestroyWindow(win);
-    TTF_Quit();
-    SDL_Quit();
-
-    return 0;
-}
+{% include samples/sdl2_ttf/main.c %}
 ```
 
 **CMakeLists.txt**
 
 ```cmake
-cmake_minimum_required(VERSION 3.0)
-
-project(text-ttf)
-
-add_executable(${PROJECT_NAME} main.c)
-
-find_package(SDL2 REQUIRED)
-
-target_include_directories(${PROJECT_NAME} 
-    PRIVATE ${SDL2_INCLUDE_DIRS}
-)
-
-target_link_libraries(${PROJECT_NAME} PRIVATE
-    ${SDL2_LIBRARIES}
-)
-
-if(PSP)
-    target_link_libraries(${PROJECT_NAME} PRIVATE
-        SDL2_ttf
-        freetype
-        m
-        bz2
-        png16
-        z
-    )
-    create_pbp_file(
-        TARGET ${PROJECT_NAME}
-        ICON_PATH NULL
-        BACKGROUND_PATH NULL
-        PREVIEW_PATH NULL
-        TITLE ${PROJECT_NAME}
-    )
-endif()
-```
+{% include samples/sdl2_ttf/CMakeLists.txt %}
+``````
 
 Building can be done with:
 
