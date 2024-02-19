@@ -58,6 +58,25 @@ On MacOS make sure to install [Brew](https://brew.sh/) first, then run the follo
 brew install cmake pkgconf gnu-sed bash openssl libtool libarchive gettext texinfo bison flex isl gsl gmp mpfr
 ```
 
+#### Docker
+
+First you have to run:
+
+```shell
+docker pull pspdev/pspdev:latest
+```
+
+Then you can open the terminal in the directory where you have your code and do something like this:
+
+```shell
+docker run -ti -v $PWD:/source pspdev/pspdev:latest
+```
+
+After that you can cd into the `/source` directory and run make or whatever
+
+```shell
+docker run -ti -v .:/source pspdev/pspdev:latest
+```
 
 ### Toolchain 
 {: .fs-6 .fw-700 }
