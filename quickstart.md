@@ -68,19 +68,13 @@ if you have succesfully installed, then you have to run:
 docker pull pspdev/pspdev:latest
 ```
 
-Then you can open the terminal in the directory where you have your code and do something like this:
+Then you can open the terminal in the directory where you have your code(e.g `/source`) and do something like this:
 
 ```shell
 docker run -ti -v .:/source pspdev/pspdev:latest
 ```
 
-after that, If you see something like this:
-
-```shell
-/ #
-```
-
-your pspdev docker setup is ready to use.
+After that you can cd into the `/source` directory and your pspdev toolchain are ready to use.
 
 ### Toolchain 
 {: .fs-6 .fw-700 }
