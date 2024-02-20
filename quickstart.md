@@ -58,6 +58,11 @@ On MacOS make sure to install [Brew](https://brew.sh/) first, then run the follo
 brew install cmake pkgconf gnu-sed bash openssl libtool libarchive gettext texinfo bison flex isl gsl gmp mpfr
 ```
 
+#### Docker
+{: .fs-4 .fw-700 }
+
+PSPDEV has its own [Docker container](https://hub.docker.com/r/pspdev/pspdev) for the toolchain, follow the steps below to set it up.
+
 ### Toolchain 
 {: .fs-6 .fw-700 }
 
@@ -81,8 +86,6 @@ That's it, now the PSPDEV toolchain can be used to build PSP software. Check out
 
 ### Toolchain in Docker
 {: .fs-6 .fw-700 }
-
-PSPDEV has its own [Docker container](https://hub.docker.com/r/pspdev/pspdev) for the toolchain, follow the steps below to set it up.
 
 First, install the docker using the guide from [here](https://docs.docker.com/engine/install/).
 
