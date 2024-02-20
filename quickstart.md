@@ -61,7 +61,7 @@ brew install cmake pkgconf gnu-sed bash openssl libtool libarchive gettext texin
 #### Docker
 {: .fs-4 .fw-700 }
 
-PSPDEV has its own [Docker container](https://hub.docker.com/r/pspdev/pspdev) for the toolchain, follow the steps below to set it up.
+Install the docker using the guide [the official guide](https://docs.docker.com/engine/install/).
 
 ### Toolchain 
 {: .fs-6 .fw-700 }
@@ -87,7 +87,7 @@ That's it, now the PSPDEV toolchain can be used to build PSP software. Check out
 ### Toolchain in Docker
 {: .fs-6 .fw-700 }
 
-First, install the docker using the guide from [here](https://docs.docker.com/engine/install/).
+PSPDEV has its own [Docker container](https://hub.docker.com/r/pspdev/pspdev) for the toolchain, follow the steps below to set it up.
 
 If you have succesfully installed, then you have to run:
 
