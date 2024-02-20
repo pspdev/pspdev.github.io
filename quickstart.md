@@ -58,24 +58,6 @@ On MacOS make sure to install [Brew](https://brew.sh/) first, then run the follo
 brew install cmake pkgconf gnu-sed bash openssl libtool libarchive gettext texinfo bison flex isl gsl gmp mpfr
 ```
 
-#### Docker
-
-Install the docker first using the guide from [here](https://docs.docker.com/engine/install/)
-
-if you have succesfully installed, then you have to run:
-
-```shell
-docker pull pspdev/pspdev:latest
-```
-
-Then you can open the terminal in the directory where you have your code(e.g `/source`) and do something like this:
-
-```shell
-docker run -ti -v .:/source pspdev/pspdev:latest
-```
-
-After that you can cd into the `/source` directory and your pspdev toolchain are ready to use.
-
 ### Toolchain 
 {: .fs-6 .fw-700 }
 
@@ -95,7 +77,28 @@ This can simply be done with `nano ~/.bashrc` (`~/.zprofile` on Mac). To save pr
 
 On MacOS, run `sudo xattr -rd com.apple.quarantine $PSPDEV` to prevent Gatekeeper from blocking the toolchain.
 
-That's it, now the PSPDEV toolchain can be used to build PSP software. Below is the sample code and how to run it. For testing on real hardware, check out [psplink](https://pspdev.github.io/psplinkusb/).
+That's it, now the PSPDEV toolchain can be used to build PSP software. Check out [Coding](#coding) section below for the sample code and how to run it. For testing on real hardware, check out [psplink](https://pspdev.github.io/psplinkusb/).
+
+### Toolchain in Docker
+{: .fs-6 .fw-700 }
+
+PSPDEV has its own [Docker container](https://hub.docker.com/r/pspdev/pspdev) for the toolchain, follow the steps below to set it up.
+
+First, install the docker using the guide from [here](https://docs.docker.com/engine/install/).
+
+If you have succesfully installed, then you have to run:
+
+```shell
+docker pull pspdev/pspdev:latest
+```
+
+Then you can open the terminal in the directory where you have your code(e.g `/source`) and do something like this:
+
+```shell
+docker run -ti -v .:/source pspdev/pspdev:latest
+```
+
+After that you can cd into the `/source` directory and your pspdev toolchain is ready to use!
 
 ## Coding
 {: .fs-8 .fw-700 }
