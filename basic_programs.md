@@ -281,4 +281,6 @@ This will result in an EBOOT.PBP file in the build directory. Put it in a direct
 
 </details>
 
+For more samples, go [here](https://github.com/pspdev/pspsdk/tree/master/src/samples).
+
 Check out the [Tips and Tricks](tips_tricks.html) to get most out of your whole PSP development.
