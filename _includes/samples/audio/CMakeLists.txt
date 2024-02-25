@@ -21,5 +21,4 @@ create_pbp_file(
     BACKGROUND_PATH NULL
     PREVIEW_PATH NULL
     TITLE ${PROJECT_NAME}
-    VERSION 01.00
 )
