@@ -25,6 +25,5 @@ if(PSP)
         BACKGROUND_PATH NULL
         PREVIEW_PATH NULL
         TITLE ${PROJECT_NAME}
-        VERSION 01.00
     )
 endif()
