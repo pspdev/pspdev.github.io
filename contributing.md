@@ -7,7 +7,7 @@ nav_order: 7
 # Contributing
 {: .fs-8 .fw-700 .text-center }
 
-There are many ways to contribute to our efforts to make developing homebrew for the Playstation Portable easier for everyone. The first step would be to [join our Discord](https://discord.gg/bePrj9W)!
+There are many ways to contribute to our efforts to make developing homebrew for the PlayStation Portable (PSP) easier for everyone. The first step would be to [join our Discord](https://discord.gg/bePrj9W)!
 
 ## Ways to contribute
 
@@ -26,7 +26,7 @@ The PSPDEV toolchain is build using quite a few different repositories which eac
 
 There are automated builds, which build each part individually if there are changes. Here is a basic image showing the build order:
 
-![Image with oder of repositories](images/repos.png)
+![Image with order of repositories](images/repos.png)
 
 Lets go over what each repository in this list does and where they get the things they build from:
 
