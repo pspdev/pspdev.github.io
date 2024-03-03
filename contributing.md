@@ -7,7 +7,7 @@ nav_order: 7
 # Contributing
 {: .fs-8 .fw-700 .text-center }
 
-There are many ways to contribute to our efforts to make developing homebrew for the PlayStation Portable (PSP) easier for everyone. The first step would be to [join our Discord](https://discord.gg/bePrj9W)!
+There are many ways to contribute to our efforts to make developing homebrew for the PlayStation Portable (PSP) easier for everyone. The first step would be to [join our Discord](https://discord.gg/bePrj9W) or use our [GitHub Discussions](https://github.com/pspdev/pspdev/discussions)!
 
 ## Ways to contribute
 
