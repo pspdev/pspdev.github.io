@@ -27,7 +27,7 @@ wsl --install
 Now run bash and run the following commands to install the dependencies:
 
 ```shell
-sudo apt update -y
+sudo apt update
 ```
 
 ```shell
@@ -42,7 +42,7 @@ Going forwards, all commands will be run within bash. The filesystem of your Ubu
 On Ubuntu run the following commands to install the dependencies:
 
 ```shell
-sudo apt update -y
+sudo apt update
 ```
 
 ```shell
