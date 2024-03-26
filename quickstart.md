@@ -27,11 +27,11 @@ wsl --install
 Now run bash and run the following commands to install the dependencies:
 
 ```shell
-sudo apt-get update
+sudo apt update -y
 ```
 
 ```shell
-sudo apt-get install build-essential cmake pkgconf libreadline8 libusb-0.1 libgpgme11 libarchive-tools fakeroot
+sudo apt install -y build-essential cmake pkgconf libreadline8 libusb-0.1-* libgpgme11 libarchive-tools fakeroot
 ```
 
 Going forwards, all commands will be run within bash. The filesystem of your Ubuntu installation can be accessed by opening the network location `\\wsl$`.
@@ -42,11 +42,11 @@ Going forwards, all commands will be run within bash. The filesystem of your Ubu
 On Ubuntu run the following commands to install the dependencies:
 
 ```shell
-sudo apt-get update
+sudo apt update -y
 ```
 
 ```shell
-sudo apt-get install build-essential cmake pkgconf libreadline8 libusb-0.1 libgpgme11 libarchive-tools fakeroot
+sudo apt install -y build-essential cmake pkgconf libreadline8 libusb-0.1-* libgpgme11 libarchive-tools fakeroot
 ```
 
 #### MacOS
