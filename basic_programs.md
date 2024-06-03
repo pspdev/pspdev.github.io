@@ -283,4 +283,6 @@ This will result in an EBOOT.PBP file in the build directory. Put it in a direct
 
 For more samples, go [here](https://github.com/pspdev/pspsdk/tree/master/src/samples).
 
-Check out the [Tips and Tricks](tips_tricks.html) to get most out of your whole PSP development.
+## Debugging
+
+When making changes to the example programs listed above, you might run into errors or even crashes. To figure out what went wrong, you can make use of several debugging methods. Check out the [debugging](debugging.html) section on this website to get more info on how to do that.
