@@ -10,7 +10,7 @@ nav_order: 1
 {: .fs-8 .fw-700 .text-center }
 
 
-An open source toolchain for PlayStation Portable(PSP) development. It allows you to make apps and games for both custom and official firmwares. **This is a community project made by enthusiasts, it is in no way affiliated with Sony**.
+An open source toolchain for PlayStation Portable (PSP) development. It allows you to make apps and games for both custom and official firmwares. **This is a community project made by enthusiasts, it is in no way affiliated with Sony**.
 {: .fs-5 .text-center }
 
 # Getting started
