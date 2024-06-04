@@ -16,7 +16,7 @@ links to the documentation available for them:
    Non-official documentation on the PSP CPU and VFPU.
  - [PSPLink Manual](https://pspdev.github.io/psplinkusb/psplink_manual.pdf):
    User manual for the PSPLink debugging software.
- - [Unofficial PSP docs](http://uofw.github.io/upspd/): A collection of docs
+ - [Unofficial PSP docs](https://uofw.github.io/upspd/docs/): A collection of docs
    from different authors and sources, covering more specific topics.
  - [Yet Another PSP Documentation](http://hitmen.c02.at/files/yapspd/): A very
    detailed hardware documentation, including software interfaces.
