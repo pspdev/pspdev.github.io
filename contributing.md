@@ -42,6 +42,8 @@ Lets go over what each repository in this list does and where they get the thing
 - [psptoolchain](https://github.com/pspdev/psptoolchain) builds [psptoolchain-allegrex](https://github.com/pspdev/psptoolchain-allegrex) and [psptoolchain-extra](https://github.com/pspdev/psptoolchain-extra) combines them.
 - [pspsdk](https://github.com/pspdev/pspsdk) contains all the PSP specific libraries that we consider to be part of the base system. A lot of functions offered by the official PSP SDK from Sony are also provided here. It also contains [samples](https://github.com/pspdev/pspsdk/tree/master/src/samples) for how to use these functions.
 - [psp-packages](https://github.com/pspdev/psp-packages) contains build files for all the 3rd party libraries that are supported by PSPDEV. There are over 50 of them, including SDL2, curl, OpenGL, sqlite, lua and openal to just name a few.
-- [pspdev](https://github.com/pspdev/pspdev) combines everything listed above to get the full build of the PSPDEV SDK.
+- [pspdev](https://github.com/pspdev/pspdev) combines everything listed above and adds the following tools:
+    - [psplinkusb](https://github.com/pspdev/psplinkusb) provides the tools for debugging with psplink. I also contains psplink itself.
+    - [ebootsigner](https://github.com/pspdev/ebootsigner) is a tool for making homebrew able to run on official firmares from Sony.
 
 Pull requests for any repository are always appreciated! Have fun contributing and don't forget to say hi on [Discord](https://discord.gg/bePrj9W)!
