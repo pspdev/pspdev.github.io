@@ -51,4 +51,4 @@ There are many C and C++ libraries available within the PSPDEV toolchain which c
 - Support for compression, physics, fonts and much more
 
 
-For the full list take a look at the [psp-packages repository](https://github.com/pspdev/psp-packages) or run `psp-pacman -Syl`. Updating libraries can be done with `psp-pacman -Syu`.
+For the full list take a look at the [psp-packages repository](https://pspdev.github.io/psp-packages/) or run `psp-pacman -Syl`. Installing newly added libraries can be done with `psp-pacman -S package-name`. Updating all installed libraries can be done with `psp-pacman -Syu`.
