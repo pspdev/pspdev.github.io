@@ -66,7 +66,7 @@ Install the docker using the guide [the official guide](https://docs.docker.com/
 ### Toolchain 
 {: .fs-6 .fw-700 }
 
-To install the PSPDEV toolchain, first [download the latest version](https://github.com/pspdev/pspdev/releases/tag/latest) for your system. Extract it into your user's home directory, which would be `\\wsl$\home\username` on Windows, otherwise `~`. If you're on Windows, pick the Ubuntu build.
+To install the PSPDEV toolchain, first [download the latest version](downloads.html) for your system. Extract it into your user's home directory, which would be `\\wsl$\home\username` on Windows, otherwise `~`. If you're on Windows, pick the Ubuntu build.
 
 Now set the required environment variables. On Mac edit the ``~/.zprofile`` on Linux/WSL the ``~/.bashrc`` file. Add the following at the bottom:
 
