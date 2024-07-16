@@ -31,4 +31,4 @@ docker run -ti -v .:/source pspdev/pspdev:latest
 
 After that you can run `cd /source` to navigate to the code.
 
-That's it, now the PSPDEV toolchain can be used to build PSP software. Check out the [Basic Programs](/basic_programs.html) page to for examples on what you can do with it.
+That's it, now the PSPDEV toolchain can be used to build PSP software. Check out the [Basic Programs](../basic_programs.html) page to for examples on what you can do with it.

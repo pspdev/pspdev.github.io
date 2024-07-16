@@ -9,8 +9,8 @@ nav_order: 2
 
 Pick the installation guide for your system:
 
-- [Window](/installation/windows.html)
-- [MacOS](/installation/macos.html)
-- [Ubuntu/Debian](/installation/ubuntu.html)
-- [Fedora](/installation/fedora.html)
-- [Docker](/installation/docker.html)
+- [Window](installation/windows.html)
+- [MacOS](installation/macos.html)
+- [Ubuntu/Debian](installation/ubuntu.html)
+- [Fedora](installation/fedora.html)
+- [Docker](installation/docker.html)
