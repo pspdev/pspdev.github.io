@@ -285,4 +285,4 @@ For more samples, go [here](https://github.com/pspdev/pspsdk/tree/master/src/sam
 
 ## Debugging
 
-When making changes to the example programs listed above, you might run into errors or even crashes. To figure out what went wrong, you can make use of several debugging methods. Check out the [debugging](debugging.html) section on this website to get more info on how to do that.
+When making changes to the example programs listed above, you might run into errors or even crashes. To learn how to figure out what went wrong, check out the [debugging](debugging.html) page.
