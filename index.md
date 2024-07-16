@@ -16,7 +16,7 @@ An open source toolchain for PlayStation Portable (PSP) development. It allows y
 # Getting started
 {: .fs-6 .fw-700 }
 
-Begin your journey [here](quickstart.html).
+Begin your journey [here](installation.html).
 {: .fs-5 }
 
 Need some in-depth knowledge? [Go here](documentation.html).
