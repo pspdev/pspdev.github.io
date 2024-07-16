@@ -69,4 +69,4 @@ psp-pacman -S library
 
 A new version of the PSPDEV toolchain is released at least once a month, so updating should be done regularly if you want to benefit from new features and bug fixes.
 
-To update the toolchain, simply follow the installation instruction for your system on the [Installation](installation.html) page.
+To update the toolchain, simply follow the installation instruction for your system on the [Installation](installation.html) page. Installing the dependencies can be skipped.
