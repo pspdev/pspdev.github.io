@@ -14,3 +14,5 @@ Downloading the latest version of the PSPDEV toolchain for your system:
 - [MacOS (x86_64)](https://github.com/pspdev/pspdev/releases/latest/download/pspdev-macos-13-x86_64.tar.gz)
 - [Fedora](https://github.com/pspdev/pspdev/releases/latest/download/pspdev-fedora-latest.tar.gz)
 - [Docker](https://hub.docker.com/r/pspdev/pspdev)
+
+Alternatively, development builds are available [here](https://github.com/pspdev/pspdev/releases/tag/latest). Only get these if you cannot wait a couple of weeks for a specific new feature or you are working on improving the toolchain itself.
