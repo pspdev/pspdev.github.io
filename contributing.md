@@ -13,7 +13,7 @@ There are many ways to contribute to our efforts to make developing homebrew for
 
 Before making any contribution, it's best to talk about what you want to do on [Discord](https://discord.gg/bePrj9W). After that, here are some places you can look to contribute:
 
-- Found an bug or are you missing something? Report it [here](https://github.com/pspdev/pspdev/issues)!
+- Found an bug or are you missing something? Report it [here](https://github.com/pspdev/pspdev/issues/new)!
 - Want to solve a bug? Find our bug tracker [here](https://github.com/issues?q=is%3Aopen+is%3Aissue+archived%3Afalse+user%3Apspdev+)!
 - Want to add a library? Find out how to [here](https://github.com/pspdev/psp-packages/blob/master/CONTRIBUTING.md)!
 - Want to add a function? Look [here](https://github.com/pspdev/pspsdk)!
@@ -46,4 +46,4 @@ Lets go over what each repository in this list does and where they get the thing
     - [psplinkusb](https://github.com/pspdev/psplinkusb) provides the tools for debugging with psplink. I also contains psplink itself.
     - [ebootsigner](https://github.com/pspdev/ebootsigner) is a tool for making homebrew able to run on official firmares from Sony.
 
-Pull requests for any repository are always appreciated! Have fun contributing and don't forget to say hi on [Discord](https://discord.gg/bePrj9W)!
+Pull requests for any repository are always appreciated! Have fun contributing and don't forget to say hi on [Discord](https://discord.gg/bePrj9W) or on the [GitHub Discussions](https://github.com/pspdev/pspdev/discussions) page!
