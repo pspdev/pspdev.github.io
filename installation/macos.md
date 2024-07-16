@@ -18,7 +18,7 @@ Once brew is installed, run the following command from a terminal to install the
 brew install cmake pkgconf gnu-sed bash openssl libtool libarchive gettext texinfo bison flex isl gsl gmp mpfr
 ```
 
-### Toolchain 
+## Toolchain 
 {: .fs-6 .fw-700 }
 
 Installing the PSPDEV toolchain itself can be done with the following steps:
