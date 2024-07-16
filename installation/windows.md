@@ -10,9 +10,9 @@ nav_exclude: true
 ## Windows Subsystem for Linux (WSL)
 {: .fs-4 .fw-700 }
 
-On Windows the PSPDEV toolchain is run on Ubuntu running on Microsoft's WSL.This is very easy to set up and will offer us the full power of Linux from a Windows machine.
+On Windows the PSPDEV toolchain is run on Ubuntu running on Microsoft's WSL. This is very easy to set up and will offer us the full power of Linux from a Windows machine.
 
-To set up WSL with Ubuntu in it run the following commands in a Powershell window started as administrator:
+To set up WSL with Ubuntu in it run the following commands in a Powershell window started as administrator (right click run as administrator on Powershell in the start menu):
 
 ```powershell
 wsl --install
