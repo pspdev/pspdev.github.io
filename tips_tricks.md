@@ -40,15 +40,27 @@ When porting a game to the PSP, some PSP specific code might be needed. To make 
 
 This makes sure that the other systems supported by the program keeps working the same, while still making it possible to add support for the PSP.
 
-## More Libraries
+## Managing Libraries
 {: .fs-6 .fw-700 }
 
-There are many C and C++ libraries available within the PSPDEV toolchain which can add functionality to your program. Some examples:
+There are many C and C++ libraries available within the PSPDEV toolchain and most of them will be installed by default. Libraries are where most of the updates within the toolchain happen and they can be updated manually without redownload the toolchain using `psp-pacman`.
 
-- Audio formats: mp3, ogg
-- Image formats: png, jpeg
-- Data formats: json, yaml, sqlite
-- Support for compression, physics, fonts and much more
+Updating the libraries installed can be done with the following command:
 
+```shell
+psp-pacman -Syu
+```
 
-For the full list take a look at the [psp-packages repository](https://pspdev.github.io/psp-packages/) or run `psp-pacman -Syl`. Installing newly added libraries can be done with `psp-pacman -S package-name`. Updating all installed libraries can be done with `psp-pacman -Syu`.
+After updating, you can list all available libraries with the following command:
+
+```shell
+psp-pacman -Sl
+```
+
+For a full list with information on each library, it's easiest to take a look on the [repository's web pages](https://pspdev.github.io/psp-packages).
+
+Installing a library can be done with the following command:
+
+```shell
+psp-pacman -S library
+```
