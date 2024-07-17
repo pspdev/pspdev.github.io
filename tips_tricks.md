@@ -64,3 +64,9 @@ Installing a library can be done with the following command:
 ```shell
 psp-pacman -S library
 ```
+
+## Updating the Toolchain
+
+A new version of the PSPDEV toolchain is released at least once a month, so updating should be done regularly if you want to benefit from new features and bug fixes.
+
+To update the toolchain, simply follow the installation instruction for your system on the [Installation](installation.html) page. Installing the dependencies can be skipped.

@@ -16,7 +16,7 @@ The PSPDEV toolchain requires a couple of dependencies to be installed before us
 sudo dnf -y install @development-tools cmake bsdtar libusb-compat-0.1 gpgme fakeroot xz nano
 ```
 
-### Toolchain 
+## Toolchain 
 {: .fs-6 .fw-700 }
 
 Installing the PSPDEV toolchain itself can be done with the following steps:
