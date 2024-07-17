@@ -16,8 +16,16 @@ An open source toolchain for PlayStation Portable (PSP) development. It allows y
 # Getting started
 {: .fs-6 .fw-700 }
 
-Begin your journey [here](installation.html).
+Want to install the PSPDEV toolchain? [Go here](installation.html).
 {: .fs-5 }
+
+Want to get started, but don't what to build? [Go here](basic_programs.html).
+{: .fs-5 }
+
+Your code is not working? [Go here](debugging.html).
+{: .fs-5 }
+
+Want some simple tips and trick to improve your experience? [Go here](tips_tricks.html).
 
 Need some in-depth knowledge? [Go here](documentation.html).
 {: .fs-5 }
@@ -30,3 +38,17 @@ If you have ideas, suggestions or questions, please don't hesitate to use our [G
 
 If you need help or would like to contribute, don't hesitate to join us on [Discord](https://discord.gg/bePrj9W) or open an issue on [GitHub](https://github.com/pspdev/pspdev/issues). See you there!
 {: .fs-5 }
+
+# Made with PSPDEV
+{: .fs-6 .fw-700 }
+
+[![nzportable screenshot](images/nzp.png)](https://github.com/nzp-team/nzportable)
+{: .text-center }
+[![oceanpop screenshot](images/oceanpop.png)](https://github.com/sharkwouter/oceanpop)
+{: .text-center }
+
+[![ccleste screenshot](images/ccleste.png)](https://github.com/fjtrujy/ccleste/tree/psp-fixes)
+{: .text-center }
+
+And so much more!
+{: .text-center }
