@@ -29,7 +29,7 @@ Installing the PSPDEV toolchain itself can be done with the following steps:
     ```
 4. Add the following lines at the bottom of the file in the text editor:
     ```shell
-    export PSPDEV="~/pspdev"
+    export PSPDEV="$HOME/pspdev"
     export PATH="$PATH:$PSPDEV/bin"
     ```
 5. Now save and exit by pressing `Ctrl`+`X`, then `Y` and then enter/return.
