@@ -32,7 +32,7 @@ sudo apt-get update
 ```
 
 ```shell
-sudo apt-get install build-essential cmake pkgconf libreadline8 libusb-0.1 libgpgme11 libarchive-tools fakeroot
+sudo apt-get install build-essential cmake pkgconf libreadline8 libusb-0.1 libgpgme11 libarchive-tools fakeroot curl
 ```
 
 ## Toolchain 
@@ -40,15 +40,15 @@ sudo apt-get install build-essential cmake pkgconf libreadline8 libusb-0.1 libgp
 
 Installing the PSPDEV toolchain itself can be done with the following steps:
 
-1. Download [the latest version of the toolchain here](https://github.com/pspdev/pspdev/releases/latest/download/pspdev-ubuntu-latest-x86_64.tar.gz).
-2. Extract the downloaded archive into your `\\wsl$\home\YOURUSERNAME\`, resulting in `\\wsl$\home\YOURUSERNAME\pspdev` being created. Replace `YOURUSERNAME` with the existing one. This can be done using 
+1. In a fresh WSL Session download the Toolchain Archive using curl `curl -O https://github.com/pspdev/pspdev/releases/latest/download/pspdev-ubuntu-latest-x86_64.tar.gz`
+2. Extract the archive using `tar -xvf pspdev-ubuntu-latest-x86_64.tar.gz`
 3. To make the toolchain usable, some environment variables need to be set. The first step in doing so it to open the `~/.bashrc` file with the `nano` text editor using the following command from an Ubuntu terminal:
     ```shell
     nano ~/.bashrc
     ```
 4. Add the following lines at the bottom of the file in the text editor:
     ```shell
-    export PSPDEV="~/pspdev"
+    export PSPDEV="$HOME/pspdev"
     export PATH="$PATH:$PSPDEV/bin"
     ```
 5. Now save and exit by pressing `Ctrl`+`X`, then `Y` and then enter/return.
