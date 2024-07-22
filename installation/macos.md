@@ -36,8 +36,11 @@ Installing the PSPDEV toolchain itself can be done with the following steps:
     export PSPDEV="$HOME/pspdev"
     export PATH="$PATH:$PSPDEV/bin"
     ```
-5. type `xattr -rd com.apple.quarantine $HOME/pspdev` to remove gatekeeper quarantine.
-6. Now save and exit by pressing `Ctrl`+`X`, then `Y` and then enter/return.
+5. Now save and exit by pressing `Ctrl`+`X`, then `Y` and then enter/return.
+6. Run the following command to remove the gatekeeper quarantine, allowing executables to be run:
+    ```shell
+    xattr -rd com.apple.quarantine $HOME/pspdev
+    ```
 7. Close the current terminal and open a new one.
 8. From the new terminal, run the following command to confirm everything is set up correctly:
     ```shell
