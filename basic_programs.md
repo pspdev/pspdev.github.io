@@ -14,7 +14,7 @@ nav_order: 3
 
 > This is a simple Hello World program for the PSP.
 
-Click on the details below to see the code and how to build it.
+Click on view source below to see the code and how to build it.
 
 <details markdown="1">
 
@@ -52,7 +52,7 @@ This will result in an EBOOT.PBP file in the build directory. Put it in a direct
 
 > This is a simple square drawn on the PSP. It uses the native libgu library. 
 
-Click on the details below to see the code and how to build it.
+Click on view source below to see the code and how to build it.
 
 <details markdown="1">
 
@@ -91,7 +91,7 @@ More libgu examples can be found <a href="https://github.com/pspdev/pspsdk/tree/
 
 > This is a simple program to use the PSP's input functions.
 
-Click on details below to see the code and how to build it.
+Click on view source below to see the code and how to build it.
 
 <details markdown="1">
 
@@ -128,7 +128,7 @@ make
 
 > This is a simple program to use the audio of the PSP with minimal effort. It uses native audio library. 
 
-Click on the details below to see the code and how to build it.
+Click on view source below to see the code and how to build it.
 
 <details markdown="1">
 
@@ -167,7 +167,7 @@ More audiolib examples can be found <a href="https://github.com/pspdev/pspsdk/tr
 
 > SDL2 is a library which handles system specific things like input, audio and window management for you. It can also be used to render shapes and images, just like the native libgu. This will be slower, but will result in code that can be run more easily on multiple platforms. 
 
-Click on details below for the to see the code and how to build it.
+Click on view source below for the to see the code and how to build it.
 
 <details markdown="1">
 
@@ -214,7 +214,7 @@ More documentation on SDL can be found <a href="http://wiki.libsdl.org/FrontPage
 
 > This is a simple program to use the SDL2_mixer library. It handle audio playback in multimedia applications and games. It supports various audio formats(MP3/OGG).
 
-Click on details below to see the code and how to build it.
+Click on view source below to see the code and how to build it.
 
 <details markdown="1">
 
@@ -251,7 +251,7 @@ This will result in an EBOOT.PBP file in the build directory. Put it in a direct
 
 > This is a simple program to use the SDL2_ttf library. It provides functionality for rendering TrueType fonts for your PSP.
 
-Click on details below to see the code and how to build it.
+Click on view source below to see the code and how to build it.
 
 <details markdown="1">
 
