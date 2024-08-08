@@ -281,7 +281,9 @@ This will result in an EBOOT.PBP file in the build directory. Put it in a direct
 
 </details>
 
-For more samples, go [here](https://github.com/pspdev/pspsdk/tree/master/src/samples).
+## More Examples
+
+More examples on how to use specific functions offered in the PSPDEV toolchain can be found [here](https://github.com/pspdev/pspsdk/tree/master/src/samples). Additional documentation on these functions can be found [here](https://pspdev.github.io/pspsdk/).
 
 ## Debugging
 
