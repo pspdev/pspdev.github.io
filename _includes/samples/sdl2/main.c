@@ -24,7 +24,7 @@ int main(int argc, char *argv[])
         if (SDL_PollEvent(&event)) {
             switch (event.type) {
                 case SDL_QUIT:
-                    // If the close button is pressed on pc, close the program
+                    // End the loop if the programs is being closed
                     running = 0;
                     break;
                 case SDL_CONTROLLERDEVICEADDED:
@@ -51,6 +51,7 @@ int main(int argc, char *argv[])
         SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
         SDL_RenderPresent(renderer);
     }
+    SDL_Quit();
 
     return 0;
 }
