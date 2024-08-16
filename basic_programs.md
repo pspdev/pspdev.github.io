@@ -12,7 +12,7 @@ nav_order: 3
 
 ![](images/hello.png)
 
-> This is a simple Hello World program for the PSP.
+This is a simple Hello World program for the PSP.
 
 Click on view source below to see the code and how to build it.
 
@@ -50,7 +50,7 @@ This will result in an EBOOT.PBP file in the build directory. Put it in a direct
 
 ![](images/shape.png)
 
-> This is a simple square drawn on the PSP. It uses the native libgu library. 
+This is a simple square drawn on the PSP. It uses the native libgu library. 
 
 Click on view source below to see the code and how to build it.
 
@@ -89,7 +89,7 @@ More libgu examples can be found <a href="https://github.com/pspdev/pspsdk/tree/
 
 ![](images/controls.png)
 
-> This is a simple program to use the PSP's input functions.
+This is a simple program to use the PSP's input functions.
 
 Click on view source below to see the code and how to build it.
 
@@ -126,7 +126,7 @@ make
 
 ![](images/audio.png)
 
-> This is a simple program to use the audio of the PSP with minimal effort. It uses native audio library. 
+This is a simple program to use the audio of the PSP with minimal effort. It uses native audio library. 
 
 Click on view source below to see the code and how to build it.
 
@@ -163,9 +163,11 @@ More audiolib examples can be found <a href="https://github.com/pspdev/pspsdk/tr
 ## Using SDL2
 {: .fs-6 .fw-700 }
 
-![](images/sdl2.png)
+![](images/shape.png)
 
-> SDL2 is a library which handles system specific things like input, audio and window management for you. It can also be used to render shapes and images, just like the native libgu. This will be slower, but will result in code that can be run more easily on multiple platforms. 
+SDL2 is a library which handles system specific things like input, audio and window management for you. It can also be used to render shapes and images, just like the native libgu. This can be slower, but will result in code that is easier to read and can run on multiple platforms.
+
+Despite this example adding an option to close by pressing the start button, the code is much shorter. It can even be build for Linux without any further modifications.
 
 Click on view source below for the to see the code and how to build it.
 
@@ -212,7 +214,7 @@ More documentation on SDL can be found <a href="http://wiki.libsdl.org/FrontPage
 
 ![](images/sdl2_mixer.png)
 
-> This is a simple program to use the SDL2_mixer library. It handle audio playback in multimedia applications and games. It supports various audio formats(MP3/OGG).
+This is a simple program to use the SDL2_mixer library. It handle audio playback in multimedia applications and games. It supports various audio formats(MP3/OGG).
 
 Click on view source below to see the code and how to build it.
 
@@ -249,7 +251,7 @@ This will result in an EBOOT.PBP file in the build directory. Put it in a direct
 
 ![](images/sdl2_ttf.jpg)
 
-> This is a simple program to use the SDL2_ttf library. It provides functionality for rendering TrueType fonts for your PSP.
+This is a simple program to use the SDL2_ttf library. It provides functionality for rendering TrueType fonts for your PSP.
 
 Click on view source below to see the code and how to build it.
 

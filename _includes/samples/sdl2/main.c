@@ -20,17 +20,22 @@ int main(int argc, char *argv[])
     int running = 1;
     SDL_Event event;
     while (running) { 
+        // Process input
         if (SDL_PollEvent(&event)) {
             switch (event.type) {
                 case SDL_QUIT:
+                    // If the close button is pressed on pc, close the program
                     running = 0;
                     break;
                 case SDL_CONTROLLERDEVICEADDED:
+                    // Connect a controller when it is connected
                     SDL_GameControllerOpen(event.cdevice.which);
                     break;
                 case SDL_CONTROLLERBUTTONDOWN:
-                    if(event.cbutton.button == SDL_CONTROLLER_BUTTON_START)
+                    if(event.cbutton.button == SDL_CONTROLLER_BUTTON_START) {
+                        // Close the program if start is pressed
                         running = 0;
+                    }
                     break;
             }
         }
