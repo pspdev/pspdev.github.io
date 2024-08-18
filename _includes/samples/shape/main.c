@@ -12,6 +12,25 @@ PSP_MAIN_THREAD_ATTR(THREAD_ATTR_VFPU | THREAD_ATTR_USER);
 
 char list[0x20000] __attribute__((aligned(64)));
 
+int exit_callback(int arg1, int arg2, void *common) {
+    sceKernelExitGame();
+    return 0;
+}
+
+int callback_thread(SceSize args, void *argp) {
+    int cbid = sceKernelCreateCallback("Exit Callback", exit_callback, NULL);
+    sceKernelRegisterExitCallback(cbid);
+    sceKernelSleepThreadCB();
+    return 0;
+}
+
+int setup_callbacks(void) {
+    int thid = sceKernelCreateThread("update_thread", callback_thread, 0x11, 0xFA0, 0, 0);
+    if(thid >= 0)
+        sceKernelStartThread(thid, 0, 0);
+    return thid;
+}
+
 void initGu(){
     sceGuInit();
 
@@ -67,8 +86,8 @@ void drawRect(float x, float y, float w, float h) {
     vertices[0].x = x;
     vertices[0].y = y;
 
-    vertices[1].x = y + w;
-    vertices[1].y = x + h;
+    vertices[1].x = x + w;
+    vertices[1].y = y + h;
 
     sceGuColor(0xFF0000FF); // Red, colors are ABGR
     sceGuDrawArray(GU_SPRITES, GU_TEXTURE_16BIT | GU_VERTEX_16BIT | GU_TRANSFORM_2D, 2, 0, vertices);
@@ -76,12 +95,17 @@ void drawRect(float x, float y, float w, float h) {
 
 
 int main() {
+    // Make exiting with the home button possible
+    setup_callbacks();
+
+    // Setup the library used for rendering
     initGu();
+
     int running = 1;
     while(running){
         startFrame();
 
-        drawRect(32, 32, 64, 64);
+        drawRect(216, 96, 34, 64);
 
         endFrame();
     }
