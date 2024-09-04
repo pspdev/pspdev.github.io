@@ -15,7 +15,7 @@ The PSPDEV toolchain requires a couple of dependencies to be installed before us
 Once brew is installed, run the following command from a terminal to install the dependencies:
 
 ```shell
-brew install cmake pkgconf gnu-sed bash openssl libtool libarchive gettext texinfo bison flex isl gsl gmp mpfr
+brew install cmake pkgconf gnu-sed bash openssl libtool libmpc libarchive gettext texinfo bison flex isl gsl gmp mpfr
 ```
 
 ## Toolchain 
