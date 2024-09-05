@@ -2,7 +2,7 @@
 #include <pspgu.h>
 #include <pspdisplay.h>
 
-PSP_MODULE_INFO("gutest", 0, 1, 0);
+PSP_MODULE_INFO("shape", 0, 1, 0);
 PSP_MAIN_THREAD_ATTR(THREAD_ATTR_VFPU | THREAD_ATTR_USER);
 
 #define BUFFER_WIDTH 512
@@ -11,9 +11,10 @@ PSP_MAIN_THREAD_ATTR(THREAD_ATTR_VFPU | THREAD_ATTR_USER);
 #define SCREEN_HEIGHT BUFFER_HEIGHT
 
 char list[0x20000] __attribute__((aligned(64)));
+int running;
 
 int exit_callback(int arg1, int arg2, void *common) {
-    sceKernelExitGame();
+    running = 0;
     return 0;
 }
 
@@ -101,7 +102,7 @@ int main() {
     // Setup the library used for rendering
     initGu();
 
-    int running = 1;
+    running = 1;
     while(running){
         startFrame();
 
