@@ -84,6 +84,45 @@ More libgu examples can be found <a href="https://github.com/pspdev/pspsdk/tree/
 
 </details>
 
+## Drawing Sprites
+{: .fs-6 .fw-700 }
+
+![](images/sprite.png)
+
+This is a sprite drawn on the PSP. It uses the native libgu library to draw and the stb_image library to load the image. stb_image supports a lot of image formats. For the Playstation Portable it is important that the width of images used is a power of 2. In this case 16, but 32, 64, 128 and 256 will also work. This limitation does not exist for the example with SDL2 below.
+
+Click on view source below to see the code and how to build it.
+
+<details markdown="1">
+
+<summary>View source</summary>
+
+**main.c**
+
+```c
+{% include samples/sprite/main.c %}
+```
+
+**CMakeLists.txt**
+
+```cmake
+{% include samples/sprite/CMakeLists.txt %}
+```
+
+Building can be done with:
+
+```shell
+mkdir build && cd build
+psp-cmake ..
+make
+```
+
+This will result in an EBOOT.PBP file in the build directory. Put it in a directory in ms0:/PSP/GAME/ and add the grass image file, download it from <a href="/resources/grass.png">here</a>, to be able to run it on the PSP. 
+
+More libgu examples can be found <a href="https://github.com/pspdev/pspsdk/tree/master/src/samples/gu">here</a>.
+
+</details>
+
 ## Controller
 {: .fs-6 .fw-700 }
 
@@ -209,6 +248,56 @@ More documentation on SDL can be found <a href="http://wiki.libsdl.org/FrontPage
 
 </details>
 
+## Using SDL2 Image
+{: .fs-6 .fw-700 }
+
+![](images/sprite.png)
+
+SDL2 image is a library which adds support for multiple image formats to SDL2. This example results in the same image as the sprite example using libgu above. Here the limitation of the image width being a power 2 does not apply.
+
+Despite this example adding an option to close by pressing the start button, the code is much shorter. It can even be build for Linux without any further modifications.
+
+Click on view source below to see the code and how to build it.
+
+<details markdown="1">
+
+<summary>View source</summary>
+
+**main.c**
+
+```c
+{% include samples/sdl2_image/main.c %}
+```
+
+**CMakeLists.txt**
+
+```cmake
+{% include samples/sdl2_image/CMakeLists.txt %}
+```
+
+Building can be done with:
+
+```shell
+mkdir build && cd build
+psp-cmake ..
+make
+```
+
+This will result in an EBOOT.PBP file in the build directory. Put it in a directory in ms0:/PSP/GAME/ and add the grass image file, download it from <a href="/resources/grass.png">here</a>, to be able to run it on the PSP. 
+
+If you have sdl2 sdl2-image dev packages and a compiler installed this code will also build on Linux for Linux by running:
+
+```shell
+mkdir build && cd build
+cmake ..
+make
+```
+
+Documentation for SDL2_image can be found <a href="https://wiki.libsdl.org/SDL2_image/FrontPage">here</a>.
+
+</details>
+
+
 ## Using SDL2 mixer
 {: .fs-6 .fw-700 }
 
@@ -243,6 +332,8 @@ make
 ```
 
 This will result in an EBOOT.PBP file in the build directory. Put it in a directory in ms0:/PSP/GAME/ and you need an audio file to test the program, download it from <a href="/resources/test.ogg">here</a>. Put it in a directory in ms0:/MUSIC/ and then rename the audio file same as name on your *MUSIC_PATH* macro in your C code and the PSP can run it.
+
+Documentation for SDL2_mixer can be found <a href="https://wiki.libsdl.org/SDL2_mixer/FrontPage">here</a>.
 
 </details>
 
@@ -280,6 +371,8 @@ make
 ```
 
 This will result in an EBOOT.PBP file in the build directory. Put it in a directory in ms0:/PSP/GAME/ and you need a font file to test the program, download it from <a href="/resources/Pacifico.ttf">here</a>. Put it in a directory same as EBOOT.PBP and the PSP can run it.
+
+Documentation for SDL2_ttf can be found <a href="https://wiki.libsdl.org/SDL2_ttf/FrontPage">here</a>.
 
 </details>
 
