@@ -66,6 +66,7 @@ psp-pacman -S library
 ```
 
 ## Updating the Toolchain
+{: .fs-6 .fw-700 }
 
 A new version of the PSPDEV toolchain is released at least once a month, so updating should be done regularly if you want to benefit from new features and bug fixes.
 
