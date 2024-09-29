@@ -58,7 +58,7 @@ int main(int argc, char *argv[])
         // Clear the screen
         SDL_RenderClear(renderer);
 
-        // Draw a red square
+        // Draw the 'grass' sprite
         SDL_RenderCopy(renderer, sprite, NULL, &sprite_rect);
 
         // Draw everything on a white background
