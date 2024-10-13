@@ -84,3 +84,6 @@ _includes/samples/sdl2/sdl2
 _includes/samples/sdl2_mixer/sdl2_mixer
 _includes/samples/sdl2_ttf/sdl2_ttf
 _includes/samples/shape/shape
+
+# Editor files
+.vscode/
