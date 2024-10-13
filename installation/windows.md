@@ -48,22 +48,22 @@ Installing the PSPDEV toolchain itself can be done with the following steps:
     ```shell
     wget https://github.com/pspdev/pspdev/releases/latest/download/pspdev-ubuntu-latest-x86_64.tar.gz
     ```
-3. Extract the archive using:
+2. Extract the archive using:
     ```shell
     tar -xvf pspdev-ubuntu-latest-x86_64.tar.gz
     ```
-5. To make the toolchain usable, some environment variables need to be set. The first step in doing so it to open the `~/.bashrc` file with the `nano` text editor using the following command from an Ubuntu terminal:
+3. To make the toolchain usable, some environment variables need to be set. The first step in doing so it to open the `~/.bashrc` file with the `nano` text editor using the following command from an Ubuntu terminal:
     ```shell
     nano ~/.bashrc
     ```
-5. Add the following lines at the bottom of the file in the text editor:
+4. Add the following lines at the bottom of the file in the text editor:
     ```shell
     export PSPDEV="$HOME/pspdev"
     export PATH="$PATH:$PSPDEV/bin"
     ```
-6. Now save and exit by pressing `Ctrl`+`X`, then `Y` and then enter/return.
-7. Close the current Ubuntu terminal and open a new one.
-8. From the new Ubuntu terminal, run the following command to confirm everything is set up correctly:
+5. Now save and exit by pressing `Ctrl`+`X`, then `Y` and then enter/return.
+6. Close the current Ubuntu terminal and open a new one.
+7. From the new Ubuntu terminal, run the following command to confirm everything is set up correctly:
     ```shell
     psp-config --pspdev-path
     ```
