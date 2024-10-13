@@ -5,10 +5,10 @@ nav_exclude: true
 ---
 
 # Installation on Windows
-{: .fs-10 .fw-700 .text-center }
+{: .fs-8 .fw-700 .text-center }
 
 ## Windows Subsystem for Linux (WSL)
-{: .fs-4 .fw-700 }
+{: .fs-6 .fw-700 }
 
 On Windows the PSPDEV toolchain is run on Ubuntu running on Microsoft's WSL. This is very easy to set up and will offer us the full power of Linux from a Windows machine.
 

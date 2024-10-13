@@ -5,7 +5,7 @@ nav_exclude: true
 ---
 
 # Installation on Fedora
-{: .fs-10 .fw-700 .text-center }
+{: .fs-8 .fw-700 .text-center }
 
 ## Dependencies
 {: .fs-6 .fw-700 }

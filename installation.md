@@ -5,7 +5,7 @@ nav_order: 2
 ---
 
 # Installation
-{: .fs-10 .fw-700 .text-center }
+{: .fs-8 .fw-700 .text-center }
 
 Pick the installation guide for your system:
 
