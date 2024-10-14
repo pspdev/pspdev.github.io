@@ -12,7 +12,7 @@ nav_exclude: true
 
 Docker can be used on almost every platform and offers and easy way to use the PSPDEV toolchain with very little setup.
 
-To use it, instatll Docker itself using the instructions [here](https://docs.docker.com/engine/install/).
+To use it, install Docker itself using the instructions [here](https://docs.docker.com/engine/install/).
 
 ## Toolchain 
 {: .fs-6 .fw-700 }
