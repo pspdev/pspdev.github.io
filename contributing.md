@@ -10,6 +10,7 @@ nav_order: 7
 There are many ways to contribute to our efforts to make developing homebrew for the PlayStation Portable (PSP) easier for everyone. The first step would be to [join our Discord](https://discord.gg/bePrj9W) or use our [GitHub Discussions](https://github.com/pspdev/pspdev/discussions)!
 
 ## Ways to contribute
+{: .fs-6 .fw-700 }
 
 Before making any contribution, it's best to talk about what you want to do on [Discord](https://discord.gg/bePrj9W). After that, here are some places you can look to contribute:
 
@@ -21,6 +22,7 @@ Before making any contribution, it's best to talk about what you want to do on [
 Pull requests are always welcome!
 
 ## Where can I find the code?
+{: .fs-6 .fw-700 }
 
 The PSPDEV toolchain is build using quite a few different repositories which each add their own piece to the system. If you just want to build everything at once, the [pspdev repository](https://github.com/pspdev/pspdev) is the place to go.
 
