@@ -2,12 +2,14 @@
 #include <pspctrl.h>
 #include <pspdisplay.h>
 #include <pspgu.h>
+#include <memory.h>
 
 #define STB_IMAGE_IMPLEMENTATION
+#define STBI_NO_THREAD_LOCALS
 #include <stb_image.h>
 
 PSP_MODULE_INFO("texture", 0, 1, 0);
-PSP_MAIN_THREAD_ATTR(THREAD_ATTR_VFPU | THREAD_ATTR_USER);
+PSP_MAIN_THREAD_ATTR(THREAD_ATTR_USER);
 
 #define BUFFER_WIDTH 512
 #define BUFFER_HEIGHT 272
@@ -31,7 +33,6 @@ char list[0x20000] __attribute__((aligned(64)));
 
 void * fbp0;
 void * fbp1;
-Texture texture;
 int running;
 
 int exit_callback(int arg1, int arg2, void *common) {
@@ -97,7 +98,18 @@ void endFrame(){
     sceGuSwapBuffers();
 }
 
-void drawTexture(float x, float y, float w, float h) {
+Texture * loadTexture(const char * filename) {
+    Texture * texture = (Texture *) calloc(1, sizeof(Texture));
+
+    texture->data = (uint32_t *) stbi_load("grass.png", &(texture->width), &(texture->height), NULL, STBI_rgb_alpha);
+
+    // Make sure the texture cache is reloaded
+    sceKernelDcacheWritebackInvalidateAll();
+
+    return texture;
+}
+
+void drawTexture(Texture * texture, float x, float y, float w, float h) {
     static TextureVertex vertices[2];
 
     vertices[0].u = 0.0f;
@@ -116,7 +128,7 @@ void drawTexture(float x, float y, float w, float h) {
 
     sceGuTexMode(GU_PSM_8888, 0, 0, GU_FALSE);
     sceGuTexFunc(GU_TFX_REPLACE, GU_TCC_RGB);
-    sceGuTexImage(0, texture.width, texture.height, texture.width, texture.data);
+    sceGuTexImage(0, texture->width, texture->height, texture->width, texture->data);
 
     sceGuEnable(GU_TEXTURE_2D); 
     sceGuDrawArray(GU_SPRITES, GU_COLOR_8888 | GU_TEXTURE_32BITF | GU_VERTEX_32BITF | GU_TRANSFORM_2D, 2, 0, vertices);
@@ -125,18 +137,29 @@ void drawTexture(float x, float y, float w, float h) {
 
 
 int main() {
-    initGu();
+    // Make exiting with the home button possible
+    setup_callbacks();
 
-    texture.data = (uint32_t *) stbi_load("grass.png", &texture.width, &texture.height, NULL, 4);
+    // Create a texture from a file
+    Texture * texture = loadTexture("grass.png");
+
+    // Start rendering
+    initGu();
 
     running = 1;
     while(running){
         startFrame();
 
-        drawTexture(SCREEN_WIDTH / 2 - 8, SCREEN_HEIGHT / 2 - 8, 16, 16);
+        drawTexture(texture, SCREEN_WIDTH / 2 - texture->width / 2, SCREEN_HEIGHT / 2 - texture->height / 2, texture->width, texture->height);
 
         endFrame();
     }
+    // Stop rendering
+    endGu();
+
+    // Clean up
+    stbi_image_free(texture->data);
+    free(texture);
 
     return 0;
 }
