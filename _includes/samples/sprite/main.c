@@ -5,7 +5,6 @@
 #include <memory.h>
 
 #define STB_IMAGE_IMPLEMENTATION
-#define STBI_NO_THREAD_LOCALS
 #include <stb_image.h>
 
 PSP_MODULE_INFO("texture", 0, 1, 0);
