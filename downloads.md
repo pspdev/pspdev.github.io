@@ -7,7 +7,7 @@ nav_order: 6
 # Downloads
 {: .fs-8 .fw-700 .text-center }
 
-Downloading the latest version of the PSPDEV toolchain for your system:
+To download the latest version of the PSPDEV toolchain click on the link for your system:
 
 - [Windows/Ubuntu/Debian](https://github.com/pspdev/pspdev/releases/latest/download/pspdev-ubuntu-latest-x86_64.tar.gz)
 - [MacOS (arm64)](https://github.com/pspdev/pspdev/releases/latest/download/pspdev-macos-latest-arm64.tar.gz)
