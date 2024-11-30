@@ -9,3 +9,8 @@ color_scheme: dark
 exclude:
   - README.md
   - Gemfile.lock
+
+nav_external_links:
+  - title: "PSPDEV's package index"
+    url: "https://pspdev.github.io/psp-packages/"
+    opens_in_new_tab: true
