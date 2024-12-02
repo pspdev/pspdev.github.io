@@ -11,6 +11,9 @@ exclude:
   - Gemfile.lock
 
 nav_external_links:
+  - title: "PSPSDK's documentation"
+    url: "https://pspdev.github.io/pspsdk/"
+    opens_in_new_tab: true
   - title: "PSPDEV's package index"
     url: "https://pspdev.github.io/psp-packages/"
     opens_in_new_tab: true
