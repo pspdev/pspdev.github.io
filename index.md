@@ -26,8 +26,6 @@ Your code is not working? [Go here](debugging.html).
 {: .fs-5 }
 
 Want some simple tips and trick to improve your experience? [Go here](tips_tricks.html).
-
-Need some in-depth knowledge? [Go here](documentation.html).
 {: .fs-5 }
 
 # Contact Us
