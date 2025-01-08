@@ -1,7 +1,7 @@
 ---
 title: Tips and Tricks
 layout: home
-nav_order: 5
+nav_order: 6
 ---
 
 # Tips and Tricks
