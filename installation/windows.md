@@ -22,9 +22,11 @@ When this is done, restart your computer. Afterwards Ubuntu can be selected from
 
 From now on the Ubuntu shell will be used when running commands going forward.
 
-Files in Ubuntu can be accessed through a network share. In `This Computer` right click on the background and select `Map network drive`. Set the folder to `\\wsl$` to make it easily accessible.
+**Note:** You can open an Ubuntu terminal in a specific folder by holding shift and clicking the right mouse button on the background in the file explorer and selecting `Open Linux shell here`: 
 
-Alternatively, you can open an Ubuntu terminal in a specific directory by holding shift and clicking the right mouse button on the background in the file browser and selecting `Open Linux shell here`.
+![](../images/windows-open-linux-shell.png)
+
+This can be useful when building a specific project.
 
 ## Dependencies
 {: .fs-6 .fw-700 }
