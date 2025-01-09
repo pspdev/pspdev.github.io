@@ -7,7 +7,7 @@ nav_order: 3
 # How to use
 {: .fs-8 .fw-700 .text-center }
 
-This page will describe how to use the PSPDEV toolchain to build a basic program for the Playstation Portable(PSP), including screenshots. The screenshots will mainly be for Windows users, but the steps will not be much different for other operating systems, so you should be able to follow along.
+This page will describe how to use the PSPDEV toolchain to build a basic program for the Playstation Portable (PSP), including screenshots. The screenshots will mainly be for Windows users, but the steps will not be much different for other operating systems, so you should be able to follow along.
 
 Before going through this guide, make sure to have followed the [installation instructions](installation.html) first.
 
@@ -21,7 +21,7 @@ While using Visual Studio Code, you may be asked to install useful plugins, whic
 # Creating a project
 {: .fs-6 .fw-700 }
 
-When you open Visual Studio Code, you'll be greeted by the welcome screen. Simply click the `Open Folder...` link on it or select this option from the `File` menu to get started. Then create a new directory where you want your project to be, then click on it and click . See the images below:
+When you open Visual Studio Code, you'll be greeted by the welcome screen. Simply click the `Open Folder...` link on it or select this option from the `File` menu to get started:
 
 ![](images/vscode-welcome.png)
 
@@ -58,12 +58,12 @@ Add the following lines to `CMakeLists.txt`:
 {% include samples/hello/CMakeLists.txt %}
 ```
 
-The `CMakeLists.txt` file is used for CMake, which allows you to build the code. It contains which files add to the program in the `add_executable` function and which libraries to link to using the `target_link_libraries` function. In this case we just link to the libraries required to write text to the screen. The `create_pbp_file` function is used to create an `EBOOT.PBP` file, so we can run on the program on the PSP.
+The `CMakeLists.txt` file is used for CMake, which allows you to build the code. It contains which files to add to the program in the `add_executable` function and which libraries to link to using the `target_link_libraries` function. In this case we just link to the libraries required to write text to the screen. The `create_pbp_file` function is used to create an `EBOOT.PBP` file, so we can run on the program on the PSP.
 
 # Building the code
 {: .fs-6 .fw-700 }
 
-For building a terminal is used with a couple of short commands. To open a terminal in Visual Studio Code, select `Terminal` in the top bar and select `New Terminal`:
+For building, a terminal is used with a couple of short commands. To open a terminal in Visual Studio Code, select `Terminal` in the top bar and select `New Terminal`:
 
 ![](images/vscode-open-terminal.png)
 

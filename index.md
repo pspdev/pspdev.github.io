@@ -19,10 +19,13 @@ An open source toolchain for PlayStation Portable (PSP) development. It allows y
 Want to install the PSPDEV toolchain? [Go here](installation.html).
 {: .fs-5 }
 
-Want to get started, but don't what to build? [Go here](basic_programs.html).
+Don't know how to get started? [Go here](how_to_use.html).
 {: .fs-5 }
 
-Your code is not working? [Go here](debugging.html).
+Need some examples for what you can do with the PSPDEV toolchain? [Go here](basic_programs.html).
+{: .fs-5 }
+
+Is your code is not working? [Go here](debugging.html).
 {: .fs-5 }
 
 Want some simple tips and trick to improve your experience? [Go here](tips_tricks.html).
