@@ -71,4 +71,4 @@ Installing the PSPDEV toolchain itself can be done with the following steps:
     ```
     If everything is set up correctly, the path of the PSPDEV toolchain installation will be shown.
 
-That's it, now the PSPDEV toolchain can be used to build PSP software. Check out the [Basic Programs](../basic_programs.html) page to for examples on what you can do with it.
+That's it, now the PSPDEV toolchain can be used to build PSP software. Check out the [How to Use](../how_to_use.html) page for a guide on how to do so.
