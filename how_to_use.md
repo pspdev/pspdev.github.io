@@ -50,7 +50,7 @@ Lets add some very basic code to the file:
 
 This code will print "Hello World!" to the screen each frame. This may seem complex at first, but the `exit_callback`, `callback_thread` and `setup_callbacks` are just there to make the home button work and can be reused for any project. They only have to be run once. The `PSP_MODULE_INFO` is required and just contains the name of the software. `PSP_MAIN_THREAD_ATTR` will be set like this for every program. Only the content of the `main` function really matters here.
 
-Now add an aditional file called `CMakLists.txt`. Make sure the case matches, `cmakelists.txt` is not valid.
+Now add an aditional file called `CMakeLists.txt`. Make sure the case matches, `cmakelists.txt` is not valid.
 
 Add the following lines to `CMakeLists.txt`:
 
