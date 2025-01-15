@@ -68,12 +68,12 @@ psp-pacman -S library
 ## Managing Licenses
 {: .fs-6 .fw-700 }
 
-Every project made with the PSPDEV toolchain will import at least some libraries, each with their own license. Everything bundled is free to use, but some libraries will ask you to share their license with your project or in rare cases give users access to your code to respect their licenses. The `psp-create-license-directory` tool can be used to easily collect the licenses that apply to your project, so you can comply with them.
+Every project made with the PSPDEV toolchain will import at least some libraries, each with their own license. Everything bundled is free to use, but some libraries will ask you to share their license with your project or in rare cases give users access to your code to respect their licenses. The `psp-create-license-directory` tool can be used to easily collect the licenses that apply to your project, so you can comply with them and ship them with your project.
 
 To create a directory with a copy of the licenses that are always used in project made with the PSPDEV toolchain use the following command:
 
 ```
-psp-create-license-directory 
+psp-create-license-directory
 ```
 
 For any library you added, for example `sdl2` or `jsoncpp`, you can add the licenses by adding the library names to the command:
