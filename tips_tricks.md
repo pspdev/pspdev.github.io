@@ -12,7 +12,7 @@ Here some useful tips for developing for the PSP.
 ## Making Programs Work on Unmodded PSPs
 {: .fs-6 .fw-700 }
 
-The PSPDEV toolchain contains tools for making your program work on unmodded PSPs. This can be done by running psp-cmake with some additional commands when building like so:
+The PSP SDK contains tools for making your program work on unmodded PSPs. This can be done by running psp-cmake with some additional commands when building like so:
 
 ```shell
 mkdir build && cd build
@@ -43,7 +43,7 @@ This makes sure that the other systems supported by the program keeps working th
 ## Managing Libraries
 {: .fs-6 .fw-700 }
 
-There are many C and C++ libraries available within the PSPDEV toolchain and most of them will be installed by default. Libraries are where most of the updates within the toolchain happen and they can be updated manually without redownload the toolchain using `psp-pacman`.
+There are many C and C++ libraries available within the PSP SDK and most of them will be installed by default. Libraries are where most of the updates within the SDK happen and they can be updated manually without redownload the SDK using `psp-pacman`.
 
 Updating the libraries installed can be done with the following command:
 
@@ -68,9 +68,9 @@ psp-pacman -S library
 ## Managing Licenses
 {: .fs-6 .fw-700 }
 
-Every project made with the PSPDEV toolchain will import at least some libraries, each with their own license. Everything bundled is free to use, but some libraries will ask you to share their license with your project or in rare cases give users access to your code to respect their licenses. The `psp-create-license-directory` tool can be used to easily collect the licenses that apply to your project, so you can comply with them and ship them with your project.
+Every project made with the PSP SDK will import at least some libraries, each with their own license. Everything bundled is free to use, but some libraries will ask you to share their license with your project or in rare cases give users access to your code to respect their licenses. The `psp-create-license-directory` tool can be used to easily collect the licenses that apply to your project, so you can comply with them and ship them with your project.
 
-To create a directory with a copy of the licenses that are always used in project made with the PSPDEV toolchain use the following command:
+To create a directory with a copy of the licenses that are always used in project made with the PSP SDK use the following command:
 
 ```
 psp-create-license-directory
@@ -91,6 +91,6 @@ psp-create-license-directory -l
 ## Updating the Toolchain
 {: .fs-6 .fw-700 }
 
-A new version of the PSPDEV toolchain is released at least once a month, so updating should be done regularly if you want to benefit from new features and bug fixes.
+A new version of the PSP SDK is released at least once a month, so updating should be done regularly if you want to benefit from new features and bug fixes.
 
-To update the toolchain, simply follow the installation instruction for your system on the [Installation](installation.html) page. Installing the dependencies can be skipped.
+To update the SDK, simply follow the installation instruction for your system on the [Installation](installation.html) page. Installing the dependencies can be skipped.

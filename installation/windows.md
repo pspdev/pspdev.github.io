@@ -10,7 +10,7 @@ nav_exclude: true
 ## Windows Subsystem for Linux (WSL)
 {: .fs-6 .fw-700 }
 
-On Windows the PSPDEV toolchain is run on Ubuntu running on Microsoft's WSL. This is very easy to set up and will offer us the full power of Linux from a Windows machine.
+On Windows the PSP SDK is run on Ubuntu running on Microsoft's WSL. This is very easy to set up and will offer us the full power of Linux from a Windows machine.
 
 To set up WSL with Ubuntu in it run the following commands in a Powershell window started as administrator (right click run as administrator on Powershell in the start menu):
 
@@ -31,7 +31,7 @@ This can be useful when building a specific project.
 ## Dependencies
 {: .fs-6 .fw-700 }
 
-The PSPDEV toolchain requires a couple of dependencies to be installed before use. To install them, run the following command from an Ubuntu terminal:
+The PSP SDK requires a couple of dependencies to be installed before use. To install them, run the following command from an Ubuntu terminal:
 
 ```shell
 sudo apt-get update
@@ -44,7 +44,7 @@ sudo apt-get install build-essential cmake pkgconf libreadline8 libusb-0.1 libgp
 ## Toolchain 
 {: .fs-6 .fw-700 }
 
-Installing the PSPDEV toolchain itself can be done with the following steps:
+Installing the PSP SDK itself can be done with the following steps:
 
 1. In a fresh WSL Session download the Toolchain Archive using the following command:
     ```shell
@@ -69,6 +69,6 @@ Installing the PSPDEV toolchain itself can be done with the following steps:
     ```shell
     psp-config --pspdev-path
     ```
-    If everything is set up correctly, the path of the PSPDEV toolchain installation will be shown.
+    If everything is set up correctly, the path of the PSP SDK installation will be shown.
 
-That's it, now the PSPDEV toolchain can be used to build PSP software. Check out the [How to Use](../how_to_use.html) page for a guide on how to do so.
+That's it, now the PSP SDK can be used to build PSP software. Check out the [How to Use](../how_to_use.html) page for a guide on how to do so.

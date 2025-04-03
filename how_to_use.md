@@ -7,7 +7,7 @@ nav_order: 3
 # How to use
 {: .fs-8 .fw-700 .text-center }
 
-This page will describe how to use the PSPDEV toolchain to build a basic program for the Playstation Portable (PSP), including screenshots. The screenshots will mainly be for Windows users, but the steps will not be much different for other operating systems, so you should be able to follow along.
+This page will describe how to use the PSP SDK to build a basic program for the Playstation Portable (PSP), including screenshots. The screenshots will mainly be for Windows users, but the steps will not be much different for other operating systems, so you should be able to follow along.
 
 Before going through this guide, make sure to have followed the [installation instructions](installation.html) first.
 
@@ -67,7 +67,7 @@ For building, a terminal is used with a couple of short commands. To open a term
 
 ![](images/vscode-open-terminal.png)
 
-This will open a terminal at the bottom of the screen. On Windows, this will be a powershell window, but the PSPDEV toolchain is installed in WSL. To open a WSL terminal instead, click on the arrow next to the `+` sign at the right side an select `Ubuntu (WSL)`:
+This will open a terminal at the bottom of the screen. On Windows, this will be a powershell window, but the PSP SDK is installed in WSL. To open a WSL terminal instead, click on the arrow next to the `+` sign at the right side an select `Ubuntu (WSL)`:
 
 ![](images/vscode-ubuntu-shell.png)
 

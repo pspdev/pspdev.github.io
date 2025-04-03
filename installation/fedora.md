@@ -10,7 +10,7 @@ nav_exclude: true
 ## Dependencies
 {: .fs-6 .fw-700 }
 
-The PSPDEV toolchain requires a couple of dependencies to be installed before use. To install them, run the following command from a terminal:
+The PSP SDK requires a couple of dependencies to be installed before use. To install them, run the following command from a terminal:
 
 ```shell
 sudo dnf -y install @development-tools cmake bsdtar libusb-compat-0.1 gpgme fakeroot xz nano
@@ -19,7 +19,7 @@ sudo dnf -y install @development-tools cmake bsdtar libusb-compat-0.1 gpgme fake
 ## Toolchain 
 {: .fs-6 .fw-700 }
 
-Installing the PSPDEV toolchain itself can be done with the following steps:
+Installing the PSP SDK itself can be done with the following steps:
 
 1. Download [the latest version of the toolchain here](https://github.com/pspdev/pspdev/releases/latest/download/pspdev-fedora-latest.tar.gz).
 2. Extract the downloaded archive into your home directory, resulting in `/home/YOURUSERNAME/pspdev` being created.
@@ -39,4 +39,4 @@ Installing the PSPDEV toolchain itself can be done with the following steps:
     psp-config --pspdev-path
     ```
 
-That's it, now the PSPDEV toolchain can be used to build PSP software. Check out the [How to Use](../how_to_use.html) page for a guide on how to do so.
+That's it, now the PSP SDK can be used to build PSP software. Check out the [How to Use](../how_to_use.html) page for a guide on how to do so.
