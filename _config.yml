@@ -1,5 +1,5 @@
 title: PSPDEV
-description: "PSP SDK: Development tools for the Playstation Portable"
+description: "An open source SDK for PlayStation Portable (PSP) development. It allows you to make apps and games for both custom and official firmwares. This is a community project made by enthusiasts, it is in no way affiliated with Sony."
 theme: just-the-docs
 url: "https://pspdev.github.io"
 
@@ -22,7 +22,7 @@ nav_external_links:
 back_to_top: true
 back_to_top_text: "Back to top"
 
-footer_content: 'Copyright &copy; 2025 PSPDEV. Distributed by <a href="https://github.com/pspdev/pspdev.github.io/blob/master/LICENSE">The Unlicense.</a>'
+footer_content: 'Copyright &copy; 2025, PSPDEV. Distributed by <a href="https://github.com/pspdev/pspdev.github.io/blob/master/LICENSE">The Unlicense.</a>'
 
 # Footer "Edit this page on GitHub" link text
 gh_edit_link: true # show or hide edit this page link
