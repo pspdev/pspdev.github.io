@@ -379,7 +379,7 @@ Documentation for SDL2_ttf can be found <a href="https://wiki.libsdl.org/SDL2_tt
 ## More Examples
 {: .fs-6 .fw-700 }
 
-More examples on how to use specific functions offered in the PSPDEV toolchain can be found [here](https://github.com/pspdev/pspsdk/tree/master/src/samples). Additional documentation on these functions can be found [here](https://pspdev.github.io/pspsdk/).
+More examples on how to use specific functions offered in the PSP SDK can be found [here](https://github.com/pspdev/pspsdk/tree/master/src/samples). Additional documentation on these functions can be found [here](https://pspdev.github.io/pspsdk/).
 
 ## Debugging
 {: .fs-6 .fw-700 }

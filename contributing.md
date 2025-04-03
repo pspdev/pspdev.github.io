@@ -24,7 +24,7 @@ Pull requests are always welcome!
 ## Where can I find the code?
 {: .fs-6 .fw-700 }
 
-The PSPDEV toolchain is build using quite a few different repositories which each add their own piece to the system. If you just want to build everything at once, the [pspdev repository](https://github.com/pspdev/pspdev) is the place to go.
+The PSP SDK is build using quite a few different repositories which each add their own piece to the system. If you just want to build everything at once, the [pspdev repository](https://github.com/pspdev/pspdev) is the place to go.
 
 There are automated builds, which build each part individually if there are changes. Here is a basic image showing the build order:
 

@@ -10,7 +10,7 @@ nav_exclude: true
 ## Docker
 {: .fs-6 .fw-700 }
 
-Docker can be used on almost every platform and offers and easy way to use the PSPDEV toolchain with very little setup.
+Docker can be used on almost every platform and offers and easy way to use the PSP SDK with very little setup.
 
 To use it, install Docker itself using the instructions [here](https://docs.docker.com/engine/install/).
 
@@ -31,4 +31,4 @@ docker run -ti -v .:/source pspdev/pspdev:latest
 
 After that you can run `cd /source` to navigate to the code.
 
-That's it, now the PSPDEV toolchain can be used to build PSP software. Check out the [Basic Programs](../basic_programs.html) page to for examples on what you can do with it.
+That's it, now the PSP SDK can be used to build PSP software. Check out the [Basic Programs](../basic_programs.html) page to for examples on what you can do with it.
