@@ -10,7 +10,7 @@ nav_exclude: true
 ## Dependencies
 {: .fs-6 .fw-700 }
 
-The PSPDEV toolchain requires a couple of dependencies to be installed before use. Installing them can be done using [brew](https://brew.sh/).
+The PSP SDK requires a couple of dependencies to be installed before use. Installing them can be done using [brew](https://brew.sh/).
 
 Once brew is installed, run the following command from a terminal to install the dependencies:
 
@@ -21,7 +21,7 @@ brew install cmake pkgconf gnu-sed bash openssl libtool libmpc libarchive gettex
 ## Toolchain 
 {: .fs-6 .fw-700 }
 
-Installing the PSPDEV toolchain itself can be done with the following steps:
+Installing the PSP SDK itself can be done with the following steps:
 
 1. Download the latest version of the toolchain for your system here:
     - [arm64](https://github.com/pspdev/pspdev/releases/latest/download/pspdev-macos-latest-arm64.tar.gz) for M1 or newer CPUs.
@@ -47,4 +47,4 @@ Installing the PSPDEV toolchain itself can be done with the following steps:
     psp-config --pspdev-path
     ```
 
-That's it, now the PSPDEV toolchain can be used to build PSP software. Check out the [How to Use](../how_to_use.html) page for a guide on how to do so.
+That's it, now the PSP SDK can be used to build PSP software. Check out the [How to Use](../how_to_use.html) page for a guide on how to do so.

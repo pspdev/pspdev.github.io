@@ -81,7 +81,7 @@ The information received from `psp-addr2line` will be limited and not always use
 ## Using a Debugger
 {: .fs-6 .fw-700 }
 
-When using `psp-addr2line` is not enough to figure out what is going on, the best way to debug will be by using an actual debugger called GDB, which comes bundled with the PSPDEV toolchain as the `psp-gdb` command. PSPLINK allows this debugger to connect directly to the PSP.
+When using `psp-addr2line` is not enough to figure out what is going on, the best way to debug will be by using an actual debugger called GDB, which comes bundled with the PSP SDK as the `psp-gdb` command. PSPLINK allows this debugger to connect directly to the PSP.
 
 ### Preparation
 {: .fs-4 .fw-700 }
