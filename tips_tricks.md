@@ -88,7 +88,7 @@ If you're not sure what the library you used is called exactly, you can use the 
 psp-create-license-directory -l
 ```
 
-## Updating the Toolchain
+## Updating the PSP SDK
 {: .fs-6 .fw-700 }
 
 A new version of the PSP SDK is released at least once a month, so updating should be done regularly if you want to benefit from new features and bug fixes.

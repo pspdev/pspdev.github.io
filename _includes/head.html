@@ -1,0 +1,30 @@
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+
+  <link rel="stylesheet" href="{{ '/assets/css/just-the-docs-default.css' | relative_url }}">
+  <link rel="stylesheet" href="{{ '/assets/css/just-the-docs-head-nav.css' | relative_url }}" id="jtd-head-nav-stylesheet">
+
+  <style id="jtd-nav-activation">
+    {% include css/activation.scss.liquid %}
+  </style>
+
+  {% if site.search_enabled != false %}
+    <script src="{{ '/assets/js/vendor/lunr.min.js' | relative_url }}"></script>
+  {% endif %}
+
+  <script src="{{ '/assets/js/just-the-docs.js' | relative_url }}"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ page.title }} | PSP SDK: Development tools for the Playstation Portable</title>
+
+  <!-- Uncomment to conditionally change the <title> content  -->
+  <!-- {% if page.title == "Home" %}
+    <title>{{ page.title }} | PSP SDK: Development tools for the Playstation Portable</title>
+  {% endif %}
+
+  {% if page.title != "Home" %}
+    <title>{{ page.title }} | {{ site.title }}</title>
+  {% endif %} -->
+
+  {% seo title=false %}
+</head>

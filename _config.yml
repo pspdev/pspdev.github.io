@@ -1,6 +1,7 @@
 title: PSPDEV
-description: "Development tools for the Playstation Portable"
+description: "An open source SDK for PlayStation Portable (PSP) development. It allows you to make apps and games for both custom and official firmwares. This is a community project made by enthusiasts, it is in no way affiliated with Sony."
 theme: just-the-docs
+url: "https://pspdev.github.io"
 
 # just-the-docs configuration
 favicon_ico: /images/pspdev.ico
@@ -17,3 +18,21 @@ nav_external_links:
   - title: "PSPDEV's package index"
     url: "https://pspdev.github.io/psp-packages/"
     opens_in_new_tab: true
+
+back_to_top: true
+back_to_top_text: "Back to top"
+
+footer_content: 'Copyright &copy; 2025, PSPDEV. Distributed by <a href="https://github.com/pspdev/pspdev.github.io/blob/master/LICENSE">The Unlicense.</a>'
+
+# Footer "Edit this page on GitHub" link text
+gh_edit_link: true # show or hide edit this page link
+gh_edit_link_text: "Edit this page on GitHub"
+gh_edit_repository: "https://github.com/pspdev/pspdev.github.io" # the github URL for your repo
+gh_edit_branch: "master" # the branch that your docs is served from
+# gh_edit_source: docs # the source that your files originate from
+gh_edit_view_mode: "tree" # "tree" or "edit" if you want the user to jump into the editor immediately
+
+plugins:
+  - jekyll-seo-tag
+  - jekyll-github-metadata
+  - jekyll-sitemap
