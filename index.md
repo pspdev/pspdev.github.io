@@ -7,7 +7,7 @@ nav_order: 1
 <center><img src="images/pspdev.ico" width="64px" /></center>
 
 # Welcome to PSPDEV
-{: .fs-8 .fw-700 .text-center }
+{: .fs-8 .fw-700 .text-center .lh-0 }
 
 # The PSP SDK for Homebrew
 {: .fs-6 .fw-700 .text-center }
