@@ -26,9 +26,17 @@ docker pull pspdev/pspdev:latest
 To work with it, open a terminal in the directory with the code you'd like to build in it and run the following command:
 
 ```shell
-docker run -ti -v .:/source pspdev/pspdev:latest
+docker run -ti -v $PWD:/source pspdev/pspdev:latest
 ```
 
-After that you can run `cd /source` to navigate to the code.
+This mounts the current directory to a directory called source in the container, so run `cd /source` to navigate to it.
 
 That's it, now the PSP SDK can be used to build PSP software. Check out the [Basic Programs](../basic_programs.html) page to for examples on what you can do with it.
+
+### Windows
+
+Using the container on Windows can be a bit tricky.
+
+* Replace $PWD with the absolute path in a UNIX format. Example: `/c/Users/John/my_psp_code`.
+* Your code *must* be located somewhere under "home folder" (like `C:\Users\John`), or the mounted directory will be empty when viewed from inside the container due to permissions.
+* If you get an `Operation not permitted` error from gmake while using psp-cmake, you'll need to add the `--privileged=true` option to your `docker run` command.
