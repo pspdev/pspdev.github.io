@@ -1,10 +1,10 @@
 ---
-title: Installation on Ubuntu/Debian
+title: Installation on Ubuntu
 layout: home
 nav_exclude: true
 ---
 
-# Installation on Ubuntu/Debian
+# Installation on Ubuntu
 {: .fs-8 .fw-700 .text-center }
 
 ## Dependencies

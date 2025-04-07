@@ -11,7 +11,8 @@ Pick the installation guide for your system:
 
 - [Windows](installation/windows.html)
 - [MacOS](installation/macos.html)
-- [Ubuntu/Debian](installation/ubuntu.html)
+- [Ubuntu](installation/ubuntu.html)
 - [Fedora](installation/fedora.html)
+- [Debian](installation/debian.html)
 
 If your operating system is not listed above, use the [Docker installation guide](installation/docker.html).
