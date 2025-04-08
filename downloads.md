@@ -13,7 +13,7 @@ Download the latest update for the PSP SDK here. If you don't have it setup yet,
 - [MacOS (arm64)](https://github.com/pspdev/pspdev/releases/latest/download/pspdev-macos-latest-arm64.tar.gz)
 - [MacOS (x86_64)](https://github.com/pspdev/pspdev/releases/latest/download/pspdev-macos-13-x86_64.tar.gz)
 - [Fedora](https://github.com/pspdev/pspdev/releases/latest/download/pspdev-fedora-latest.tar.gz)
-- [Debian](https://github.com/pspdev/pspdev/releases/latest/download/pspdev-debian-latest-x86_64.tar.gz)
+- [Debian](https://github.com/pspdev/pspdev/releases/latest/download/pspdev-debian-latest.tar.gz)
 - [Docker](https://hub.docker.com/r/pspdev/pspdev)
 
 Alternatively, development builds are available [here](https://github.com/pspdev/pspdev/releases/tag/latest). Only get these if you cannot wait a couple of weeks for a specific new feature or you are working on improving the toolchain itself.

@@ -25,7 +25,7 @@ sudo apt-get install build-essential cmake pkgconf libreadline8 libusb-0.1 libgp
 
 Installing the PSP SDK itself can be done with the following steps:
 
-1. Download [the latest version of the toolchain here](https://github.com/pspdev/pspdev/releases/latest/download/pspdev-debian-latest-x86_64.tar.gz).
+1. Download [the latest version of the toolchain here](https://github.com/pspdev/pspdev/releases/latest/download/pspdev-debian-latest.tar.gz).
 2. Extract the downloaded archive into your home directory, resulting in `/home/YOURUSERNAME/pspdev` being created.
 3. To make the toolchain usable, some environment variables need to be set. The first step in doing so it to open the `~/.bashrc` file with the `nano` text editor using the following command from a terminal:
     ```shell
