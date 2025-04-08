@@ -41,12 +41,12 @@ sudo apt-get update
 sudo apt-get install build-essential cmake pkgconf libreadline8 libusb-0.1 libgpgme11 libarchive-tools fakeroot wget
 ```
 
-## Toolchain 
+## PSP SDK 
 {: .fs-6 .fw-700 }
 
 Installing the PSP SDK itself can be done with the following steps:
 
-1. In a fresh WSL Session download the Toolchain Archive using the following command:
+1. In a fresh WSL Session download the SDK using the following command:
     ```shell
     wget https://github.com/pspdev/pspdev/releases/latest/download/pspdev-ubuntu-latest-x86_64.tar.gz
     ```
@@ -54,7 +54,7 @@ Installing the PSP SDK itself can be done with the following steps:
     ```shell
     tar -xvf pspdev-ubuntu-latest-x86_64.tar.gz
     ```
-3. To make the toolchain usable, some environment variables need to be set. The first step in doing so it to open the `~/.bashrc` file with the `nano` text editor using the following command from an Ubuntu terminal:
+3. To make the SDK usable, some environment variables need to be set. The first step in doing so it to open the `~/.bashrc` file with the `nano` text editor using the following command from an Ubuntu terminal:
     ```shell
     nano ~/.bashrc
     ```
