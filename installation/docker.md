@@ -14,7 +14,7 @@ Docker can be used on almost every platform and offers and easy way to use the P
 
 To use it, install Docker itself using the instructions [here](https://docs.docker.com/engine/install/).
 
-## Toolchain 
+## PSP SDK 
 {: .fs-6 .fw-700 }
 
 Once docker is installed, the PSPDEV image can be downloaded using the following command from a terminal:

@@ -16,14 +16,14 @@ The PSP SDK requires a couple of dependencies to be installed before use. To ins
 sudo dnf -y install @development-tools cmake bsdtar libusb-compat-0.1 gpgme fakeroot xz nano
 ```
 
-## Toolchain 
+## PSP SDK
 {: .fs-6 .fw-700 }
 
 Installing the PSP SDK itself can be done with the following steps:
 
-1. Download [the latest version of the toolchain here](https://github.com/pspdev/pspdev/releases/latest/download/pspdev-fedora-latest.tar.gz).
+1. Download [the latest version of the SDK here](https://github.com/pspdev/pspdev/releases/latest/download/pspdev-fedora-latest.tar.gz).
 2. Extract the downloaded archive into your home directory, resulting in `/home/YOURUSERNAME/pspdev` being created.
-3. To make the toolchain usable, some environment variables need to be set. The first step in doing so it to open the `~/.bashrc` file with the `nano` text editor using the following command from a terminal:
+3. To make the SDK usable, some environment variables need to be set. The first step in doing so it to open the `~/.bashrc` file with the `nano` text editor using the following command from a terminal:
     ```shell
     nano ~/.bashrc
     ```

@@ -18,16 +18,16 @@ Once brew is installed, run the following command from a terminal to install the
 brew install cmake pkgconf gnu-sed bash openssl libtool libmpc libarchive gettext texinfo bison flex isl gsl gmp mpfr
 ```
 
-## Toolchain 
+## PSP SDK 
 {: .fs-6 .fw-700 }
 
 Installing the PSP SDK itself can be done with the following steps:
 
-1. Download the latest version of the toolchain for your system here:
+1. Download the latest version of the SDK for your system here:
     - [arm64](https://github.com/pspdev/pspdev/releases/latest/download/pspdev-macos-latest-arm64.tar.gz) for M1 or newer CPUs.
     - [x86_64](https://github.com/pspdev/pspdev/releases/latest/download/pspdev-macos-13-x86_64.tar.gz) for Intel CPUs.
 2. Extract the downloaded archive into your home directory, resulting in `/home/YOURUSERNAME/pspdev` being created.
-3. To make the toolchain usable, some environment variables need to be set. The first step in doing so it to open the `~/.zprofile` file with the `pico` text editor using the following command from a terminal:
+3. To make the SDK usable, some environment variables need to be set. The first step in doing so it to open the `~/.zprofile` file with the `pico` text editor using the following command from a terminal:
     ```shell
     pico ~/.zprofile
     ```

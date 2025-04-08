@@ -12,7 +12,7 @@ nav_order: 1
 # The PSP SDK for Homebrew
 {: .fs-6 .fw-700 .text-center }
 
-An open source SDK for PlayStation Portable (PSP) development. It allows you to make apps and games for both custom and official firmwares. **This is a community project made by enthusiasts, it is in no way affiliated with Sony**.
+PSPDEV is an open source software development kit (SDK) for PlayStation Portable (PSP) development. It allows you to make apps and games for both custom and official firmwares. **This is a community project made by enthusiasts, it is in no way affiliated with Sony**.
 {: .fs-5 .text-center }
 
 # Getting started
@@ -42,7 +42,7 @@ If you have ideas, suggestions or questions, please don't hesitate to use our [G
 If you need help or would like to contribute, don't hesitate to join us on [Discord](https://discord.gg/bePrj9W) or open an issue on [GitHub](https://github.com/pspdev/pspdev/issues). See you there!
 {: .fs-5 }
 
-# Made with PSPDEV
+# Made with the PSPDEV SDK
 {: .fs-6 .fw-700 }
 
 [![nzportable screenshot](images/nzp.png)](https://github.com/nzp-team/nzportable)
