@@ -8,14 +8,15 @@ nav_exclude: true
 
 {: .fs-8 .fw-700 .text-center }
 
-Arch Linux users can install the PSP SDK using packages available in the Arch
-User Repository (AUR). There are two primary options: a pre-compiled binary
-package (recommended for faster installation) and a source package (which builds
-the SDK locally).
 
 ## Prerequisites
 
 {: .fs-6 .fw-700 }
+
+Arch Linux users can install the PSP SDK using packages available in the Arch
+User Repository (AUR). There are two primary options: a pre-compiled binary
+package (recommended for faster installation) and a source package (which builds
+the SDK locally).
 
 ### AUR Helper (Optional but Recommended)
 
