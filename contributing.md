@@ -14,12 +14,12 @@ There are many ways to contribute to our efforts to make developing homebrew for
 
 Before making any contribution, it's best to talk about what you want to do on [Discord](https://discord.gg/bePrj9W). After that, here are some places you can look to contribute:
 
-- Found an bug or are you missing something? Report it [here](https://github.com/pspdev/pspdev/issues/new)!
-- Want to solve a bug? Find our bug tracker [here](https://github.com/issues?q=is%3Aopen+is%3Aissue+archived%3Afalse+user%3Apspdev+)!
-- Want to add a library? Find out how to [here](https://github.com/pspdev/psp-packages/blob/master/CONTRIBUTING.md)!
-- Want to add a function? Look [here](https://github.com/pspdev/pspsdk)!
+- Found a bug or are you missing something? [Submit that bugs/feature requests or improvements](https://github.com/pspdev/pspdev/issues/new)!
+- Want to solve a bug? [Check our bug tracker here](https://github.com/issues?q=is%3Aopen+is%3Aissue+archived%3Afalse+user%3Apspdev+)!
+- Want to add a library to support with PSP SDK? [add your library here](https://github.com/pspdev/psp-packages/blob/master/CONTRIBUTING.md)!
+- Want to add a PSP SDK function? [Add your function here](https://github.com/pspdev/pspsdk)!
 
-Pull requests are always welcome!
+**Pull requests are always welcome!**
 
 ## Where can I find the code?
 {: .fs-6 .fw-700 }
