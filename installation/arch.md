@@ -5,12 +5,10 @@ nav_exclude: true
 ---
 
 # Installation on Arch Linux
-
 {: .fs-8 .fw-700 .text-center }
 
 
 ## Prerequisites
-
 {: .fs-6 .fw-700 }
 
 Arch Linux users can install the PSP SDK using packages available in the Arch
@@ -19,6 +17,7 @@ package (recommended for faster installation) and a source package (which builds
 the SDK locally).
 
 ### AUR Helper (Optional but Recommended)
+{: .fs-4 .fw-700 }
 
 An AUR helper (like `yay`, `paru`, etc.) simplifies installing and updating AUR
 packages. If you don't have one, you can find instructions on the
@@ -27,19 +26,20 @@ Using an AUR helper is assumed for the simplified commands below, but manual
 installation steps are also provided.
 
 ## Installation via AUR (Recommended - Binary)
-
 {: .fs-6 .fw-700 }
 
 The [`psp-sdk-bin`](https://aur.archlinux.org/packages/psp-sdk-bin) package,
 provides pre-compiled binaries for the PSP SDK, making installation much faster.
 
-**Using an AUR helper (e.g., `yay`):**
+### Using an AUR helper (e.g., `yay`)
+{: .fs-4 .fw-700 }
 
 ```shell
 yay -S psp-sdk-bin
 ```
 
-**Manual Installation:**
+### Manual Installation
+{: .fs-4 .fw-700 }
 
 ```shell
 # Clone the build files
@@ -55,7 +55,6 @@ rm -rf psp-sdk-bin
 ```
 
 ## Installation via AUR (Alternative - Source)
-
 {: .fs-6 .fw-700 }
 
 The [`psp-sdk`](https://aur.archlinux.org/packages/psp-sdk) package builds the
@@ -65,13 +64,15 @@ building against your system's exact libraries.
 **Warning:** Building the full SDK can take a considerable amount of time and
 CPU resources.
 
-**Using an AUR helper (e.g., `yay`):**
+### Using an AUR helper (e.g., `yay`)
+{: .fs-4 .fw-700 }
 
 ```shell
 yay -S psp-sdk
 ```
 
-**Manual Installation:**
+### Manual Installation
+{: .fs-4 .fw-700 }
 
 ```shell
 # Clone the build files
@@ -87,7 +88,6 @@ rm -rf psp-sdk
 ```
 
 ## Verification
-
 {: .fs-6 .fw-700 }
 
 From a new terminal, run the following command to confirm the SDK is found and
