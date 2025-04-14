@@ -43,7 +43,7 @@ If you have ideas, suggestions or questions, please don't hesitate to use our [P
 If you need help or would like to contribute, don't hesitate to join us on [Discord](https://discord.gg/bePrj9W) or open an issue on [GitHub](https://github.com/pspdev/pspdev/issues). See you there!
 {: .fs-5 }
 
-# Made with PSP SDK from PSPDEV community <3
+# Made with PSP SDK by the PSPDEV community <3
 {: .fs-6 .fw-700 }
 
 | [![nzportable screenshot](images/nzp.png)](https://github.com/nzp-team/nzportable) |
