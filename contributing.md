@@ -14,7 +14,7 @@ There are many ways to contribute to our efforts to make developing homebrew for
 
 Before making any contribution, it's best to talk about what you want to do on [Discord](https://discord.gg/bePrj9W). After that, here are some places you can look to contribute:
 
-- Found a bug or are you missing something? [Submit that bugs/feature requests or improvements](https://github.com/pspdev/pspdev/issues/new)!
+- Found a bug or are you missing something? [Submit a bug, feature request or pull request](https://github.com/pspdev/pspdev/issues/new)!
 - Want to solve a bug? [Check our bug tracker here](https://github.com/issues?q=is%3Aopen+is%3Aissue+archived%3Afalse+user%3Apspdev+)!
 - Want to add a library to support with PSP SDK? [add your library here](https://github.com/pspdev/psp-packages/blob/master/CONTRIBUTING.md)!
 - Want to add a PSP SDK function? [Add your function here](https://github.com/pspdev/pspsdk)!
