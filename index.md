@@ -28,7 +28,7 @@ Already have the PSP SDK installed? Dive in and [get started with PSP SDK Homebr
 Need some inspiration? Check out our [PSP SDK examples](basic_programs.html).
 {: .fs-5 }
 
-Is your code is not working? [Debug it using the PSPLink](debugging.html).
+Is your code is not working? [Debug it using PSPLINK](debugging.html).
 {: .fs-5 }
 
 Want to improve your PSP SDK homebrew development experience? Get some [tips and tricks here](tips_tricks.html).
