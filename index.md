@@ -25,7 +25,7 @@ Install our open source [PlayStation Portable Software Development Kit](installa
 Already have the PSP SDK installed? Dive in and [get started with PSP SDK Homebrew development](how_to_use.html).
 {: .fs-5 }
 
-Need some inspiration? Check out some our [PSP SDK examples](basic_programs.html).
+Need some inspiration? Check out our [PSP SDK examples](basic_programs.html).
 {: .fs-5 }
 
 Is your code is not working? [Debug it using the PSPLink](debugging.html).
