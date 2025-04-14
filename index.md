@@ -22,7 +22,7 @@ PSPDEV is an open source software development kit (SDK) for PlayStation Portable
 Install our open source [PlayStation Portable Software Development Kit](installation.html).
 {: .fs-5 }
 
-PSP SDK was already installed? Dive in to [get started your PSP SDK Homebrew development](how_to_use.html).
+Already have the PSP SDK installed? Dive in and [get started with PSP SDK Homebrew development](how_to_use.html).
 {: .fs-5 }
 
 Need some inspiration? Check out some our [PSP SDK examples](basic_programs.html).
