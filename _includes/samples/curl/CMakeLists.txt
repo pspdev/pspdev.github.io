@@ -3,7 +3,7 @@ cmake_minimum_required(VERSION 3.14)
 project(
   jokr
   VERSION 0.1.0
-  DESCRIPTION "JOKR"
+  DESCRIPTION "PSP cURL Jokes app"
   LANGUAGES CXX
 )
 
@@ -44,6 +44,7 @@ if (PSP)
     mbedx509
     png
     z
+    harfbuzz
   )
 
 else()
@@ -75,15 +76,12 @@ if (PSP)
     DEPENDS ${PROJECT_NAME}
     COMMAND PPSSPPSDL ./EBOOT.PBP
   )
-
 else()
-
   message(STATUS "Building native version")
 
   find_package(CURL REQUIRED)
   find_package(SDL2 REQUIRED)
   find_package(SDL_ttf REQUIRED)
-
 endif()
 
 execute_process(
