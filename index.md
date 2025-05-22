@@ -4,7 +4,7 @@ layout: home
 nav_order: 1
 ---
 
-<img src="/images/pspdev.ico" width="64px" alt="PSPDEV Logo" />
+<img src="/favicon.ico" width="64px" alt="PSPDEV Logo" />
 {: .text-center }
 
 # Welcome to PSPDEV
