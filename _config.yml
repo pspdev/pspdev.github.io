@@ -4,7 +4,6 @@ theme: just-the-docs
 url: "https://pspdev.github.io"
 
 # just-the-docs configuration
-favicon_ico: "/images/pspdev.ico"
 color_scheme: dark
 
 exclude:
