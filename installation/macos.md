@@ -15,7 +15,7 @@ The PSP SDK requires a couple of dependencies to be installed before use. Instal
 Once brew is installed, run the following command from a terminal to install the dependencies:
 
 ```shell
-brew install cmake pkgconf gnu-sed bash openssl libtool libmpc libarchive gettext texinfo bison flex isl gsl gmp mpfr libusb-compat
+brew install cmake pkgconf gnu-sed bash openssl libtool libmpc libarchive gettext texinfo bison flex isl gsl gmp mpfr libusb-compat zlib
 ```
 
 ## PSP SDK 
