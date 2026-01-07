@@ -1,4 +1,4 @@
-#include <pspkernel.h>
+#include <pspuser.h>
 #include <pspdebug.h>
 #include <pspdisplay.h>
 
