@@ -185,10 +185,10 @@ To use `psp-gprof` with an application with build in profiling support like show
 To profile the application we run `psp-gprof` on the `gmon.out` file like so from a terminal in the directory where the application is:
 
 ```sh
-psp-gprof file gmon.out
+psp-gprof elf_file gmon.out
 ```
 
-> You need to replace `file` with the elf file of the program you're trying to profile. It has the same name as the file loaded in pspsh, but without the `.prx` ending.
+> You need to replace `elf_file` with the elf file of the program you're trying to profile. It has the same name as the file loaded in pspsh, but without the `.prx` ending.
 
 The output should start like this:
 
