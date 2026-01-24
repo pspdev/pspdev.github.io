@@ -151,6 +151,59 @@ Here are a few useful commands for getting around in psp-gdb:
 
 You can type `help` for more information about the psp-gdb commands.
 
+## Using a Profiler
+{: .fs-6 .fw-700 }
+
+When your application is running slow, you might want to know which functions are taking up the most time. A profiler can help with this and the PSPDEV SDK includes one called `psp-gprof`.
+
+### Preparation
+{: .fs-4 .fw-700 }
+
+To prepare for profiling, the application will have to be build using the flags `-pg` and `-g`. If you are using a Makefile, you can add these to `CFLAGS` like in [this example](https://github.com/pspdev/pspsdk/blob/master/src/samples/gprof/basic/Makefile.sample#L5). If you are using CMake, you can add the following line to your `CMakeLists.txt` to make it so debug builds can be profiled:
+
+```cmake
+set(CMAKE_C_FLAGS_DEBUG "${CMAKE_C_FLAGS} -pg -g")
+```
+
+For C++ replace C with CXX.
+
+Now build the application in debug mode like so from a terminal in the directory your `CMakeLists.txt` is in:
+
+```sh
+mkdir build && cd build  # Skip this if you already have a build directory
+psp-cmake -DCMAKE_BUILD_TYPE=Debug -DBUILD_PRX=1 ..
+make
+```
+
+See below how to make use of this.
+
+### Using psp-gprof
+{: .fs-4 .fw-700 }
+
+To use `psp-gprof` with an application with build in profiling support like shown above, just run it in PSPLINK and run the part of the application you want profiling information of. Then close it gracefully. After this a file called `gmon.out` can be found in the directory where the application is in.
+
+To profile the application we run `psp-gprof` on the `gmon.out` file like so from a terminal in the directory where the application is:
+
+```sh
+psp-gprof elf_file gmon.out
+```
+
+> You need to replace `elf_file` with the elf file of the program you're trying to profile. It has the same name as the file loaded in pspsh, but without the `.prx` ending.
+
+The output should start like this:
+
+```
+Each sample counts as 0.001 seconds.
+  %   cumulative   self              self     total           
+ time   seconds   seconds    calls  ms/call  ms/call  name    
+ 95.98      0.17     0.17   104728     0.00     0.00  is_prime
+  4.02      0.17     0.01        1     7.00     7.00  dummy_function
+  0.00      0.17     0.00        1     0.00   174.00  main
+  0.00      0.17     0.00        1     0.00   167.00  sum_of_square_roots
+```
+
+It will even contain a breakdown of which function was called from where. In this case `is_prime` was called a lot, taking up a significant amount of time. Perhaps it would be possible to lower the amount of calls to it to gain performance. Another option might be to optimize `dummy_function`, since it is taking 4% of the time despite only being called once. Optimizing based on the result is up to you, but it is a whole lot easier with profiling information than without.
+
 ## Done
 {: .fs-6 .fw-700 }
 
