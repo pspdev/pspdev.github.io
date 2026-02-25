@@ -1,7 +1,8 @@
 #include <stdio.h>
 
-#include <SDL2/SDL.h>
-#include <SDL2/SDL_ttf.h>
+#include <SDL3/SDL.h>
+#include <SDL3/SDL_main.h>
+#include <SDL3_ttf/SDL_ttf.h>
 
 // Define screen dimensions
 #define SCREEN_WIDTH 480
@@ -32,8 +33,6 @@ int main(int argc, char **argv)
 
     SDL_Window *win = SDL_CreateWindow(
         "window",
-        SDL_WINDOWPOS_UNDEFINED,
-        SDL_WINDOWPOS_UNDEFINED,
         SCREEN_WIDTH,
         SCREEN_HEIGHT,
         0);
@@ -45,22 +44,22 @@ int main(int argc, char **argv)
                SDL_GetError());
     }
 
-    SDL_Renderer *renderer = SDL_CreateRenderer(win, -1, 0);
+    SDL_Renderer *renderer = SDL_CreateRenderer(win, NULL);
     TTF_Font *font = TTF_OpenFont("Pacifico.ttf", 40);
 
     // Set the text and background color
     SDL_Color text_color = {0xff, 0xff, 0xff, 0xff};
     SDL_Color bg_color = {0x00, 0x00, 0x00, 0xff};
 
-    SDL_Rect text_rect;
-    SDL_Surface *surface = TTF_RenderText(font, "Hello World!", text_color, bg_color);
+    SDL_FRect text_rect;
+    SDL_Surface *surface = TTF_RenderText_Shaded(font, "Hello World!", 0, text_color, bg_color);
     SDL_Texture *texture = SDL_CreateTextureFromSurface(renderer, surface);
 
     // Get text dimensions
     text_rect.w = surface->w;
     text_rect.h = surface->h;
 
-    SDL_FreeSurface(surface);
+    SDL_DestroySurface(surface);
 
     text_rect.x = (SCREEN_WIDTH - text_rect.w) / 2;
     text_rect.y = text_rect.h + 30;
@@ -73,14 +72,14 @@ int main(int argc, char **argv)
         {
             switch (e.type)
             {
-            case SDL_QUIT:
+            case SDL_EVENT_QUIT:
                 running = 0;
                 break;
-            case SDL_CONTROLLERDEVICEADDED:
-                SDL_GameControllerOpen(e.cdevice.which);
+            case SDL_EVENT_GAMEPAD_ADDED:
+                SDL_OpenGamepad(e.cdevice.which);
                 break;
-            case SDL_CONTROLLERBUTTONDOWN:
-                if (e.cbutton.button == SDL_CONTROLLER_BUTTON_START)
+            case SDL_EVENT_GAMEPAD_BUTTON_DOWN:
+                if (e.button.button == SDL_GAMEPAD_BUTTON_START)
                 {
                     running = 0;
                 }
@@ -91,7 +90,7 @@ int main(int argc, char **argv)
         SDL_SetRenderDrawColor(renderer, 0xff, 0xff, 0xff, 0xff);
         SDL_RenderClear(renderer);
         SDL_SetRenderDrawColor(renderer, 0xff, 0x00, 0x00, 0xff);
-        SDL_RenderCopy(renderer, texture, NULL, &text_rect);
+        SDL_RenderTexture(renderer, texture, NULL, &text_rect);
         SDL_RenderPresent(renderer);
     }
 
