@@ -112,9 +112,9 @@ PSP_END_EXPORTS
 If you are using Makefiles, you can add the following lines to your Makefile to compile the PRX module:
 
 ```makefile
-# Define to build this as a prx (instead of a static elf)
+# Define to build this as a prx
 BUILD_PRX=1
-# Define the name of our custom exports (minus the .exp extension)
+# Define the name of our custom exports
 PRX_EXPORTS=exports.exp
 ```
 
