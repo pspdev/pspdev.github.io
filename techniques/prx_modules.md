@@ -16,7 +16,7 @@ Multiple modules can be loaded at the same time on the PSP. The main module is t
 
 To load a PRX module, the main module needs to know which functions it can call within that module. This is done by creating a stub library, a static library containing the signatures of the functions in the PRX module. The main module links against this stub library and calls the functions in the PRX module just like regular functions.
 
-The stub library only contains the Module Name, the NID (Native ID?) of the function and a stub implementation of the function.   
+The stub library only contains the Module Name, the NID (hash of the function name) of the function and a stub implementation of the function.
 
 ## Basic Workflow
 {: .fs-6 .fw-700 }
@@ -37,9 +37,43 @@ Writing code for a PRX module is largely identical to writing code for a regular
 
 Instead of writing a standard `main` function, you write a `module_start` function (called when the module is loaded) and a `module_stop` function (called when unloaded). These functions should return 0 on success and a negative value on failure.
 
+> Make sure to use at least on function form other modules (for example, `pspDebugScreenPrintf`), otherwise `psp-fixup-imports` will complain `Error, no .lib.stub section found`.
+
 Also it is not recommended to use any Standard C Library functions in your code. The `newlib` implementation in the PSPSDK often causes issues when used in PRX modules, and it is generally better to avoid it altogether. Instead, you can use the PSPSDK's own functions for memory management, string manipulation, etc.
 
 Due to similar reasons, C++ is also not recommended for PRX modules.
+
+```c
+#include <pspuser.h>
+
+// Module Name, Attributes, Major Version, Minor Version
+// This module is a user module
+PSP_MODULE_INFO("SamplePlugin", PSP_MODULE_USER, 1, 0);
+PSP_NO_CREATE_MAIN_THREAD();
+
+int module_start() {
+    SceUID fd = sceIoOpen("log.txt", PSP_O_WRONLY | PSP_O_CREAT | PSP_O_APPEND, 0777);
+    if (fd >= 0) {
+        sceIoWrite(fd, "Hello World!", 12);
+        sceIoClose(fd);
+    }
+    return 0;
+}
+
+int module_stop() {
+    SceUID fd = sceIoOpen("log.txt", PSP_O_WRONLY | PSP_O_CREAT | PSP_O_APPEND, 0777);
+    if (fd >= 0) {
+        sceIoWrite(fd, "Goodbye World!", 14);
+        sceIoClose(fd);
+    }
+    return 0;
+}
+
+// This function will be exported and can be called from other modules
+int sum(int a, int b) {
+    return a + b;
+}
+```
 
 ### Write the Export Table
 {: .fs-4 .fw-700 }
@@ -48,7 +82,7 @@ Create a file with an `.exp` extension. It is used to declare which functions ar
 
 > Guidelines
 > 1. `syslib` is an essential keyword that must be included in the export table. 
-> 2. It is generally not recommended to export global variables. (TODO: Reference needed)
+> 2. It is generally not recommended to export global variables.
 
 Here is an example export table (you can view it in the [SDK source code](https://github.com/pspdev/pspsdk/blob/master/src/samples/prx/testprx/exports.exp)):
 
@@ -56,16 +90,17 @@ Here is an example export table (you can view it in the [SDK source code](https:
 # Define the exports for the prx
 PSP_BEGIN_EXPORTS
 
-# These four lines are mandatory (although you can add other functions like module_stop)
-# syslib is a psynonym for the single mandatory export.
+# These lines are mandatory
 PSP_EXPORT_START(syslib, 0, 0x8000)
-PSP_EXPORT_FUNC_HASH(module_start)
-PSP_EXPORT_VAR_HASH(module_info)
+PSP_EXPORT_FUNC(module_start)
+PSP_EXPORT_FUNC(module_stop)
+PSP_EXPORT_VAR(module_info)
 PSP_EXPORT_END
 
 # Export our function
+# 'MyLib' is the name of the library, it doesn't have to match the module name
 PSP_EXPORT_START(MyLib, 0, 0x0001)
-PSP_EXPORT_FUNC_HASH(getModuleInfo)
+PSP_EXPORT_FUNC_HASH(sum)
 PSP_EXPORT_END
 
 PSP_END_EXPORTS
@@ -97,16 +132,51 @@ Also, when building a PRX module, you should add the `-nostartfiles` flag to you
 LDFLAGS = -nostartfiles
 ```
 
+The whole Makefile looks like this:
+
+```makefile
+TARGET = SamplePlugin
+
+OBJS = main.o
+
+CFLAGS = -O2 -Wall
+LDFLAGS = -nostartfiles
+
+BUILD_PRX = 1
+PRX_EXPORTS = exports.exp
+
+PSPSDK=$(shell psp-config --pspsdk-path)
+include $(PSPSDK)/lib/build.mak
+```
+
 ### Generate the Stub Library
 {: .fs-4 .fw-700 }
 
 To generate the stub library, first run the following command in the terminal:
 
 ```sh
-psp-build-exports -k my_lib.exp
+psp-build-exports -k exports.exp
 ```
 
-This generates a stub file in `.S` assembly format. This file can be compiled into a static library using `psp-gcc` followed by `psp-ar`, or distributed directly. When others want to use your PRX module, they can simply include this `.S` file as a source file.
+This generates a stub file in `.S` assembly format. It's name is `MyLib.S` as the library name in the export table is `MyLib`.
+
+```c
+	.set noreorder
+
+#include "pspimport.s"
+
+// Build files
+// MyLib_0000.o MyLib_0001.o 
+
+#ifdef F_MyLib_0000
+	IMPORT_START "MyLib",0x00090000
+#endif
+#ifdef F_MyLib_0001
+	IMPORT_FUNC  "MyLib",0x55F3DFE9,sum
+#endif
+```
+
+This file can be compiled into a static library using `psp-gcc` followed by `psp-ar`, or distributed directly. When others want to use your PRX module, they can simply include this `.S` file as a source file.
 
 ## Dynamically Loading PRX Modules
 {: .fs-6 .fw-700 }

@@ -10,5 +10,3 @@ nav_order: 7
 When developing for the Playstation Portable (PSP), you may want to dynamically load code at runtime. This page will cover how to do that.
 
 - [Creating PRX Modules](techniques/prx_modules.html)
-<!-- - [Syscall Restrictions](#syscall-restrictions) -->
-<!-- - [Kernel Module and User Module](#module-types) -->
