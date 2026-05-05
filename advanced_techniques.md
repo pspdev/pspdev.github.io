@@ -17,7 +17,7 @@ Multiple modules can be loaded at the same time on the PSP. The main module is t
 ### Stub Library
 {: .fs-4 .fw-700 }
 
-To be able to load a PRX module, the main module needs to know which functions it can call in the PRX module. This is done by creating a stub library, which is a static library that contains the function signatures of the functions in the PRX module. The main module can then link against this stub library and call the functions in the PRX module as if they were regular functions.
+To load a PRX module, the main module needs to know which functions it can call within that module. This is done by creating a stub library, a static library containing the signatures of the functions in the PRX module. The main module links against this stub library and calls the functions in the PRX module just like regular functions.
 
 The stub library only contains the Module Name, the NID (Native ID?) of the function and a stub implementation of the function.   
 
@@ -27,8 +27,8 @@ The stub library only contains the Module Name, the NID (Native ID?) of the func
 > PRX modules can act as a Resident Library, which exposes their own functions inside and export them for other modules to use.
 
 The core steps for creating a PRX module that others can load are as follows:
-1. PRX Module Developers declare which functions are accessible from external modules by **Writing** an **Export Table**. 
-2. Target Users can establish a reference to the external functions in their own modules by using **Import Table**, which is generated from the PRX module's export table and can be further compiled into a **Stub Library**.
+1. PRX module developers declare which functions are accessible from external modules by writing an **Export Table**. 
+2. Users can establish a reference to these external functions in their modules by using an **Import Table**, which is generated from the PRX module's export table and can be compiled into a **Stub Library**.
 
 ## Writing Code and Export Table
 {: .fs-6 .fw-700 }
@@ -36,20 +36,20 @@ The core steps for creating a PRX module that others can load are as follows:
 ### Writing Code
 {: .fs-4 .fw-700 }
 
-When writing code for a PRX module, the code is mostly the same as writing code for a regular module. The main difference is that the entry point of the module is different.
+Writing code for a PRX module is largely identical to writing code for a regular module. The primary difference is the entry point.
 
-When writing PRX module code, do not write regular `main` function, instead write an `module_start` function which will be called when the module is loaded and a `module_stop` function which will be called when the module is unloaded. These functions should return 0 on success and a negative value on failure.
+Instead of writing a standard `main` function, you write a `module_start` function (called when the module is loaded) and a `module_stop` function (called when unloaded). These functions should return 0 on success and a negative value on failure.
 
 ### Write the Export Table
 {: .fs-4 .fw-700 }
 
-Create a file that ends with `.exp` extension. It is used to declare which functions are accessible from external modules. The format of the file is as follows:
+Create a file with an `.exp` extension. It is used to declare which functions are accessible from external modules. The format is as follows:
 
 > Guidelines
 > 1. `syslib` is an essential keyword that must be included in the export table. 
-> 2. It is said that Global Variables are not suggested to be exported. (TODO: Reference needed)
+> 2. It is generally not recommended to export global variables. (TODO: Reference needed)
 
-An example of an export table is as follows, you can check it out on the [SDK source code](https://github.com/pspdev/pspsdk/blob/master/src/samples/prx/testprx/exports.exp):
+Here is an example export table (you can view it in the [SDK source code](https://github.com/pspdev/pspsdk/blob/master/src/samples/prx/testprx/exports.exp)):
 
 ```
 # Define the exports for the prx
@@ -82,30 +82,30 @@ BUILD_PRX=1
 PRX_EXPORTS=exports.exp
 ```
 
-When PRX_EXPORTS is defined, the build system will call `psp-build-exports -b` for you and automatically generate code that will be compiled into the PRX module.
+When `PRX_EXPORTS` is defined, the build system calls `psp-build-exports -b` and automatically generates the code to compile into the PRX module.
 
-> `.rodata.sceResident` segment contains exported NID and function addresses.
+> The `.rodata.sceResident` segment contains the exported NIDs and function addresses.
 > 
-> `.lib.ent` segment contains Module Name and Export Table Metadata, including the pointer to the export table in `.rodata.sceResident` segment.
+> The `.lib.ent` segment contains the module name and export table metadata, including a pointer to the export table in the `.rodata.sceResident` segment.
 > 
-> You can checkout the code by running `psp-build-exports -b exports.exp` in the terminal yourself.
+> You can inspect the generated code by running `psp-build-exports -b exports.exp` in your terminal.
 
 ### Generate the Stub Library
 {: .fs-4 .fw-700 }
 
-To generate the stub library, you can run the following command in the terminal:
+To generate the stub library, first run the following command in the terminal:
 
 ```sh
 psp-build-exports -k my_lib.exp
 ```
 
-This will generate a Stub File in `.S` Assembly format. Such file can be compiled into a static library first using `psp-gcc` and then `psp-ar`. Also you can directly distribute it. When others want to use your PRX module, they can simply treat this `.S` as one of the source files.
+This generates a stub file in `.S` assembly format. This file can be compiled into a static library using `psp-gcc` followed by `psp-ar`, or distributed directly. When others want to use your PRX module, they can simply include this `.S` file as a source file.
 
 ## Dynamically Loading PRX Modules
 {: .fs-6 .fw-700 }
 
-To dynamically load a PRX module, you can use the `sceKernelLoadModule` function and the `sceKernelStartModule` function.
+To dynamically load a PRX module, you can use the `sceKernelLoadModule` and `sceKernelStartModule` functions.
 
-When building your programs, you need to include the generated `.S` stub file (or the stub `.a` library) into your OBJS or LIBS for linking.
+When building your programs, include the generated `.S` stub file (or the `.a` stub library) in your `OBJS` or `LIBS` for linking.
 
-The generated `.S` file uses a series of macros, working with the post-processing tool `psp-fixup-imports` to complete the construction of the import table.
+The generated `.S` file uses several macros along with the post-processing tool `psp-fixup-imports` to construct the import table.
