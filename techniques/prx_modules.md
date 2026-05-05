@@ -37,6 +37,10 @@ Writing code for a PRX module is largely identical to writing code for a regular
 
 Instead of writing a standard `main` function, you write a `module_start` function (called when the module is loaded) and a `module_stop` function (called when unloaded). These functions should return 0 on success and a negative value on failure.
 
+Also it is not recommended to use any Standard C Library functions in your code. The `newlib` implementation in the PSPSDK often causes issues when used in PRX modules, and it is generally better to avoid it altogether. Instead, you can use the PSPSDK's own functions for memory management, string manipulation, etc.
+
+Due to similar reasons, C++ is also not recommended for PRX modules.
+
 ### Write the Export Table
 {: .fs-4 .fw-700 }
 
@@ -86,6 +90,12 @@ When `PRX_EXPORTS` is defined, the build system calls `psp-build-exports -b` and
 > The `.lib.ent` segment contains the module name and export table metadata, including a pointer to the export table in the `.rodata.sceResident` segment.
 > 
 > You can inspect the generated code by running `psp-build-exports -b exports.exp` in your terminal.
+
+Also, when building a PRX module, you should add the `-nostartfiles` flag to your `LDFLAGS` to prevent the linker from including the startup files, which are not needed and can cause issues in PRX modules.
+
+```makefile
+LDFLAGS = -nostartfiles
+```
 
 ### Generate the Stub Library
 {: .fs-4 .fw-700 }
