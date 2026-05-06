@@ -84,7 +84,7 @@ Create a file with an `.exp` extension. It is used to declare which functions ar
 > 1. `syslib` is an essential keyword that must be included in the export table. 
 > 2. It is generally not recommended to export global variables.
 
-Here is an example export table (you can view it in the [SDK source code](https://github.com/pspdev/pspsdk/blob/master/src/samples/prx/testprx/exports.exp)):
+Here is an example export table:
 
 ```
 # Define the exports for the prx
