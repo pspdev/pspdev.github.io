@@ -37,9 +37,9 @@ Writing code for a PRX module is largely identical to writing code for a regular
 
 Instead of writing a standard `main` function, you write a `module_start` function (called when the module is loaded) and a `module_stop` function (called when unloaded). These functions should return 0 on success and a negative value on failure.
 
-> Make sure to use at least on function form other modules (for example, `pspDebugScreenPrintf`), otherwise `psp-fixup-imports` will complain `Error, no .lib.stub section found`.
+> Make sure to use at least one function from other modules (for example, `sceIoOpen`), otherwise `psp-fixup-imports` will complain `Error, no .lib.stub section found`.
 
-Also it is not recommended to use any Standard C Library functions in your code. The `newlib` implementation in the PSPSDK often causes issues when used in PRX modules, and it is generally better to avoid it altogether. Instead, you can use the PSPSDK's own functions for memory management, string manipulation, etc.
+Also it is not recommended to use any Standard C Library functions in your code. The `newlib` implementation in the PSPSDK often causes issues when used in PRX modules, and it is generally better to avoid it altogether. Instead, you can use the PSPSDK's own functions with `sce` prefix for memory management, string manipulation, etc.
 
 Due to similar reasons, C++ is also not recommended for PRX modules.
 
