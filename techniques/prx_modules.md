@@ -149,6 +149,36 @@ PSPSDK=$(shell psp-config --pspsdk-path)
 include $(PSPSDK)/lib/build.mak
 ```
 
+If you prefer CMake, you use the following `CMakeLists.txt`:
+
+```cmake
+cmake_minimum_required(VERSION 3.10)
+
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON) # Export compile commands for better IDE support
+
+# Set project name  
+project(SamplePlugin)
+
+# Define source files  
+set(SOURCES main.c)
+
+
+# Create PRX module with exports  
+add_prx_module(SamplePlugin ${SOURCES} exports.exp)
+
+# Set compiler flags for C files only  
+target_compile_options(SamplePlugin PRIVATE -O2 -Wall)
+set_source_files_properties(${SOURCES} PROPERTIES LANGUAGE C)
+
+# Link all required libraries  
+target_link_libraries(SamplePlugin PRIVATE
+    pspgu
+    pspdisplay
+    pspctrl
+    pspge
+)
+```
+
 ### Generate the Stub Library
 {: .fs-4 .fw-700 }
 
