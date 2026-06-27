@@ -1,0 +1,57 @@
+{
+	"version": 2,
+	"cmakeMinimumRequired": {
+		"major": 3,
+		"minor": 14,
+		"patch": 0
+	},
+	"configurePresets": [
+		{
+			"name": "PSP",
+			"description": "Builds the PSP version of the Jokr",
+			"binaryDir": "${sourceDir}/build/${presetName}",
+			"generator": "Ninja",
+			"cacheVariables": {
+				"CMAKE_BUILD_TYPE": "Release",
+				"CMAKE_TOOLCHAIN_FILE": "/opt/pspdev/psp/share/pspdev.cmake",
+				"CMAKE_EXPORT_COMPILE_COMMANDS": "ON",
+        "CMAKE_MAKE_PROGRAM": "/usr/bin/ninja"
+			},
+			"environment": {
+				"PSPDEV": "/opt/pspdev",
+				"PSPSDK": "/opt/pspdev/psp/sdk",
+				"PATH": "/opt/pspdev/bin:/opt/pspdev/psp/bin:$PATH"
+			}
+		},
+		{
+			"name": "Linux",
+			"displayName": "Linux - Clang 15.0.7 x86_64-pc-linux-gnu",
+			"description": "Using compilers: C = /usr/bin/clang, CXX = /usr/bin/clang++",
+			"binaryDir": "${sourceDir}/build/${presetName}",
+			"cacheVariables": {
+				"CMAKE_INSTALL_PREFIX": "${sourceDir}/out/install/${presetName}",
+				"CMAKE_C_COMPILER": "/usr/bin/clang",
+				"CMAKE_CXX_COMPILER": "/usr/bin/clang++",
+				"CMAKE_BUILD_TYPE": "Debug",
+				"CMAKE_EXPORT_COMPILE_COMMANDS": "ON"
+			},
+			"generator": "Ninja"
+		}
+	],
+	"testPresets": [
+		{
+			"name": "TestPSP",
+			"description": "",
+			"displayName": "",
+			"configurePreset": "PSP"
+		}
+	],
+	"buildPresets": [
+		{
+			"name": "TestLinux",
+			"description": "",
+			"displayName": "",
+			"configurePreset": "Linux"
+		}
+	]
+}
