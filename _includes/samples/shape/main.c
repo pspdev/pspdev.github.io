@@ -110,6 +110,8 @@ int main() {
 
         endFrame();
     }
+    // Stop rendering
+    endGu();
 
     return 0;
 }
