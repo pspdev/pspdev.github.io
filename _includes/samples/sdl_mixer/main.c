@@ -1,5 +1,5 @@
-#include <SDL2/SDL.h>
-#include <SDL2/SDL_mixer.h>
+#include <SDL3/SDL.h>
+#include <SDL3_mixer/SDL_mixer.h>
 
 // Define MIN macro
 #define MIN(X, Y) (((X) < (Y)) ? (X) : (Y))
@@ -18,7 +18,7 @@ int main(int argc, char **argv) {
     // Initialize sdl
     SDL_Init(SDL_INIT_VIDEO |
         SDL_INIT_AUDIO |
-        SDL_INIT_GAMECONTROLLER
+        SDL_INIT_GAMEPAD
     );
 
     // Initialize sdl2_mixer
@@ -81,22 +81,22 @@ int main(int argc, char **argv) {
     while (running) {
         if(SDL_PollEvent(&e)) {
             switch(e.type) {
-                case SDL_QUIT:
+                case SDL_EVENT_QUIT:
                     running = 0;
                 break;
-                case SDL_CONTROLLERDEVICEADDED:
-                    SDL_GameControllerOpen(e.cdevice.which);
+                case SDL_EVENT_GAMEPAD_ADDED:
+                    SDL_OpenGamepad(e.cdevice.which);
                 break;
-                case SDL_CONTROLLERBUTTONDOWN:
+                case SDL_EVENT_GAMEPAD_BUTTON_DOWN:
                     // pause using cross button
-                    if (e.cbutton.button == SDL_CONTROLLER_BUTTON_A) {
+                    if (e.cbutton.button == SDL_GAMEPAD_BUTTON_SOUTH) {
                         Mix_PauseMusic();
                     // resume using circle button
-                    } else if (e.cbutton.button == SDL_CONTROLLER_BUTTON_B) {
+                    } else if (e.cbutton.button == SDL_GAMEPAD_BUTTON_EAST) {
                         Mix_ResumeMusic();
                     }	
                     // press start button to exit
-                    if (e.cbutton.button == SDL_CONTROLLER_BUTTON_START) {
+                    if (e.cbutton.button == SDL_GAMEPAD_BUTTON_START) {
                         running = 0;
                     }
             break;		

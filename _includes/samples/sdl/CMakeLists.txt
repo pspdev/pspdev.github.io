@@ -1,16 +1,13 @@
 cmake_minimum_required(VERSION 3.11)
 
-project(sdl2)
+project(sdl)
 
 add_executable(${PROJECT_NAME} main.c)
 
-include(FindPkgConfig)
-pkg_search_module(SDL2 REQUIRED sdl2)
-
-target_include_directories(${PROJECT_NAME} PRIVATE ${SDL2_INCLUDE_DIRS})
+find_package(SDL3 REQUIRED CONFIG REQUIRED COMPONENTS SDL3)
 
 target_link_libraries(${PROJECT_NAME} PRIVATE
-    ${SDL2_LIBRARIES}
+    SDL3::SDL3
 )
 
 if(PSP)

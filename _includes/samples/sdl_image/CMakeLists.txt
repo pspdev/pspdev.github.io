@@ -1,24 +1,19 @@
 cmake_minimum_required(VERSION 3.11)
 
-project(sdl2_ttf)
+project(sdl-image)
 
 add_executable(${PROJECT_NAME} main.c)
 
-include(FindPkgConfig)
-pkg_search_module(SDL2 REQUIRED sdl2)
-pkg_search_module(SDL2_TTF REQUIRED SDL2_ttf)
-
-target_include_directories(${PROJECT_NAME} PRIVATE
-    ${SDL2_INCLUDE_DIRS}
-    ${SDL2_TTF_INCLUDE_DIRS}
-)
+find_package(SDL3 REQUIRED CONFIG REQUIRED COMPONENTS SDL3)
+find_package(SDL3_image REQUIRED)
 
 target_link_libraries(${PROJECT_NAME} PRIVATE
-    ${SDL2_LIBRARIES}
-    ${SDL2_TTF_LIBRARIES}
+    SDL3::SDL3
+    SDL3_image::SDL3_image
 )
 
 if(PSP)
+    # Create an EBOOT.PBP file
     create_pbp_file(
         TARGET ${PROJECT_NAME}
         ICON_PATH NULL
