@@ -13,7 +13,7 @@ nav_exclude: true
 The PSP SDK requires a couple of dependencies to be installed before use. To install them, run the following command from a terminal:
 
 ```shell
-sudo dnf -y install @development-tools cmake bsdtar libusb-compat-0.1 gpgme fakeroot xz nano
+sudo dnf -y install @development-tools cmake bsdtar libusb-compat-0.1 gpgme2 fakeroot xz nano
 ```
 
 ## PSP SDK
