@@ -3,16 +3,18 @@
 
 int main(int argc, char *argv[])
 {
-    SDL_Init(SDL_INIT_VIDEO | SDL_INIT_GAMEPAD);
+    if(!SDL_Init(SDL_INIT_VIDEO | SDL_INIT_GAMEPAD)) {
+        SDL_Log("Couldn't initialize SDL: %s", SDL_GetError());
+        return 1;
+    }
 
-    SDL_Window * window = SDL_CreateWindow(
-        "window",
-        480,
-        272,
-        0
-    );
-
-    SDL_Renderer * renderer = SDL_CreateRenderer(window, NULL);
+    SDL_Window * window = NULL;
+    SDL_Renderer * renderer = NULL;
+    if (!SDL_CreateWindowAndRenderer("window", 480, 272, 0, &window, &renderer)) {
+        SDL_Log("Couldn't create window/renderer: %s", SDL_GetError());
+        SDL_Quit();
+        return 2;
+    }
 
     SDL_FRect square = {216, 96, 34, 64}; 
 

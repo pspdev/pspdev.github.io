@@ -1,8 +1,6 @@
 #include <SDL3/SDL.h>
+#include <SDL3/SDL_main.h>
 #include <SDL3_mixer/SDL_mixer.h>
-
-// Define MIN macro
-#define MIN(X, Y) (((X) < (Y)) ? (X) : (Y))
 
 // Define screen dimensions
 #define SCREEN_WIDTH    480
@@ -53,8 +51,8 @@ int main(int argc, char **argv) {
     SDL_Rect rect;
 
     // Square dimensions: Half of the min(SCREEN_WIDTH, SCREEN_HEIGHT)
-    rect.w = MIN(SCREEN_WIDTH, SCREEN_HEIGHT) / 2;
-    rect.h = MIN(SCREEN_WIDTH, SCREEN_HEIGHT) / 2;
+    rect.w = SDL_min(SCREEN_WIDTH, SCREEN_HEIGHT) / 2;
+    rect.h = SDL_min(SCREEN_WIDTH, SCREEN_HEIGHT) / 2;
 
     // Square position: In the middle of the screen
     rect.x = SCREEN_WIDTH / 2 - rect.w / 2;
