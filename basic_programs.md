@@ -253,7 +253,7 @@ More documentation on SDL can be found <a href="http://wiki.libsdl.org/FrontPage
 
 ![](images/sprite.png)
 
-SDL image is a library which adds support for multiple image formats to SDL. This example results in the same image as the sprite example using libgu above. Here the limitation of the image width being a power 2 does not apply.
+SDL support loading BMP and PNG image files out of the box. This example results in the same image as the sprite example using libgu above. Here the limitation of the image width being a power 2 does not apply.
 
 Despite this example adding an option to close by pressing the start button, the code is much shorter. It can even be build for Linux without any further modifications.
 
@@ -285,7 +285,7 @@ make
 
 This will result in an EBOOT.PBP file in the build directory. Put it in a directory in ms0:/PSP/GAME/ and add the grass image file, download it from <a href="/resources/grass.png">here</a>, to be able to run it on the PSP. 
 
-If you have sdl sdl-image dev packages and a compiler installed this code will also build on Linux for Linux by running:
+If you have the sdl dev package and a compiler installed this code will also build on Linux for Linux by running:
 
 ```shell
 mkdir build && cd build
@@ -293,7 +293,9 @@ cmake ..
 make
 ```
 
-Documentation for SDL_image can be found <a href="https://wiki.libsdl.org/SDL3_image/FrontPage">here</a>.
+If you want support for more image formats than just PNG and BMP, you can use the SDL image library ins addition to SDL. This adds the `IMG_Load` function, which can be used in place of `SDL_LoadPNG` to load any image format. This would require adding an include and linking to SDL image. Documentation for SDL image can be found <a href="https://wiki.libsdl.org/SDL3_image/FrontPage">here</a>.
+
+More documentation on SDL can be found <a href="http://wiki.libsdl.org/FrontPage">here</a>.
 
 </details>
 
