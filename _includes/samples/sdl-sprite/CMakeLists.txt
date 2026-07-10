@@ -1,15 +1,13 @@
 cmake_minimum_required(VERSION 3.11)
 
-project(sdl-image)
+project(sdl-sprite)
 
 add_executable(${PROJECT_NAME} main.c)
 
 find_package(SDL3 REQUIRED CONFIG REQUIRED COMPONENTS SDL3)
-find_package(SDL3_image REQUIRED)
 
 target_link_libraries(${PROJECT_NAME} PRIVATE
     SDL3::SDL3
-    SDL3_image::SDL3_image
 )
 
 if(PSP)

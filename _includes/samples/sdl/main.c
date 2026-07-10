@@ -1,8 +1,13 @@
 #include <SDL3/SDL.h>
 #include <SDL3/SDL_main.h>
 
-int main(int argc, char *argv[])
-{
+int main(int argc, char *argv[]) {
+    // This prevents compiler warnings
+    // We don't actually need these variables, but they do need to be there so SDL_main works
+    (void)argc;
+    (void)argv;
+
+    // Initialize sdl
     if(!SDL_Init(SDL_INIT_VIDEO | SDL_INIT_GAMEPAD)) {
         SDL_Log("Couldn't initialize SDL: %s", SDL_GetError());
         return 1;

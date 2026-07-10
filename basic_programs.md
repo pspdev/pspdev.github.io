@@ -117,7 +117,7 @@ psp-cmake ..
 make
 ```
 
-This will result in an EBOOT.PBP file in the build directory. Put it in a directory in ms0:/PSP/GAME/ and add the grass image file, download it from <a href="/resources/grass.png">here</a>, to be able to run it on the PSP. 
+This will result in an EBOOT.PBP file in the build directory. Put it in a directory in ms0:/PSP/GAME/ and add the grass image file, download it from <a href="/resources/grass.png">here</a>, to be able to run it on the PSP.
 
 More libgu examples can be found <a href="https://github.com/pspdev/pspsdk/tree/master/src/samples/gu">here</a>.
 
@@ -193,7 +193,7 @@ psp-cmake ..
 make
 ```
 
-<p>This will result in an EBOOT.PBP file in the build directory. Put it in a directory in ms0:/PSP/GAME/ and the PSP can run it.</p>
+This will result in an EBOOT.PBP file in the build directory. Put it in a directory in ms0:/PSP/GAME/ and the PSP can run it.
 
 More audiolib examples can be found <a href="https://github.com/pspdev/pspsdk/tree/master/src/samples/audio">here</a>.
 
@@ -234,7 +234,7 @@ psp-cmake ..
 make
 ```
 
-<p>This will result in an EBOOT.PBP` file in the build directory. Put it in a directory in ms0:/PSP/GAME/ and the PSP can run it.</p>
+This will result in an EBOOT.PBP file in the build directory. Put it in a directory in ms0:/PSP/GAME/ and the PSP can run it.
 
 If you have sdl dev package and a compiler installed this code will also build on Linux for Linux by running:
 
@@ -248,7 +248,7 @@ More documentation on SDL can be found <a href="http://wiki.libsdl.org/FrontPage
 
 </details>
 
-## Using SDL Image
+## Using SDL for Drawing Sprites
 {: .fs-6 .fw-700 }
 
 ![](images/sprite.png)
@@ -266,13 +266,13 @@ Click on view source below to see the code and how to build it.
 **main.c**
 
 ```c
-{% include samples/sdl_image/main.c %}
+{% include samples/sdl-sprite/main.c %}
 ```
 
 **CMakeLists.txt**
 
 ```cmake
-{% include samples/sdl_image/CMakeLists.txt %}
+{% include samples/sdl-sprite/CMakeLists.txt %}
 ```
 
 Building can be done with:
@@ -331,7 +331,7 @@ psp-cmake ..
 make
 ```
 
-This will result in an EBOOT.PBP file in the build directory. Put it in a directory in ms0:/PSP/GAME/ and you need an audio file to test the program, download it from <a href="/resources/test.ogg">here</a>. Put it in a directory in ms0:/MUSIC/ and then rename the audio file same as name on your *MUSIC_PATH* macro in your C code and the PSP can run it.
+This will result in an EBOOT.PBP file in the build directory. Put it in a directory in ms0:/PSP/GAME/ and add the test audio file, download it from <a href="/resources/test.ogg">here</a>, to be able to run it on the PSP.
 
 Documentation for SDL_mixer can be found <a href="https://wiki.libsdl.org/SDL3_mixer/FrontPage">here</a>.
 
@@ -340,7 +340,7 @@ Documentation for SDL_mixer can be found <a href="https://wiki.libsdl.org/SDL3_m
 ## Using SDL ttf
 {: .fs-6 .fw-700 }
 
-![](images/sdl_ttf.jpg)
+![](images/sdl_ttf.png)
 
 This is a simple program to use the SDL_ttf library. It provides functionality for rendering TrueType fonts for your PSP.
 

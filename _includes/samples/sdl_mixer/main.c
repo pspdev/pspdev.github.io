@@ -6,18 +6,17 @@
 #define SCREEN_WIDTH    480
 #define SCREEN_HEIGHT   272
 
-// audio file path
-#define MUSIC_PATH "ms0:/MUSIC/test.ogg" // ogg/mp3 file format
-
 int main(int argc, char **argv) {
+    // This prevents compiler warnings
+    // We don't actually need these variables, but they do need to be there so SDL_main works
     (void)argc;
     (void)argv;
 
     // Initialize sdl
-    SDL_Init(SDL_INIT_VIDEO |
-        SDL_INIT_AUDIO |
-        SDL_INIT_GAMEPAD
-    );
+    if(!SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO | SDL_INIT_GAMEPAD)) {
+        SDL_Log("Couldn't initialize SDL: %s", SDL_GetError());
+        return 1;
+    }
 
     // Initialize sdl2_mixer
     Mix_OpenAudio(44100, 
@@ -26,20 +25,13 @@ int main(int argc, char **argv) {
         2048
     );
 
-    // create window
-    SDL_Window *win = SDL_CreateWindow(
-        "psp_win",
-        SDL_WINDOWPOS_UNDEFINED,
-        SDL_WINDOWPOS_UNDEFINED,
-        SCREEN_WIDTH,
-        SCREEN_HEIGHT,
-        0
-    );
-
-    // Create Renderer
-    SDL_Renderer *renderer = SDL_CreateRenderer(
-        win, -1, 0
-    );
+    SDL_Window * window = NULL;
+    SDL_Renderer * renderer = NULL;
+    if (!SDL_CreateWindowAndRenderer("window", 480, 272, 0, &window, &renderer)) {
+        SDL_Log("Couldn't create window/renderer: %s", SDL_GetError());
+        SDL_Quit();
+        return 2;
+    }
 
     // Load ogg file
     Mix_Music *ogg_file = NULL;
