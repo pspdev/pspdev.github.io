@@ -1,21 +1,27 @@
-#include <SDL.h>
+#include <SDL3/SDL.h>
+#include <SDL3/SDL_main.h>
 
-int main(int argc, char *argv[])
-{
-    SDL_Init(SDL_INIT_VIDEO | SDL_INIT_GAMECONTROLLER);
+int main(int argc, char *argv[]) {
+    // This prevents compiler warnings
+    // We don't actually need these variables, but they do need to be there so SDL_main works
+    (void)argc;
+    (void)argv;
 
-    SDL_Window * window = SDL_CreateWindow(
-        "window",
-        SDL_WINDOWPOS_UNDEFINED,
-        SDL_WINDOWPOS_UNDEFINED,
-        480,
-        272,
-        0
-    );
+    // Initialize sdl
+    if(!SDL_Init(SDL_INIT_VIDEO | SDL_INIT_GAMEPAD)) {
+        SDL_Log("Couldn't initialize SDL: %s", SDL_GetError());
+        return 1;
+    }
 
-    SDL_Renderer * renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
+    SDL_Window * window = NULL;
+    SDL_Renderer * renderer = NULL;
+    if (!SDL_CreateWindowAndRenderer("window", 480, 272, 0, &window, &renderer)) {
+        SDL_Log("Couldn't create window/renderer: %s", SDL_GetError());
+        SDL_Quit();
+        return 2;
+    }
 
-    SDL_Rect square = {216, 96, 34, 64}; 
+    SDL_FRect square = {216, 96, 34, 64}; 
 
     int running = 1;
     SDL_Event event;
@@ -23,16 +29,16 @@ int main(int argc, char *argv[])
         // Process input
         if (SDL_PollEvent(&event)) {
             switch (event.type) {
-                case SDL_QUIT:
+                case SDL_EVENT_QUIT:
                     // End the loop if the programs is being closed
                     running = 0;
                     break;
-                case SDL_CONTROLLERDEVICEADDED:
+                case SDL_EVENT_GAMEPAD_ADDED:
                     // Connect a controller when it is connected
-                    SDL_GameControllerOpen(event.cdevice.which);
+                    SDL_OpenGamepad(event.cdevice.which);
                     break;
-                case SDL_CONTROLLERBUTTONDOWN:
-                    if(event.cbutton.button == SDL_CONTROLLER_BUTTON_START) {
+                case SDL_EVENT_GAMEPAD_BUTTON_DOWN:
+                    if(event.gbutton.button == SDL_GAMEPAD_BUTTON_START) {
                         // Close the program if start is pressed
                         running = 0;
                     }
