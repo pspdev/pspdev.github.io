@@ -50,9 +50,10 @@ Installing the PSP SDK itself can be done with the following steps:
     ```shell
     wget https://github.com/pspdev/pspdev/releases/latest/download/pspdev-ubuntu-latest-x86_64.tar.gz
     ```
+    On the ARM version of Windows, replace the link with `https://github.com/pspdev/pspdev/releases/download/v20260801/pspdev-ubuntu-24.04-arm-arm64.tar.gz`.
 2. Extract the archive using:
     ```shell
-    tar -xvf pspdev-ubuntu-latest-x86_64.tar.gz
+    tar -xvf pspdev-ubuntu-*.tar.gz
     ```
 3. To make the SDK usable, some environment variables need to be set. The first step in doing so it to open the `~/.bashrc` file with the `nano` text editor using the following command from an Ubuntu terminal:
     ```shell
