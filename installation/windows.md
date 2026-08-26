@@ -50,7 +50,7 @@ Installing the PSP SDK itself can be done with the following steps:
     ```shell
     wget https://github.com/pspdev/pspdev/releases/latest/download/pspdev-ubuntu-latest-x86_64.tar.gz
     ```
-    On the ARM version of Windows, replace the link with `https://github.com/pspdev/pspdev/releases/download/v20260801/pspdev-ubuntu-24.04-arm-arm64.tar.gz`.
+    On the ARM version of Windows, replace the link with `https://github.com/pspdev/pspdev/releases/latest/download/pspdev-ubuntu-24.04-arm-arm64.tar.gz`.
 2. Extract the archive using:
     ```shell
     tar -xvf pspdev-ubuntu-*.tar.gz
